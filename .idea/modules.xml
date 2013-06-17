@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/CargoSpr.iml" filepath="$PROJECT_DIR$/CargoSpr.iml" />
+      <module fileurl="file://$PROJECT_DIR$/CargoSpr-grailsPlugins.iml" filepath="$PROJECT_DIR$/CargoSpr-grailsPlugins.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../RapidGrails/RapidGrails.iml" filepath="$PROJECT_DIR$/../RapidGrails/RapidGrails.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RapidGrails-inplacePlugin.iml" filepath="$PROJECT_DIR$/RapidGrails-inplacePlugin.iml" />
+    </modules>
+  </component>
+</project>
+

@@ -1,7 +1,6 @@
 <%@ page import="cargo.freight.Freight" %>
 
 
-
 <div class="fieldcontain ${hasErrors(bean: freightInstance, field: 'shipment', 'error')} required">
 	<label for="shipment">
 		<g:message code="freight.shipment.label" default="Shipment" />
@@ -84,7 +83,7 @@
 
 <div class="fieldcontain ${hasErrors(bean: freightInstance, field: 'freightAction', 'error')} ">
 	<label for="freightAction">
-		<g:message code="freight.freightAction.label" default="Freight Action" />
+		<g:message code="freight.freightAction.label" default="" />
 		
 	</label>
 	<g:select name="freightAction" from="${freightInstance.constraints.freightAction.inList}" value="${freightInstance?.freightAction}" valueMessagePrefix="freight.freightAction" noSelection="['': '']"/>

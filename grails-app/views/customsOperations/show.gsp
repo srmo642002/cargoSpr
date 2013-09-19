@@ -31,15 +31,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${customsOperationsInstance?.permitsNum}">
-				<li class="fieldcontain">
-					<span id="permitsNum-label" class="property-label"><g:message code="customsOperations.permitsNum.label" default="Permits Num" /></span>
-					
-						<span class="property-value" aria-labelledby="permitsNum-label"><g:fieldValue bean="${customsOperationsInstance}" field="permitsNum"/></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${customsOperationsInstance?.customsDate}">
 				<li class="fieldcontain">
 					<span id="customsDate-label" class="property-label"><g:message code="customsOperations.customsDate.label" default="Customs Date" /></span>
@@ -63,6 +54,15 @@
 					<span id="transitMode-label" class="property-label"><g:message code="customsOperations.transitMode.label" default="Transit Mode" /></span>
 					
 						<span class="property-value" aria-labelledby="transitMode-label"><g:fieldValue bean="${customsOperationsInstance}" field="transitMode"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${customsOperationsInstance?.permitsNum}">
+				<li class="fieldcontain">
+					<span id="permitsNum-label" class="property-label"><g:message code="customsOperations.permitsNum.label" default="Permits Num" /></span>
+					
+						<span class="property-value" aria-labelledby="permitsNum-label"><g:fieldValue bean="${customsOperationsInstance}" field="permitsNum"/></span>
 					
 				</li>
 				</g:if>
@@ -103,6 +103,33 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${customsOperationsInstance?.weight}">
+				<li class="fieldcontain">
+					<span id="weight-label" class="property-label"><g:message code="customsOperations.weight.label" default="Weight" /></span>
+					
+						<span class="property-value" aria-labelledby="weight-label"><g:fieldValue bean="${customsOperationsInstance}" field="weight"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${customsOperationsInstance?.tariff}">
+				<li class="fieldcontain">
+					<span id="tariff-label" class="property-label"><g:message code="customsOperations.tariff.label" default="Tariff" /></span>
+					
+						<span class="property-value" aria-labelledby="tariff-label"><g:fieldValue bean="${customsOperationsInstance}" field="tariff"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${customsOperationsInstance?.commodity}">
+				<li class="fieldcontain">
+					<span id="commodity-label" class="property-label"><g:message code="customsOperations.commodity.label" default="Commodity" /></span>
+					
+						<span class="property-value" aria-labelledby="commodity-label"><g:fieldValue bean="${customsOperationsInstance}" field="commodity"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${customsOperationsInstance?.oneSheetInsurance}">
 				<li class="fieldcontain">
 					<span id="oneSheetInsurance-label" class="property-label"><g:message code="customsOperations.oneSheetInsurance.label" default="One Sheet Insurance" /></span>
@@ -121,11 +148,46 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${customsOperationsInstance?.receipt}">
+				<li class="fieldcontain">
+					<span id="receipt-label" class="property-label"><g:message code="customsOperations.receipt.label" default="Receipt" /></span>
+					
+						<span class="property-value" aria-labelledby="receipt-label"><g:formatBoolean boolean="${customsOperationsInstance?.receipt}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${customsOperationsInstance?.receiptDate}">
+				<li class="fieldcontain">
+					<span id="receiptDate-label" class="property-label"><g:message code="customsOperations.receiptDate.label" default="Receipt Date" /></span>
+					
+						<span class="property-value" aria-labelledby="receiptDate-label"><g:formatDate date="${customsOperationsInstance?.receiptDate}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${customsOperationsInstance?.receiptNum}">
+				<li class="fieldcontain">
+					<span id="receiptNum-label" class="property-label"><g:message code="customsOperations.receiptNum.label" default="Receipt Num" /></span>
+					
+						<span class="property-value" aria-labelledby="receiptNum-label"><g:fieldValue bean="${customsOperationsInstance}" field="receiptNum"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${customsOperationsInstance?.insuranceCert}">
+				<li class="fieldcontain">
+					<span id="insuranceCert-label" class="property-label"><g:message code="customsOperations.insuranceCert.label" default="Insurance Cert" /></span>
+					
+						<span class="property-value" aria-labelledby="insuranceCert-label"><g:link controller="insuranceCert" action="show" id="${customsOperationsInstance?.insuranceCert?.id}">${customsOperationsInstance?.insuranceCert?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 			</ol>
 			<g:form>
 				<fieldset class="buttons">
 					<g:hiddenField name="id" value="${customsOperationsInstance?.id}" />
-					<g:link class="edit" action="edit" id="${customsOperationsInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
 			</g:form>

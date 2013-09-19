@@ -42,9 +42,55 @@ class BootStrap {
 
         def role8 = Role.findByAuthority("Delete Cargo")?:new Role(authority: "Delete Cargo").save()
 
+        def role9 = Role.findByAuthority("Create AirFreight")?:new Role(authority: "Create AirFreight").save()
+
+        def role10 = Role.findByAuthority("Edit AirFreight")?:new Role(authority: "Edit AirFreight").save()
+
+        def role11 = Role.findByAuthority("Delete AirFreight")?:new Role(authority: "Delete AirFreight").save()
+
+        def role12 = Role.findByAuthority("Create OceanFreight")?:new Role(authority: "Create OceanFreight").save()
+
+        def role13 = Role.findByAuthority("Edit OceanFreight")?:new Role(authority: "Edit OceanFreight").save()
+
+        def role14 = Role.findByAuthority("Delete OceanFreight")?:new Role(authority: "Delete OceanFreight").save()
+
+        def role15 = Role.findByAuthority("Create RailFreight")?:new Role(authority: "Create RailFreight").save()
+
+        def role16 = Role.findByAuthority("Edit RailFreight")?:new Role(authority: "Edit RailFreight").save()
+
+        def role17 = Role.findByAuthority("Delete RailFreight")?:new Role(authority: "Delete RailFreight").save()
+
+        def role18 = Role.findByAuthority("Create RoadFreight")?:new Role(authority: "Create RoadFreight").save()
+
+        def role19 = Role.findByAuthority("Edit RoadFreight")?:new Role(authority: "Edit RoadFreight").save()
+
+        def role20 = Role.findByAuthority("Delete RoadFreight")?:new Role(authority: "Delete RoadFreight").save()
+
+        def role21 = Role.findByAuthority("Create DocType")?:new Role(authority: "Create DocType").save()
+
+        def role22 = Role.findByAuthority("Edit DocType")?:new Role(authority: "Edit DocType").save()
+
+        def role23 = Role.findByAuthority("Delete DocType")?:new Role(authority: "Delete DocType").save()
+
+        def role24 = Role.findByAuthority("Set CostEst")?:new Role(authority: "Set CostEst").save()
+
+        def role25 = Role.findByAuthority("Set PurchasedInsurSheet")?:new Role(authority: "Set PurchasedInsurSheet").save()
+
+        def role26 = Role.findByAuthority("Set AssignedInsurSheet")?:new Role(authority: "Set AssignedInsurSheet").save()
+
+        def role27 = Role.findByAuthority("Set MultiSheetInsur")?:new Role(authority: "Set MultiSheetInsur").save()
+
+        def role28 = Role.findByAuthority("Set OneSheetInsur")?:new Role(authority: "Set OneSheetInsur").save()
+
+        def role29 = Role.findByAuthority("Set CustomsOperation")?:new Role(authority: "Set CustomsOperation").save()
+
+        def role30 = Role.findByAuthority("Create BasicInfo")?:new Role(authority: "Create BasicInfo").save()
+
         def user1 = User.findByUsername("admin")?:new User(username: "admin",password: "123",email: "admin@msn.com",mobile: "0912333333",level: "head",department: "Management",enabled: true).save()
 
         if(!user1.authorities.contains(role1)){UserRole.create(user1,role1,true)}
+
+        def mng = UserGroup.findByGroups("MNG")?:new UserGroup(groups: "MNG").save()
 
         def tr = UserGroup.findByGroups("TR")?:new UserGroup(groups: "TR").save()
 
@@ -52,9 +98,9 @@ class BootStrap {
 
         def mt = UserGroup.findByGroups("MT")?:new UserGroup(groups: "MT").save()
 
-        def mng = UserGroup.findByGroups("MNG")?:new UserGroup(groups: "MNG").save()
+        def fnc = UserGroup.findByGroups("FNC")?:new UserGroup(groups: "FNC").save()
 
-        def bI = UserGroup.findByGroups("BasicInfo")?:new UserGroup(groups: "BasicInfo").save()
+        def de = UserGroup.findByGroups("DE")?:new UserGroup(groups: "DE").save()
 
 
         if (GrailsUtil.environment == "development") {

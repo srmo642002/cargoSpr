@@ -1,9 +1,11 @@
 package cargo.insuranceCertificate
 
+import grails.converters.deep.JSON
 import grails.plugins.springsecurity.Secured
 import org.springframework.dao.DataIntegrityViolationException
+import rapidgrails.CompositeHelper
 
-@Secured("Admin,Head Shipment Creator,Shipment Creator,Agent")
+@Secured("Admin,Create Shipment,Edit Shipment,Set MultiSheetInsur,Set OneSheetInsur,Set CustomsOperation")
 class UsedInsuranceCertController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -13,9 +15,10 @@ class UsedInsuranceCertController {
     }
 
     def list() {
-        params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [usedInsuranceCertInstanceList: UsedInsuranceCert.list(params), usedInsuranceCertInstanceTotal: UsedInsuranceCert.count()]
-    }
+        def cal=Calendar.instance
+        cal.add(Calendar.DATE,20)
+        def exps=InsuranceCert.findAllByExpireDateBetween(new Date(),cal.time)
+        [exps:exps]   }
 
     def create() {
         [usedInsuranceCertInstance: new UsedInsuranceCert(params)]
@@ -25,15 +28,49 @@ class UsedInsuranceCertController {
 
         def usedInsuranceCert
 
-        usedInsuranceCert = new UsedInsuranceCert(params)
-        if (usedInsuranceCert.serialNumFrom==usedInsuranceCert.assignedInsuranceCert.serialNumFrom && usedInsuranceCert.serialNumTo<=usedInsuranceCert.assignedInsuranceCert.serialNumTo){
+        if (! params.id)
+            usedInsuranceCert = new UsedInsuranceCert()
+        else{
+            usedInsuranceCert=UsedInsuranceCert.get(params.id)
+        }
+
+        def newparams=[:]
+        newparams.putAll(params)
+        if (usedInsuranceCert.hasProperty("composites")) {
+            def composites = usedInsuranceCert.composites
+            composites.each {composit ->
+                params.findAll {it.key.startsWith(composit) && it.value instanceof Map}
+                .each {
+                    def methodName = composit[0].toUpperCase() + composit.substring(1);
+                    def compositParams = it.value
+                    def compositInstance
+                    if (compositParams.id) {
+                        compositInstance = usedInsuranceCert.coupons.find {(compositParams.id as Long) == it.id}
+                        compositInstance.properties=compositParams
+                    }
+                    else {
+                        compositInstance = new cargo.insuranceCertificate.CouponContainer(compositParams)
+                        usedInsuranceCert."addTo${methodName}"(compositInstance)
+                    }
+
+//                    bindData(compositInstance, compositParams)
+                }
+                params.findAll {it.key.startsWith(composit) }.each{
+
+                    newparams.remove(it.key)
+                }
+            }
+        }
+
+        usedInsuranceCert.properties=newparams
+        def assignedInsuranceCert = usedInsuranceCert.assignedInsuranceCert
+        new CompositeHelper().bindComposites(usedInsuranceCert, params)
+//        if (usedInsuranceCert.coupons.couponNumFrom==usedInsuranceCert.assignedInsuranceCert.couponNumFrom && usedInsuranceCert.coupons.couponNumTo<=usedInsuranceCert.assignedInsuranceCert.couponNumTo){
         if (usedInsuranceCert.save()) {
-            def assignedInsuranceCert = usedInsuranceCert.assignedInsuranceCert
-            assignedInsuranceCert.serialNumFrom = (usedInsuranceCert.serialNumTo + 1)
-            assignedInsuranceCert.totalCount = (assignedInsuranceCert.totalCount - usedInsuranceCert.totalCount )
+            assignedInsuranceCert.remainedCount = (assignedInsuranceCert.remainedCount - usedInsuranceCert.total )
             assignedInsuranceCert.save()
         }
-        }
+//        }
         render(0)
 
     }

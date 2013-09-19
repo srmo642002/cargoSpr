@@ -32,7 +32,7 @@
         <rg:saveButton domainClass="${cargo.City}"/>
         <rg:cancelButton/>
     </rg:dialog>
-    <sec:ifAnyGranted roles="Admin,BasicInfo Head,BasicInfo Operator">
+    <sec:ifAnyGranted roles="Admin,Create BasicInfo">
         <input type="button" ng-click="openCityCreateDialog()" value="Create City"/>
         <input type="button" ng-click="openCityEditDialog()" value="Edit City"/>
     </sec:ifAnyGranted>

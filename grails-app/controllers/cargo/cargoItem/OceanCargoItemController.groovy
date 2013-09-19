@@ -4,7 +4,7 @@ import cargo.Role
 import grails.plugins.springsecurity.Secured
 import org.springframework.dao.DataIntegrityViolationException
 
-@Secured("Admin,Head Shipment Creator,Shipment Creator")
+@Secured("Admin,Create Shipment,Edit Shipment")
 class OceanCargoItemController {
     def principalService
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -16,11 +16,12 @@ class OceanCargoItemController {
     def list() {
         def user = principalService.getUser()
         def userid = user.id
+        def groupid = user.groups?.id
         def adminRole = Role.findByAuthority("Admin")
         def view = "list"
         if (user.authorities.contains(adminRole))
             view = "adminList"
-        render(view: view, model: [userid: userid])
+        render(view: view, model: [userid: userid, groupid: groupid])
     }
 
     def create() {

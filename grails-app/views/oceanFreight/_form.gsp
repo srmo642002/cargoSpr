@@ -82,6 +82,14 @@
 	<g:select name="signedAs" from="${oceanFreightInstance.constraints.signedAs.inList}" value="${oceanFreightInstance?.signedAs}" valueMessagePrefix="oceanFreight.signedAs" noSelection="['': '']"/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: oceanFreightInstance, field: 'freightAction', 'error')} ">
+	<label for="freightAction">
+		<g:message code="oceanFreight.freightAction.label" default="" />
+		
+	</label>
+	<g:select name="freightAction" from="${oceanFreightInstance.constraints.freightAction.inList}" value="${oceanFreightInstance?.freightAction}" valueMessagePrefix="oceanFreight.freightAction" noSelection="['': '']"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: oceanFreightInstance, field: 'signature', 'error')} ">
 	<label for="signature">
 		<g:message code="oceanFreight.signature.label" default="Signature" />
@@ -136,5 +144,13 @@
 		
 	</label>
 	<g:field type="number" name="totalPrepaid" step="any" value="${oceanFreightInstance.totalPrepaid}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: oceanFreightInstance, field: 'user', 'error')} required">
+	<label for="user">
+		<g:message code="oceanFreight.user.label" default="User" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="user" name="user.id" from="${cargo.User.list()}" optionKey="id" required="" value="${oceanFreightInstance?.user?.id}" class="many-to-one"/>
 </div>
 

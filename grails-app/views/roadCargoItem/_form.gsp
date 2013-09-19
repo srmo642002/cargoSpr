@@ -2,28 +2,60 @@
 
 
 
-<div class="fieldcontain ${hasErrors(bean: roadCargoItemInstance, field: 'truck', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: roadCargoItemInstance, field: 'truck', 'error')} ">
 	<label for="truck">
 		<g:message code="roadCargoItem.truck.label" default="Truck" />
-		<span class="required-indicator">*</span>
+		
 	</label>
-	<g:select id="truck" name="truck.id" from="${cargo.Truck.list()}" optionKey="id" required="" value="${roadCargoItemInstance?.truck?.id}" class="many-to-one"/>
+	<g:select name="truck" from="${roadCargoItemInstance.constraints.truck.inList}" value="${roadCargoItemInstance?.truck}" valueMessagePrefix="roadCargoItem.truck" noSelection="['': '']"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: roadCargoItemInstance, field: 'driver', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: roadCargoItemInstance, field: 'plaque', 'error')} ">
+	<label for="plaque">
+		<g:message code="roadCargoItem.plaque.label" default="Plaque" />
+		
+	</label>
+	<g:textField name="plaque" value="${roadCargoItemInstance?.plaque}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: roadCargoItemInstance, field: 'containerType', 'error')} ">
+	<label for="containerType">
+		<g:message code="roadCargoItem.containerType.label" default="Container Type" />
+		
+	</label>
+	<g:select name="containerType" from="${roadCargoItemInstance.constraints.containerType.inList}" value="${roadCargoItemInstance?.containerType}" valueMessagePrefix="roadCargoItem.containerType" noSelection="['': '']"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: roadCargoItemInstance, field: 'containerNum', 'error')} ">
+	<label for="containerNum">
+		<g:message code="roadCargoItem.containerNum.label" default="Container Num" />
+		
+	</label>
+	<g:field type="number" name="containerNum" value="${roadCargoItemInstance.containerNum}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: roadCargoItemInstance, field: 'ftl', 'error')} ">
+	<label for="ftl">
+		<g:message code="roadCargoItem.ftl.label" default="Ftl" />
+		
+	</label>
+	<g:checkBox name="ftl" value="${roadCargoItemInstance?.ftl}" />
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: roadCargoItemInstance, field: 'ltl', 'error')} ">
+	<label for="ltl">
+		<g:message code="roadCargoItem.ltl.label" default="Ltl" />
+		
+	</label>
+	<g:checkBox name="ltl" value="${roadCargoItemInstance?.ltl}" />
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: roadCargoItemInstance, field: 'driver', 'error')} ">
 	<label for="driver">
 		<g:message code="roadCargoItem.driver.label" default="Driver" />
-		<span class="required-indicator">*</span>
+		
 	</label>
-	<g:select id="driver" name="driver.id" from="${cargo.Driver.list()}" optionKey="id" required="" value="${roadCargoItemInstance?.driver?.id}" class="many-to-one"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: roadCargoItemInstance, field: 'cntrNo', 'error')} required">
-	<label for="cntrNo">
-		<g:message code="roadCargoItem.cntrNo.label" default="Cntr No" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field type="number" name="cntrNo" step="any" required="" value="${roadCargoItemInstance.cntrNo}"/>
+	<g:textField name="driver" value="${roadCargoItemInstance?.driver}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: roadCargoItemInstance, field: 'loadingDate', 'error')} required">
@@ -72,5 +104,13 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:select id="roadFreight" name="roadFreight.id" from="${cargo.freight.RoadFreight.list()}" optionKey="id" required="" value="${roadCargoItemInstance?.roadFreight?.id}" class="many-to-one"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: roadCargoItemInstance, field: 'user', 'error')} required">
+	<label for="user">
+		<g:message code="roadCargoItem.user.label" default="User" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="user" name="user.id" from="${cargo.User.list()}" optionKey="id" required="" value="${roadCargoItemInstance?.user?.id}" class="many-to-one"/>
 </div>
 

@@ -15,7 +15,7 @@ class City {
     static constraints = {
         country(nullable: false)
         title(blank: false, maxSize: 50)
-        persianTitle(blank: false, maxSize: 50)
+        persianTitle(blank: true, maxSize: 50)
         port(nullable: false)
         abbreviation(blank: false)
     }

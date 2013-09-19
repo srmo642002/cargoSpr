@@ -920,3 +920,173 @@ a.skip {
     font-size: 12px;
     overflow: hidden;
 }
+#InsuranceCertGridContainer .ui-jqgrid-titlebar{
+    background: none;
+    background-color: #ff8f8f;
+}
+
+[aria\-describedby=InsuranceCertGrid_couponNumFrom] {
+    background: none !important;
+    background-color: #eed3d7 !important;
+    font-weight: bolder;
+}
+
+[aria\-describedby=InsuranceCertGrid_couponNumTo] {
+    background: none !important;
+    background-color: #eed3d7 !important;
+    font-weight: bolder;
+}
+
+[aria\-describedby=InsuranceCertGrid_serialNumFrom] {
+    background: none !important;
+    background-color: #eed3d7 !important;
+    font-weight: bolder;
+}
+
+[aria\-describedby=InsuranceCertGrid_serialNumTo] {
+    background: none !important;
+    background-color: #eed3d7 !important;
+    font-weight: bolder;
+}
+
+[aria\-describedby=InsuranceCertGrid_code] {
+    background: none !important;
+    background-color: #eed3d7 !important;
+    font-weight: bolder;
+}
+
+
+#AssignedInsuranceCertGridContainer .ui-jqgrid-titlebar{
+
+    background: none;
+    background-color: #3cb371;
+}
+
+[aria\-describedby=AssignedInsuranceCertGrid_couponNumFrom] {
+    background: none !important;
+    background-color: #E1F2B6 !important;
+    font-weight: bolder;
+}
+
+[aria\-describedby=AssignedInsuranceCertGrid_couponNumTo] {
+    background: none !important;
+    background-color: #E1F2B6 !important;
+    font-weight: bolder;
+}
+
+[aria\-describedby=AssignedInsuranceCertGrid_insuranceCert] {
+    background: none !important;
+    background-color: #E1F2B6 !important;
+    font-weight: bolder;
+}
+
+[aria\-describedby=AssignedInsuranceCertGrid_status] {
+    background: none !important;
+    background-color: #E1F2B6 !important;
+    font-weight: bolder;
+}
+
+
+#UsedInsuranceCertGridContainer .ui-jqgrid-titlebar{
+
+    background: none;
+    background-color: #ffd900;
+}
+
+[aria\-describedby=UsedInsuranceCertGrid_coupons] {
+    background: none !important;
+    background-color: #fcefa1 !important;
+    font-weight: bolder;
+}
+
+[aria\-describedby=UsedInsuranceCertGrid_shipment] {
+    background: none !important;
+    background-color: #fcefa1 !important;
+    font-weight: bolder;
+}
+
+#OneSheetInsuranceCertGridContainer .ui-jqgrid-titlebar{
+
+    background: none;
+    background-color: #AABDE6;
+}
+
+#CustomsOperationsGridContainer .ui-jqgrid-titlebar{
+
+    background: none;
+    background-color: #9E253B;
+    text-emphasis-color: white ;
+}
+
+[aria\-describedby=CustomsOperationsGrid_shipment] {
+    background: none !important;
+    background-color: #E1F2B6 !important;
+    font-weight: 700;
+}
+
+[aria\-describedby=CustomsOperationsGrid_commodity] {
+    background: none !important;
+    background-color: #ffe475 !important;
+    font-weight: 700;
+}
+
+[aria\-describedby=CustomsOperationsGrid_permitsNum] {
+    background: none !important;
+    background-color: #a9dba9 !important;
+    font-weight: 700;
+}
+
+[aria\-describedby=CustomsOperationsGrid_kutazhNum] {
+    background: none !important;
+    background-color: #FF9999 !important;
+    font-weight: 700;
+}
+
+[aria\-describedby=CustomsOperationsGrid_rowNum] {
+    background: none !important;
+    background-color: #eed3d7 !important;
+    font-weight: 700;
+}
+
+[aria\-describedby=CustomsOperationsGrid_receipt] {
+    background: none !important;
+    background-color: #E1F2B6 !important;
+    font-weight: 700;
+}
+
+[aria\-describedby=CustomsOperationsGrid_destination] {
+    background: none !important;
+    background-color: #ffe475 !important;
+    font-weight: 700;
+}
+
+
+#CargoItemGridContainer .ui-jqgrid-titlebar{
+
+    background: none;
+    background-color: #ffd900;
+}
+
+#FreightGridContainer .ui-jqgrid-titlebar{
+
+    background: none;
+    background-color: #149bdf;
+}
+
+#DocumentTypeGridContainer .ui-jqgrid-titlebar{
+
+    background: none;
+    background-color: #aaaeb6;
+}
+
+
+
+
+
+
+
+
+
+
+
+

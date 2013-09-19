@@ -114,9 +114,9 @@
 			
 				<g:if test="${driverInstance?.passportDateOfIssure}">
 				<li class="fieldcontain">
-					<span id="passportDateOfIssure-label" class="property-label"><g:message code="driver.passportDateOfIssure.label" default="Passport Date Of Issure" /></span>
+					<span id="passportDateOfIssue-label" class="property-label"><g:message code="driver.passportDateOfIssue.label" default="Passport Date Of Issure" /></span>
 					
-						<span class="property-value" aria-labelledby="passportDateOfIssure-label"><g:formatDate date="${driverInstance?.passportDateOfIssure}" /></span>
+						<span class="property-value" aria-labelledby="passportDateOfIssue-label"><g:formatDate date="${driverInstance?.passportDateOfIssue}" /></span>
 					
 				</li>
 				</g:if>
@@ -158,13 +158,14 @@
 				</g:if>
 			
 			</ol>
+            <sec:ifAnyGranted roles="Admin,Create BasicInfo">
 			<g:form>
 				<fieldset class="buttons">
 					<g:hiddenField name="id" value="${driverInstance?.id}" />
-					<g:link class="edit" action="edit" id="${driverInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
 			</g:form>
+            </sec:ifAnyGranted>
 		</div>
 	</body>
 </html>

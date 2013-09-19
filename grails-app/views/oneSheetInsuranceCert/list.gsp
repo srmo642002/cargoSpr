@@ -23,7 +23,7 @@
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
-    <rg:grid domainClass="${cargo.insuranceCertificate.OneSheetInsuranceCert}" columns="${[[name: "insuranceNum",formatter:'Integer'],[name: "issueDate"],[name: "shipment"],[name: "transitFrom"],[name: "transitTo"],[name: "totalCost",formatter:'Integer']]}">
+    <rg:grid domainClass="${cargo.insuranceCertificate.OneSheetInsuranceCert}" columns="${[[name: "insuranceNum",formatter:'Integer'],[name: "issueDate"],[name: "shipment"],[name: "transitFrom"],[name: "transitTo"],[name: "totalCost"]]}">
     </rg:grid>
     <rg:dialog id="oneSheetInsuranceCert" title="One Sheet Insurance Specification Dialog">
         <rg:fields bean="${new cargo.insuranceCertificate.OneSheetInsuranceCert()}">
@@ -31,7 +31,7 @@
         <rg:saveButton domainClass="${cargo.insuranceCertificate.OneSheetInsuranceCert}"/>
         <rg:cancelButton/>
     </rg:dialog>
-    <sec:ifAnyGranted roles="Admin,Agent">
+    <sec:ifAnyGranted roles="Admin,Create Shipment,Edit Shipment,Set MultiSheetInsur,Set OneSheetInsur,Set CustomsOperation">
         <input type="button" ng-click="openOneSheetInsuranceCertCreateDialog()" value="Create One Sheet Insurance Specification"/>
         <input type="button" ng-click="openOneSheetInsuranceCertEditDialog()" value="Edit One Sheet Insurance Specification"/>
     </sec:ifAnyGranted>

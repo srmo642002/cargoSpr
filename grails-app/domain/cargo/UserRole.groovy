@@ -6,14 +6,14 @@ class UserRole implements Serializable {
 
     User user
     Role role
-
-    Boolean createUser
-    Boolean assignRoles
-    Boolean createShipment
-    Boolean editShipment
-    Boolean createCargo
-    Boolean editCargo
-    Boolean deleteCargo
+//
+//    Boolean createUser
+//    Boolean assignRoles
+//    Boolean createShipment
+//    Boolean editShipment
+//    Boolean createCargo
+//    Boolean editCargo
+//    Boolean deleteCargo
 
 
 
@@ -69,13 +69,13 @@ class UserRole implements Serializable {
 
         user(nullable: false)
 
-        createUser(nullable: true)
-        assignRoles(nullable: true)
-        createShipment(nullable: true)
-        editShipment(nullable: true)
-        createCargo(nullable: true)
-        editCargo(nullable: true)
-        deleteCargo(nullable: true)
+//        createUser(nullable: true)
+//        assignRoles(nullable: true)
+//        createShipment(nullable: true)
+//        editShipment(nullable: true)
+//        createCargo(nullable: true)
+//        editCargo(nullable: true)
+//        deleteCargo(nullable: true)
 
         role(nullable: true)
 

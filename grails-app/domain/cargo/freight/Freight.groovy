@@ -29,8 +29,7 @@ class Freight {
 
     static constraints = {
 
-        shipment (nullable: false,validator: {val, Shipment ->
-            (val.HBL&&val.shipper&&val.consignee&&val.notifyParty&&val.agent)})
+        shipment (nullable: false)
 
         placeOfLoading(nullable: false)
         placeOfDischarge(nullable: false)

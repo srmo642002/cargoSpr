@@ -19,7 +19,11 @@
 
 <div id="list-oceanFreight" ng-controller="oceanFreightController" class="content scaffold-list" role="main">
     <rg:criteria inline="true" id="OceanFreightCriteria">
-        <rg:eq name='user.id' value='${userid}' hidden='true'/>
+        <rg:nest name="user" >
+            <rg:nest name="groups">
+                <rg:eq name='id' value='${groupid}' hidden='true' />
+            </rg:nest>
+        </rg:nest>
         <rg:like name='shippingCo'/>
         <rg:like name='vesselName'/>
         <rg:filterGrid name='OceanFreightGrid' grid="OceanFreightGrid" label="Search"/>
@@ -34,7 +38,11 @@
     <br>
     <rg:grid domainClass="${cargo.freight.OceanFreight}" caption="" width="800px" maxColumns="15">
         <rg:criteria>
-            <rg:eq name='user.id' value='${userid}'/>
+            <rg:nest name="user" >
+                <rg:nest name="groups">
+                    <rg:eq name='id' value='${groupid}' hidden='true' />
+                </rg:nest>
+            </rg:nest>
         </rg:criteria>
     </rg:grid>
     <rg:dialog id="oceanFreight" title="OceanFreight Dialog">
@@ -48,7 +56,7 @@
         <rg:saveButton domainClass="${cargo.freight.OceanFreight}" conroller="oceanFreight" action="saveOceanFreight"/>
         <rg:cancelButton/>
     </rg:dialog>
-    <sec:ifAnyGranted roles="Admin,Head Shipment Creator,Shipment Creator">
+    <sec:ifAnyGranted roles="Admin,Create Shipment,Edit Shipment,Create OceanFreight,Edit OceanFreight,Delete OceanFreight">
     <input type="button" ng-click="openOceanFreightCreateDialog()" value="Create OceanFreight"/>
     <input type="button" ng-click="openOceanFreightEditDialog()" value="Edit OceanFreight"/>
     </sec:ifAnyGranted>

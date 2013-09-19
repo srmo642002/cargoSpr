@@ -18,6 +18,14 @@
 	<g:textField name="persianTitle" maxlength="50" required="" value="${countryInstance?.persianTitle}"/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: countryInstance, field: 'abbreviation', 'error')} required">
+	<label for="abbreviation">
+		<g:message code="country.abbreviation.label" default="Abbreviation" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="abbreviation" required="" value="${countryInstance?.abbreviation}"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: countryInstance, field: 'cities', 'error')} ">
 	<label for="cities">
 		<g:message code="country.cities.label" default="Cities" />

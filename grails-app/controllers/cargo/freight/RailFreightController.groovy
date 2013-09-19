@@ -1,8 +1,10 @@
 package cargo.freight
 
 import cargo.Role
+import grails.plugins.springsecurity.Secured
 import org.springframework.dao.DataIntegrityViolationException
 
+@Secured("Admin,Create Shipment,Edit Shipment,Create RailFreight,Edit RailFreight,Delete RailFreight")
 class RailFreightController {
 
     def principalService

@@ -114,9 +114,9 @@
             <br>
             <br>
             <p style="padding-left: 110px">
-                <label for='DesCity'><g:message code="searchDesCity.label"/>:</label>
+                <label for='DestinationCty'><g:message code="searchDestinationCty.label"/>:</label>
                 <!--<input type='text' class='text_' name='formDesCity' id='desCity'/>  -->
-                <g:select name="desCity" from="${cargo.City.list()}" />
+                <g:select name="destinationCty" from="${cargo.City.list()}" />
             </p>
             <br>
             <div class= button>
@@ -125,7 +125,7 @@
                 </p>
                 <g:javascript>
                 function autoSent(){
-                    window.location.href = "${createLink(controller: 'CostEstimation', action:'getResults')}?search=" + $('#desCity').val();
+                    window.location.href = "${createLink(controller: 'CostEstimation', action:'getResults')}?search=" + $('#destinationCty').val();
                 }
                 </g:javascript>
             </div>

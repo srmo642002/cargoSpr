@@ -24,7 +24,11 @@
         <div class="message" role="status">${flash.message}</div>
     </g:if>
     <rg:criteria inline="true">
-        <rg:eq name='user.id' value='${userid}' hidden='true'/>
+        <rg:nest name="user" >
+            <rg:nest name="groups">
+                <rg:eq name='id' value='${groupid}' hidden='true' />
+            </rg:nest>
+        </rg:nest>
         <rg:like name='title'/>
         <rg:like name='persianTitle'/>
         <rg:filterGrid name='DocumentTypeGrid' grid="DocumentTypeGrid" label="Search"/>
@@ -61,7 +65,7 @@
         <rg:saveButton domainClass="${cargo.DocumentType}" conroller="documentType" action="saveDocumentType"/>
         <rg:cancelButton/>
     </rg:dialog>
-    <sec:ifAnyGranted roles="Admin,Head Shipment Creator,Shipment Creator">
+    <sec:ifAnyGranted roles="Admin,Create Shipment,Edit Shipment">
         <input type="button" ng-click="openDocumentTypeCreateDialog()" value="Create Document Type"/>
         <input type="button" ng-click="openDocumentTypeEditDialog()" value="Edit Document Type"/>
     </sec:ifAnyGranted>

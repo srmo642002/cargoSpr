@@ -11,7 +11,7 @@ class Driver {
     String homeTel
     String address
     String passportNumber
-    Date passportDateOfIssure
+    Date passportDateOfIssue
     Date passportValidity
     String exitPermissionNumber
     Date exitPermissionDateOfIssue
@@ -32,7 +32,7 @@ class Driver {
         homeTel(blank: false)
         address(blank: false, maxSize: 1024)
         passportNumber()
-        passportDateOfIssure()
+        passportDateOfIssue()
         passportValidity()
         exitPermissionNumber()
         exitPermissionDateOfIssue()

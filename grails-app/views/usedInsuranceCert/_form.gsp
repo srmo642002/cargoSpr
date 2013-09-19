@@ -1,8 +1,6 @@
 <%@ page import="cargo.insuranceCertificate.UsedInsuranceCert" %>
 
 
-<<<<<<< HEAD
-=======
 
 <div class="fieldcontain ${hasErrors(bean: usedInsuranceCertInstance, field: 'assignedInsuranceCert', 'error')} required">
 	<label for="assignedInsuranceCert">
@@ -11,7 +9,14 @@
 	</label>
 	<g:select id="assignedInsuranceCert" name="assignedInsuranceCert.id" from="${cargo.insuranceCertificate.AssignedInsuranceCert.list()}" optionKey="id" required="" value="${usedInsuranceCertInstance?.assignedInsuranceCert?.id}" class="many-to-one"/>
 </div>
->>>>>>> June
+
+<div class="fieldcontain ${hasErrors(bean: usedInsuranceCertInstance, field: 'insuranceCert', 'error')} required">
+	<label for="insuranceCert">
+		<g:message code="usedInsuranceCert.insuranceCert.label" default="Insurance Cert" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="insuranceCert" name="insuranceCert.id" from="${cargo.insuranceCertificate.InsuranceCert.list()}" optionKey="id" required="" value="${usedInsuranceCertInstance?.insuranceCert?.id}" class="many-to-one"/>
+</div>
 
 <div class="fieldcontain ${hasErrors(bean: usedInsuranceCertInstance, field: 'usedDate', 'error')} required">
 	<label for="usedDate">
@@ -45,46 +50,27 @@
 	<g:select id="transitTo" name="transitTo.id" from="${cargo.City.list()}" optionKey="id" required="" value="${usedInsuranceCertInstance?.transitTo?.id}" class="many-to-one"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: usedInsuranceCertInstance, field: 'serialNumFrom', 'error')} required">
-	<label for="serialNumFrom">
-		<g:message code="usedInsuranceCert.serialNumFrom.label" default="Serial Num From" />
-		<span class="required-indicator">*</span>
+<div class="fieldcontain ${hasErrors(bean: usedInsuranceCertInstance, field: 'coupons', 'error')} ">
+	<label for="coupons">
+		<g:message code="usedInsuranceCert.coupons.label" default="Coupons" />
+		
 	</label>
-	<g:field type="number" name="serialNumFrom" required="" value="${usedInsuranceCertInstance.serialNumFrom}"/>
+	<g:select name="coupons" from="${cargo.insuranceCertificate.CouponContainer.list()}" multiple="multiple" optionKey="id" size="5" value="${usedInsuranceCertInstance?.coupons*.id}" class="many-to-many"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: usedInsuranceCertInstance, field: 'serialNumTo', 'error')} required">
-	<label for="serialNumTo">
-		<g:message code="usedInsuranceCert.serialNumTo.label" default="Serial Num To" />
-		<span class="required-indicator">*</span>
+<div class="fieldcontain ${hasErrors(bean: usedInsuranceCertInstance, field: 'total', 'error')} ">
+	<label for="total">
+		<g:message code="usedInsuranceCert.total.label" default="Total" />
+		
 	</label>
-	<g:field type="number" name="serialNumTo" required="" value="${usedInsuranceCertInstance.serialNumTo}"/>
+	<g:field type="number" name="total" value="${usedInsuranceCertInstance.total}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: usedInsuranceCertInstance, field: 'totalCount', 'error')} required">
-	<label for="totalCount">
-		<g:message code="usedInsuranceCert.totalCount.label" default="Total Count" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field type="number" name="totalCount" required="" value="${usedInsuranceCertInstance.totalCount}"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: usedInsuranceCertInstance, field: 'totalCost', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: usedInsuranceCertInstance, field: 'totalCost', 'error')} ">
 	<label for="totalCost">
 		<g:message code="usedInsuranceCert.totalCost.label" default="Total Cost" />
-		<span class="required-indicator">*</span>
+		
 	</label>
-	<g:field type="number" name="totalCost" step="any" required="" value="${usedInsuranceCertInstance.totalCost}"/>
+	<g:field type="number" name="totalCost" step="any" value="${usedInsuranceCertInstance.totalCost}"/>
 </div>
 
-<<<<<<< HEAD
-<div class="fieldcontain ${hasErrors(bean: usedInsuranceCertInstance, field: 'assignedInsuranceCert', 'error')} required">
-	<label for="assignedInsuranceCert">
-		<g:message code="usedInsuranceCert.assignedInsuranceCert.label" default="Assigned Insurance Cert" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="assignedInsuranceCert" name="assignedInsuranceCert.id" from="${cargo.insuranceCertificate.AssignedInsuranceCert.list()}" optionKey="id" required="" value="${usedInsuranceCertInstance?.assignedInsuranceCert?.id}" class="many-to-one"/>
-</div>
-
-=======
->>>>>>> June

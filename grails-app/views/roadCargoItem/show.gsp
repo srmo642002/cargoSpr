@@ -26,7 +26,52 @@
 				<li class="fieldcontain">
 					<span id="truck-label" class="property-label"><g:message code="roadCargoItem.truck.label" default="Truck" /></span>
 					
-						<span class="property-value" aria-labelledby="truck-label"><g:link controller="truck" action="show" id="${roadCargoItemInstance?.truck?.id}">${roadCargoItemInstance?.truck?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="truck-label"><g:fieldValue bean="${roadCargoItemInstance}" field="truck"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${roadCargoItemInstance?.plaque}">
+				<li class="fieldcontain">
+					<span id="plaque-label" class="property-label"><g:message code="roadCargoItem.plaque.label" default="Plaque" /></span>
+					
+						<span class="property-value" aria-labelledby="plaque-label"><g:fieldValue bean="${roadCargoItemInstance}" field="plaque"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${roadCargoItemInstance?.containerType}">
+				<li class="fieldcontain">
+					<span id="containerType-label" class="property-label"><g:message code="roadCargoItem.containerType.label" default="Container Type" /></span>
+					
+						<span class="property-value" aria-labelledby="containerType-label"><g:fieldValue bean="${roadCargoItemInstance}" field="containerType"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${roadCargoItemInstance?.containerNum}">
+				<li class="fieldcontain">
+					<span id="containerNum-label" class="property-label"><g:message code="roadCargoItem.containerNum.label" default="Container Num" /></span>
+					
+						<span class="property-value" aria-labelledby="containerNum-label"><g:fieldValue bean="${roadCargoItemInstance}" field="containerNum"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${roadCargoItemInstance?.ftl}">
+				<li class="fieldcontain">
+					<span id="ftl-label" class="property-label"><g:message code="roadCargoItem.ftl.label" default="Ftl" /></span>
+					
+						<span class="property-value" aria-labelledby="ftl-label"><g:formatBoolean boolean="${roadCargoItemInstance?.ftl}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${roadCargoItemInstance?.ltl}">
+				<li class="fieldcontain">
+					<span id="ltl-label" class="property-label"><g:message code="roadCargoItem.ltl.label" default="Ltl" /></span>
+					
+						<span class="property-value" aria-labelledby="ltl-label"><g:formatBoolean boolean="${roadCargoItemInstance?.ltl}" /></span>
 					
 				</li>
 				</g:if>
@@ -35,16 +80,7 @@
 				<li class="fieldcontain">
 					<span id="driver-label" class="property-label"><g:message code="roadCargoItem.driver.label" default="Driver" /></span>
 					
-						<span class="property-value" aria-labelledby="driver-label"><g:link controller="driver" action="show" id="${roadCargoItemInstance?.driver?.id}">${roadCargoItemInstance?.driver?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${roadCargoItemInstance?.cntrNo}">
-				<li class="fieldcontain">
-					<span id="cntrNo-label" class="property-label"><g:message code="roadCargoItem.cntrNo.label" default="Cntr No" /></span>
-					
-						<span class="property-value" aria-labelledby="cntrNo-label"><g:fieldValue bean="${roadCargoItemInstance}" field="cntrNo"/></span>
+						<span class="property-value" aria-labelledby="driver-label"><g:fieldValue bean="${roadCargoItemInstance}" field="driver"/></span>
 					
 				</li>
 				</g:if>
@@ -99,6 +135,15 @@
 					<span id="roadFreight-label" class="property-label"><g:message code="roadCargoItem.roadFreight.label" default="Road Freight" /></span>
 					
 						<span class="property-value" aria-labelledby="roadFreight-label"><g:link controller="roadFreight" action="show" id="${roadCargoItemInstance?.roadFreight?.id}">${roadCargoItemInstance?.roadFreight?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${roadCargoItemInstance?.user}">
+				<li class="fieldcontain">
+					<span id="user-label" class="property-label"><g:message code="roadCargoItem.user.label" default="User" /></span>
+					
+						<span class="property-value" aria-labelledby="user-label"><g:link controller="user" action="show" id="${roadCargoItemInstance?.user?.id}">${roadCargoItemInstance?.user?.encodeAsHTML()}</g:link></span>
 					
 				</li>
 				</g:if>

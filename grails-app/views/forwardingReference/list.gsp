@@ -44,7 +44,7 @@
         <rg:saveButton domainClass="${cargo.ForwardingReference}"/>
         <rg:cancelButton/>
     </rg:dialog>
-    <sec:ifAnyGranted roles="Admin,Head BasicInfo,BasicInfo Operator">
+    <sec:ifAnyGranted roles="Admin,Create BasicInfo">
         <input type="button" ng-click="openForwardingReferenceCreateDialog()" value="Create ForwardingReference"/>
         <input type="button" ng-click="openForwardingReferenceEditDialog()" value="Edit ForwardingReference"/>
     </sec:ifAnyGranted>

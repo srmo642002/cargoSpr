@@ -84,7 +84,7 @@
 
 <div class="fieldcontain ${hasErrors(bean: airFreightInstance, field: 'freightAction', 'error')} ">
 	<label for="freightAction">
-		<g:message code="airFreight.freightAction.label" default="Freight Action" />
+		<g:message code="airFreight.freightAction.label" default="" />
 		
 	</label>
 	<g:select name="freightAction" from="${airFreightInstance.constraints.freightAction.inList}" value="${airFreightInstance?.freightAction}" valueMessagePrefix="airFreight.freightAction" noSelection="['': '']"/>

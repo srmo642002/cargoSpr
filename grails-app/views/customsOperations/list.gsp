@@ -20,10 +20,22 @@
 </div>
 
 <div id="list-customsOperations" ng-controller="customsOperationsController" class="content scaffold-list" role="main">
-    <g:if test="${flash.message}">
-        <div class="message" role="status">${flash.message}</div>
-    </g:if>
-    <rg:grid domainClass="${cargo.insuranceCertificate.CustomsOperations}" columns="${[[name: "transitType"],[name: "permitsNum"],[name: "customsDate"],[name: "shipment"],[name: "transitMode"],[name: "kutazhNum",formatter:'Integer'],[name: "rowNum",formatter:'Integer'],[name: "origin"],[name: "destination"],[name: "oneSheetInsurance"],[name: "multiSheetInsurance"]]}">
+    <rg:criteria inline="true">
+        <rg:nest name='destination'>
+            <rg:like name="title" label="Destination"/>
+        </rg:nest>
+        <rg:eq name='permitsNum' lable="Permit Num"/>
+        <rg:filterGrid name='CustomsOperationsGrid' grid="CustomsOperationsGrid" label="Search"/>
+        <input type="button" value="Refresh" onclick="refresh()"/>
+        <g:javascript>
+            function refresh() {
+                $('#criteria_').find("input[type=text]").val('')
+                $('#criteria_').find("input[type=button]").first().click()
+            }
+        </g:javascript>
+    </rg:criteria>
+    <br>
+    <rg:grid domainClass="${cargo.insuranceCertificate.CustomsOperations}"  columns="${[[name: "shipment"],[name: "transitType"],[name: "customsDate"],[name: "commodity"],[name: "transitMode"],[name: "permitsNum",formatter:'Integer'],[name: "kutazhNum",formatter:'Integer'],[name: "rowNum",formatter:'Integer'],[name: "origin"],[name: "destination"],[name: "oneSheetInsurance"],[name: "multiSheetInsurance"],[name: "receipt"]]}">
         <rg:criteria>
             <rg:eq name='shipment.id' value='${shipmentid}'/>
         </rg:criteria>
@@ -34,7 +46,7 @@
         <rg:saveButton domainClass="${cargo.insuranceCertificate.CustomsOperations}"/>
         <rg:cancelButton/>
     </rg:dialog>
-    <sec:ifAnyGranted roles="Admin,Agent">
+    <sec:ifAnyGranted roles="Admin,Create Shipment,Edit Shipment,Set MultiSheetInsur,Set OneSheetInsur,Set CustomsOperation">
         <input type="button" ng-click="openCustomsOperationsCreateDialog()" value="Create Customs Operations"/>
         <input type="button" ng-click="openCustomsOperationsEditDialog()" value="Edit Customs Operations"/>
     </sec:ifAnyGranted>

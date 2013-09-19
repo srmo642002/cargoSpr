@@ -52,7 +52,7 @@
 
 <div class="fieldcontain ${hasErrors(bean: forwardingReferenceInstance, field: 'asAShipper', 'error')} ">
 	<label for="asAShipper">
-		<g:message code="forwardingReference.asAShipper.label" default="As AS hipper" />
+		<g:message code="forwardingReference.asAShipper.label" default="As A Shipper" />
 		
 	</label>
 	<g:checkBox name="asAShipper" value="${forwardingReferenceInstance?.asAShipper}" />
@@ -60,7 +60,7 @@
 
 <div class="fieldcontain ${hasErrors(bean: forwardingReferenceInstance, field: 'asAConsignee', 'error')} ">
 	<label for="asAConsignee">
-		<g:message code="forwardingReference.asAConsignee.label" default="As AC onsignee" />
+		<g:message code="forwardingReference.asAConsignee.label" default="As A Consignee" />
 		
 	</label>
 	<g:checkBox name="asAConsignee" value="${forwardingReferenceInstance?.asAConsignee}" />
@@ -68,7 +68,7 @@
 
 <div class="fieldcontain ${hasErrors(bean: forwardingReferenceInstance, field: 'asANotifyParty', 'error')} ">
 	<label for="asANotifyParty">
-		<g:message code="forwardingReference.asANotifyParty.label" default="As AN otify Party" />
+		<g:message code="forwardingReference.asANotifyParty.label" default="As A Notify Party" />
 		
 	</label>
 	<g:checkBox name="asANotifyParty" value="${forwardingReferenceInstance?.asANotifyParty}" />
@@ -84,7 +84,7 @@
 
 <div class="fieldcontain ${hasErrors(bean: forwardingReferenceInstance, field: 'asACarrier', 'error')} ">
 	<label for="asACarrier">
-		<g:message code="forwardingReference.asACarrier.label" default="As AC arrier" />
+		<g:message code="forwardingReference.asACarrier.label" default="As A Carrier" />
 		
 	</label>
 	<g:checkBox name="asACarrier" value="${forwardingReferenceInstance?.asACarrier}" />

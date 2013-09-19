@@ -13,7 +13,6 @@
 			<ul>
 				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
 				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
 			</ul>
 		</div>
 		<div id="show-usedInsuranceCert" class="content scaffold-show" role="main">
@@ -23,37 +22,32 @@
 			</g:if>
 			<ol class="property-list usedInsuranceCert">
 			
-<<<<<<< HEAD
-				<g:if test="${usedInsuranceCertInstance?.usedDate}">
-				<li class="fieldcontain">
-					<span id="usedDate-label" class="property-label"><g:message code="usedInsuranceCert.usedDate.label" default="Used Date" /></span>
-					
-						<span class="property-value" aria-labelledby="usedDate-label"><g:formatDate date="${usedInsuranceCertInstance?.usedDate}" /></span>
-=======
 				<g:if test="${usedInsuranceCertInstance?.assignedInsuranceCert}">
 				<li class="fieldcontain">
 					<span id="assignedInsuranceCert-label" class="property-label"><g:message code="usedInsuranceCert.assignedInsuranceCert.label" default="Assigned Insurance Cert" /></span>
 					
 						<span class="property-value" aria-labelledby="assignedInsuranceCert-label"><g:link controller="assignedInsuranceCert" action="show" id="${usedInsuranceCertInstance?.assignedInsuranceCert?.id}">${usedInsuranceCertInstance?.assignedInsuranceCert?.encodeAsHTML()}</g:link></span>
->>>>>>> June
 					
 				</li>
 				</g:if>
 			
-<<<<<<< HEAD
-				<g:if test="${usedInsuranceCertInstance?.shipment}">
-=======
+				<g:if test="${usedInsuranceCertInstance?.insuranceCert}">
+				<li class="fieldcontain">
+					<span id="insuranceCert-label" class="property-label"><g:message code="usedInsuranceCert.insuranceCert.label" default="Insurance Cert" /></span>
+					
+						<span class="property-value" aria-labelledby="insuranceCert-label"><g:link controller="insuranceCert" action="show" id="${usedInsuranceCertInstance?.insuranceCert?.id}">${usedInsuranceCertInstance?.insuranceCert?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${usedInsuranceCertInstance?.usedDate}">
->>>>>>> June
 				<li class="fieldcontain">
-					<span id="shipment-label" class="property-label"><g:message code="usedInsuranceCert.shipment.label" default="Shipment" /></span>
+					<span id="usedDate-label" class="property-label"><g:message code="usedInsuranceCert.usedDate.label" default="Used Date" /></span>
 					
-						<span class="property-value" aria-labelledby="shipment-label"><g:link controller="shipment" action="show" id="${usedInsuranceCertInstance?.shipment?.id}">${usedInsuranceCertInstance?.shipment?.encodeAsHTML()}</g:link></span>
+						<span class="property-value" aria-labelledby="usedDate-label"><g:formatDate date="${usedInsuranceCertInstance?.usedDate}" /></span>
 					
 				</li>
 				</g:if>
-<<<<<<< HEAD
-=======
 			
 				<g:if test="${usedInsuranceCertInstance?.shipment}">
 				<li class="fieldcontain">
@@ -63,7 +57,6 @@
 					
 				</li>
 				</g:if>
->>>>>>> June
 			
 				<g:if test="${usedInsuranceCertInstance?.transitFrom}">
 				<li class="fieldcontain">
@@ -83,29 +76,22 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${usedInsuranceCertInstance?.serialNumFrom}">
+				<g:if test="${usedInsuranceCertInstance?.coupons}">
 				<li class="fieldcontain">
-					<span id="serialNumFrom-label" class="property-label"><g:message code="usedInsuranceCert.serialNumFrom.label" default="Serial Num From" /></span>
+					<span id="coupons-label" class="property-label"><g:message code="usedInsuranceCert.coupons.label" default="Coupons" /></span>
 					
-						<span class="property-value" aria-labelledby="serialNumFrom-label"><g:fieldValue bean="${usedInsuranceCertInstance}" field="serialNumFrom"/></span>
+						<g:each in="${usedInsuranceCertInstance.coupons}" var="c">
+						<span class="property-value" aria-labelledby="coupons-label"><g:link controller="couponContainer" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
+						</g:each>
 					
 				</li>
 				</g:if>
 			
-				<g:if test="${usedInsuranceCertInstance?.serialNumTo}">
+				<g:if test="${usedInsuranceCertInstance?.total}">
 				<li class="fieldcontain">
-					<span id="serialNumTo-label" class="property-label"><g:message code="usedInsuranceCert.serialNumTo.label" default="Serial Num To" /></span>
+					<span id="total-label" class="property-label"><g:message code="usedInsuranceCert.total.label" default="Total" /></span>
 					
-						<span class="property-value" aria-labelledby="serialNumTo-label"><g:fieldValue bean="${usedInsuranceCertInstance}" field="serialNumTo"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${usedInsuranceCertInstance?.totalCount}">
-				<li class="fieldcontain">
-					<span id="totalCount-label" class="property-label"><g:message code="usedInsuranceCert.totalCount.label" default="Total Count" /></span>
-					
-						<span class="property-value" aria-labelledby="totalCount-label"><g:fieldValue bean="${usedInsuranceCertInstance}" field="totalCount"/></span>
+						<span class="property-value" aria-labelledby="total-label"><g:fieldValue bean="${usedInsuranceCertInstance}" field="total"/></span>
 					
 				</li>
 				</g:if>
@@ -119,23 +105,10 @@
 				</li>
 				</g:if>
 			
-<<<<<<< HEAD
-				<g:if test="${usedInsuranceCertInstance?.assignedInsuranceCert}">
-				<li class="fieldcontain">
-					<span id="assignedInsuranceCert-label" class="property-label"><g:message code="usedInsuranceCert.assignedInsuranceCert.label" default="Assigned Insurance Cert" /></span>
-					
-						<span class="property-value" aria-labelledby="assignedInsuranceCert-label"><g:link controller="assignedInsuranceCert" action="show" id="${usedInsuranceCertInstance?.assignedInsuranceCert?.id}">${usedInsuranceCertInstance?.assignedInsuranceCert?.encodeAsHTML()}</g:link></span>
-					
-				</li>
-				</g:if>
-			
-=======
->>>>>>> June
 			</ol>
 			<g:form>
 				<fieldset class="buttons">
 					<g:hiddenField name="id" value="${usedInsuranceCertInstance?.id}" />
-					<g:link class="edit" action="edit" id="${usedInsuranceCertInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
 			</g:form>

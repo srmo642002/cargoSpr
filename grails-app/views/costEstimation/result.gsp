@@ -9,8 +9,7 @@
 
 <body>
 <h2><g:message code="costEstimation.result.label" args="[entityName]"/></h2>
-<a href="#list-costEstimation" class="skip" tabindex="-1"><g:message code="costEstimation.result.label"
-                                                                     default="costEstimation.result.label"/></a>
+<a href="#list-costEstimation" class="skip" tabindex="-1"><g:message code="costEstimation.result.label" default="costEstimation.result.label"/></a>
 
 <div class="nav" role="navigation">
     <ul>
@@ -24,19 +23,15 @@
         <div class="message" role="status">${flash.message}</div>
     </g:if>
     <br>
-    <p style="font-family: times;color: #00008b;font-size:large;text-align: left">
-        Please note that the origin city is Bandar Abbas and the rate is based on this port.
-    </p>
     <br>
-    <rg:grid domainClass="${cargo.CostEstimation}">
+    <rg:grid domainClass="${cargo.CostEstimation}" maxColumns="11">
         <rg:criteria>
-            <rg:nest name='desCity'>
+            <rg:nest name='destinationCty'>
                 <rg:like name="title"  value="${params.search}"/>
             </rg:nest>
             <rg:eq name='deprecated' value='${'false'}'/>
         </rg:criteria>
     </rg:grid>
-
 </div>
 <br>
 <div>

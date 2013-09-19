@@ -40,7 +40,11 @@
     <br>
     <rg:grid domainClass="${cargo.cargoItem.RoadCargoItem}" caption="" width="1000px" maxColumns="15">
         <rg:criteria>
-            <rg:eq name='user.id' value='${userid}'/>
+            <rg:nest name="user" >
+                <rg:nest name="groups">
+                    <rg:eq name='id' value='${groupid}' hidden='true' />
+                </rg:nest>
+            </rg:nest>
         </rg:criteria>
     </rg:grid>
     <rg:dialog id="roadCargoItem" title="RoadCargoItem Dialog">
@@ -54,7 +58,7 @@
         <rg:saveButton domainClass="${cargo.cargoItem.RoadCargoItem}"/>
         <rg:cancelButton/>
     </rg:dialog>
-    <sec:ifAnyGranted roles="Admin,Head Shipment Creator,Shipment Creator">
+    <sec:ifAnyGranted roles="Admin,Create Shipment,Edit Shipment">
         <input type="button" ng-click="openRoadCargoItemCreateDialog()" value="Create RoadCargoItem"/>
         <input type="button" ng-click="openRoadCargoItemEditDialog()" value="Edit RoadCargoItem"/>
     </sec:ifAnyGranted>

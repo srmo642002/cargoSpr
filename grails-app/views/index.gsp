@@ -99,15 +99,15 @@
 
 <div style="direction:ltr;font-size:16px;margin:auto;" id="jquerymenu">
     <ul>
-        <sec:ifAnyGranted roles="Admin,Head BasicInfo,BasicInfo Operator">
+
             <li>
                 <a href="" rel="basicInformation">
                     <g:message code="basic.information"/>
                     <span><g:message code="basic.information.description"/></span>
                 </a>
             </li>
-        </sec:ifAnyGranted>
-        <sec:ifAnyGranted roles="Admin,Head Shipment Creator,Shipment Creator">
+
+        <sec:ifAnyGranted roles="Admin,Create Shipment,Edit Shipment">
             <li>
                 <a href="" rel="shipmentStatus">
                     <g:message code="shipment.status"/>
@@ -116,7 +116,7 @@
             </li>
         </sec:ifAnyGranted>
 
-        <sec:ifAnyGranted roles="Admin,Head Shipment Creator,Shipment Creator,Agent">
+        <sec:ifAnyGranted roles="Admin,Create Shipment,Edit Shipment,Set CostEst,Set MultiSheetInsur,Set OneSheetInsur,Set CustomsOperation">
         <li>
             <a href="" rel="costs">
                 <g:message code="costs"/>
@@ -124,13 +124,12 @@
             </a>
         </li>
         </sec:ifAnyGranted>
-        <sec:ifAnyGranted roles="Admin,Secretary,Agent">
+        <sec:ifAnyGranted roles="Admin,Create BasicInfo,Create Shipment,Edit Shipment,Set PurchasedInsurSheet,Set AssignedInsurSheet,Set MultiSheetInsur,Set OneSheetInsur,Set CustomsOperation">
         <li>
             <a href="" rel="secretariat">
                 <g:message code="secretariat"/>
                 <span><g:message code="secretariat.description"/></span>
             </a>
-
         </li>
         </sec:ifAnyGranted>
         <li>
@@ -151,21 +150,17 @@
                 <span><g:message code="search.description"/></span>
             </a>
         </li>
-
         <li>
             <a href="" rel="userMng">
                 <g:message code="userMng"/>
                 <span><g:message code="userMng.description"/></span>
             </a>
         </li>
-
     </ul>
-
 </div>
 
 <div style="direction:ltr;" id="jquerymenububble">
     <div class="slider">
-        <sec:ifAnyGranted roles="Admin,Head BasicInfo,BasicInfo Operator">
             <div class="set basicInformation">
                 <ul>
                     <li>
@@ -175,6 +170,7 @@
                         </span>
                         <a href="<g:createLink controller="country"/>"><g:message code="menu.geography"/></a>
                     </li>
+                    <sec:ifAnyGranted roles="Admin,Create BasicInfo">
                     <li>
                         <span>
                             <a href="<g:createLink controller="forwardingReference"/>"><img
@@ -183,6 +179,7 @@
                         <a href="<g:createLink controller="forwardingReference"/>"><g:message
                                 code="menu.forwardingReference"/></a>
                     </li>
+                    </sec:ifAnyGranted>
                     <li>
                         <span>
                             <a href="<g:createLink controller="localAgent"/>"><img
@@ -204,11 +201,10 @@
                         </span>
                         <a href="<g:createLink controller="truck"/>"><g:message code="menu.truck"/></a>
                     </li>
-
                 </ul>
             </div>
-        </sec:ifAnyGranted>
-        <sec:ifAnyGranted roles="Admin,Head Shipment Creator,Shipment Creator">
+
+        <sec:ifAnyGranted roles="Admin,Create Shipment,Edit Shipment">
             <div class="set shipmentStatus">
                 <ul>
                     <li>
@@ -218,6 +214,7 @@
                         </span>
                         <a href="<g:createLink controller="shipment"/>"><g:message code="menu.shipment"/></a>
                     </li>
+                    <sec:ifAnyGranted roles="Admin">
                     <li>
                         <span>
                             <a href="<g:createLink controller="cargoItem" action="getMenuList"/>"><img
@@ -233,23 +230,20 @@
                         <a href="<g:createLink controller="documentType" action="getMenuList"/>"><g:message
                                 code="menu.documentType"/></a>
                     </li>
+                    </sec:ifAnyGranted>
                 </ul>
             </div>
         </sec:ifAnyGranted>
-
+        <sec:ifAnyGranted roles="Admin,Create Shipment,Edit Shipment,Set CostEst">
         <div class="set costs">
             <ul>
-        <sec:ifAnyGranted roles="Admin,Agent">
                 <li>
                     <span>
                         <a href="<g:createLink controller="costEstimation"/>"><img
                                 src="${resource(dir: 'images/reportMenuImages', file: 'cost.png')}"/></a>
                     </span>
-                    <a href="<g:createLink controller="costEstimation" />"><g:message
-                            code="menu.costEstimation"/></a>
+                    <a href="<g:createLink controller="costEstimation" />"><g:message code="menu.costEstimation"/></a>
                 </li>
-        </sec:ifAnyGranted>
-        <sec:ifAnyGranted roles="Admin,Head Shipment Creator,Shipment Creator,Agent">
                 <li>
                     <span>
                         <a href="<g:createLink controller="costEstimation" action="search"/>"><img
@@ -258,24 +252,38 @@
                     <a href="<g:createLink controller="costEstimation" action="search"/>"><g:message
                             code="menu.costEstimationResult"/></a>
                 </li>
-        </sec:ifAnyGranted>
+                <li>
+                    <span>
+                        <a href="<g:createLink controller="seaCostEstimation"/>"><img
+                                src="${resource(dir: 'images/reportMenuImages', file: 'seaCost.png')}"/></a>
+                    </span>
+                    <a href="<g:createLink controller="seaCostEstimation" />"><g:message code="menu.seaCostEstimation"/></a>
+                </li>
+                <li>
+                    <span>
+                        <a href="<g:createLink controller="seaCostEstimation" action="search"/>"><img
+                                src="${resource(dir: 'images/reportMenuImages', file: 'seaCosts.png')}"/></a>
+                    </span>
+                    <a href="<g:createLink controller="seaCostEstimation" action="search"/>"><g:message
+                            code="menu.seaCostEstimationResult"/></a>
+                </li>
             </ul>
         </div>
-
+        </sec:ifAnyGranted>
 
         <div class="set secretariat">
             <ul>
-                <sec:ifAnyGranted roles="Admin,Secretary">
+                <sec:ifAnyGranted roles="Admin,Set PurchasedInsurSheet,Set AssignedInsurSheet">
                 <li>
                     <span>
                         <a href="<g:createLink controller="insuranceCert"/>"><img
-                                src="${resource(dir: 'images/reportMenuImages', file: 'insurance2.png')}"/></a>
+                                src="${resource(dir: 'images/reportMenuImages', file: 'insurance.png')}"/></a>
                     </span>
                     <a href="<g:createLink controller="insuranceCert"/>"><g:message
                             code="menu.insuranceCert"/></a>
                 </li>
                 </sec:ifAnyGranted>
-                <sec:ifAnyGranted roles="Admin,Secretary">
+                <sec:ifAnyGranted roles="Admin,Set PurchasedInsurSheet,Set AssignedInsurSheet">
                 <li>
                     <span>
                         <a href="<g:createLink controller="assignedInsuranceCert"/>"><img
@@ -285,17 +293,15 @@
                             code="menu.assignedInsuranceCert"/></a>
                 </li>
                 </sec:ifAnyGranted>
-                <sec:ifAnyGranted roles="Admin,Head Shipment Creator,Shipment Creator,Agent">
-                <li>
-                    <span>
-                        <a href="<g:createLink controller="usedInsuranceCert"/>"><img
+                <sec:ifAnyGranted roles="Admin,Set MultiSheetInsur,Set OneSheetInsur,Set CustomsOperation">
+                    <li>
+                        <span>
+                            <a href="<g:createLink controller="usedInsuranceCert"/>"><img
                                 src="${resource(dir: 'images/reportMenuImages', file: 'usedInsur.png')}"/></a>
-                    </span>
-                    <a href="<g:createLink controller="usedInsuranceCert"/>"><g:message
+                        </span>
+                        <a href="<g:createLink controller="usedInsuranceCert"/>"><g:message
                             code="menu.usedInsuranceCert"/></a>
-                </li>
-                </sec:ifAnyGranted>
-                <sec:ifAnyGranted roles="Admin,Head Shipment Creator,Shipment Creator,Agent">
+                    </li>
                     <li>
                         <span>
                             <a href="<g:createLink controller="oneSheetInsuranceCert"/>"><img
@@ -305,7 +311,7 @@
                                 code="menu.oneSheetInsuranceCert"/></a>
                     </li>
                 </sec:ifAnyGranted>
-                <sec:ifAnyGranted roles="Admin,Head Shipment Creator,Shipment Creator,Agent">
+                <sec:ifAnyGranted roles="Admin,Set MultiSheetInsur,Set OneSheetInsur,Set CustomsOperation">
                     <li>
                         <span>
                             <a href="<g:createLink controller="customsOperations"/>"><img
@@ -315,15 +321,28 @@
                                 code="menu.customsOperations"/></a>
                     </li>
                 </sec:ifAnyGranted>
+                <sec:ifAnyGranted roles="Admin,Set MultiSheetInsur,Set OneSheetInsur,Set CustomsOperation">
+                    <li>
+                        <span>
+                            <a href="<g:createLink controller="customsOperations" action="receipt"/>"><img
+                                    src="${resource(dir: 'images/reportMenuImages', file: 'noReceipt.png')}"/></a>
+                        </span>
+                        <a href="<g:createLink controller="customsOperations"/>"><g:message
+                                code="menu.customsOperationsNotReceipt"/></a>
+                    </li>
+                </sec:ifAnyGranted>
             </ul>
         </div>
 
         <div class="set reports">
             <ul>
                 <li>
-                    <a href=""><h3>This part will Complete in the next version</h3></a>
+                    <span>
+                        <a href="<g:createLink  controller="insuranceCert" action="report"/>"><img src="${resource(dir: 'images/reportMenuImages', file: 'report.png')}"/></a>
+                    </span>
+                    <a href="<g:createLink  controller="insuranceCert" action="report"/>"><g:message
+                            code="menu.insuranceReport"/></a>
                 </li>
-
             </ul>
         </div>
 
@@ -343,10 +362,14 @@
                         <a href=""><img src="${resource(dir: 'images/reportMenuImages', file: 'geographys.png')}"/></a>
                     </span>
                     <a href="<g:createLink controller="country"/>"><g:message code="menu.searchGeography"/></a>
+                    <sec:ifAnyGranted roles="Admin,Create BasicInfo">
                     <a href="<g:createLink controller="forwardingReference"/>"><g:message code="menu.searchForwardingRef"/></a>
+                    </sec:ifAnyGranted>
                     <a href="<g:createLink controller="localAgent"/>"><g:message code="menu.searchLocalAgent"/></a>
+                    <!--
                     <a href="<g:createLink controller="driver"/>"><g:message code="menu.searchDriver"/></a>
                     <a href="<g:createLink controller="truck"/>"><g:message code="menu.searchTruck"/></a>
+                    -->
                 </li>
                 <li>
                     <a href=""><g:message code="menu.searchShipment"/></a>
@@ -397,7 +420,7 @@
 
         <div class="set userMng">
             <ul>
-                <sec:ifAllGranted roles="Admin">
+                <sec:ifAnyGranted roles="Admin,Create User">
                     <li>
                         <span>
                             <a href="<g:createLink controller="user"/>"><img
@@ -405,8 +428,8 @@
                         </span>
                         <a href="<g:createLink controller="user"/>"><g:message code="menu.userMng"/></a>
                     </li>
-                </sec:ifAllGranted>
-                <sec:ifAllGranted roles="Admin">
+                </sec:ifAnyGranted>
+                <sec:ifAnyGranted roles="Admin,Assign Roles">
                     <li>
                         <span>
                             <a href="<g:createLink controller="userRole"/>"><img
@@ -414,8 +437,10 @@
                         </span>
                         <a href="<g:createLink controller="userRole"/>"><g:message code="menu.rolMng"/></a>
                     </li>
-                </sec:ifAllGranted>
-                <sec:ifAnyGranted roles="Admin,Head Shipment Creator,Shipment Creator,Head BasicInfo,BasicInfo Operator,Secretary,Agent">
+                </sec:ifAnyGranted>
+                <sec:ifAnyGranted roles="Admin,Create User,Assign Roles,Create BasicInfo,Create Shipment,Edit Shipment,
+                                         Set CostEst,Set PurchasedInsurSheet,Set AssignedInsurSheet,
+                                         Set MultiSheetInsur,Set OneSheetInsur,Set CustomsOperation">
                     <li>
                         <span>
                             <a href="<g:createLink controller="user" action="changePasswordSubmit"/>"><img

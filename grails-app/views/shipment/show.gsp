@@ -6,23 +6,31 @@
     <g:set var="entityName" value="${message(code: 'shipment.label', default: 'Shipment')}"/>
     <title><g:message code="default.show.label" args="[entityName]"/></title>
 
-    <script>
-        jQuery("list-cargoItem").jqGrid({
-            colModel:[{$name:'id',editable: true,formatter:'generateCheckbox'}]
+    <script type="text/javascript">
+        jQuery.extend($.fn.fmatter , {
+            generateCheckbox : function(cellvalue, options, rowdata) {
+                return "<input name='chk_"+cellvalue+"' id='chk' type='checkbox'>";
+            },
+            generateRadio : function(cellvalue, options, rowdata) {
+                return "<input id='rdo_"+cellvalue+"' name='rdo' type='radio'>";
+            }
         });
-
-        function generateCheckbox (cellvalue, options, rowObject)
-        {
-            // do something here
-            return new_format_value
-        }
-
+    </script>
+    <script  type="text/javascript">
+        $('document').ready(function(){
+            $("#btn-chk").click(function(){
+                $("input[type=checkbox]").attr('checked', 'checked');
+                });
+            $("#btn-rchk").click(function(){
+                $("input[type=checkbox]").removeAttr('checked','');
+            });
+        });
     </script>
 </head>
 
 <body>
 <div id="list-cargoItem" ng-controller="cargoItemController" class="content scaffold-list" role="main" style="padding-top: 15px">
-    <rg:grid domainClass="${CargoItem}" maxColumns="14" columns="[[name:'id',formatter:'generateCheckbox()'],[name:'serialNumber']]">
+    <rg:grid domainClass="${CargoItem}" columns="[[name:'id',formatter:'generateCheckbox'],[name:'item'],[name:'commodity'],[name:'typeOfPackage'],[name:'noOfPackage'],[name:'unitOfMeasure'],[name:'grossWeight'],[name:'totalWeight'],[name:'rateOrCharge'],[name:'chargeableWeight']]">
         <rg:criteria>
             <rg:eq name="shipment.id" value="${shipmentInstance.id}" />
         </rg:criteria>
@@ -35,54 +43,95 @@
             </rg:modify>
             <input type="hidden" name="shipment.id" value="${shipmentInstance.id}">
         </rg:fields>
-
         <rg:saveButton domainClass="${CargoItem}" conroller="cargoItem" action="saveCargoItem"/>
         <rg:cancelButton/>
     </rg:dialog>
     <input type="button" ng-click="openCargoItemCreateDialog()" value="Create CargoItem"/>
     <input type="button" ng-click="openCargoItemEditDialog()" value="Edit CargoItem"/>
+    <g:form action="upload" controller="cargoItem" method="post" enctype="multipart/form-data" style="margin-top: -40px; padding-top: 0px; border-top-width: 0px; margin-left: 750px;">
+    <span class="btn btn-file">
+    <input type="file" name="file" id="file" />
+    <g:hiddenField name="shipmentId" value="${shipmentInstance?.id}"/>
+    <input class="save" type="submit" id="submitId" value="Import"/>
+    </span>
+    </g:form>
+    <g:form action="xls" controller="cargoItem" method="post" enctype="multipart/form-data" style="margin-top: -40px; padding-top: 0px; border-top-width: 0px; margin-left: 885px;">
+        <g:hiddenField name="id" value="${shipmentInstance?.id}"/>
+        <input type="submit" value="Export" style="margin-left: 155px; margin-top: 9px;"/>
+    </g:form>
+    <g:form  style="margin-top: -40px; padding-top: 0px; border-top-width: 0px; margin-left: 310px;">
+    <input type="button" value="Check All" id="btn-chk" style="width: 78px;background-color: #dfdfe3" />
+    <input type="button" value="UnCheck All" id="btn-rchk" style="width: 78px;background-color: #dfdfe3"/>
+    </g:form>
+
     <g:javascript>
-        $("#cargoItem").find("#width,#height,#length").keyup(function(){
-            var width=parseFloat($("#cargoItem").find("#width").val())
-            var height=parseFloat($("#cargoItem").find("#height").val())
-            var length=parseFloat($("#cargoItem").find("#length").val())
-            $("#cargoItem").find("#volume").val(width*height*length)
+        $("#cargoItem").find("#width,#height,#length").keyup(function () {
+            var width = parseFloat($("#cargoItem").find("#width").val())
+            var height = parseFloat($("#cargoItem").find("#height").val())
+            var length = parseFloat($("#cargoItem").find("#length").val())
+            var fini = $("#cargoItem").find("#volume").val(width * height * length)
+            if(width==0||height==0||length==0){
+                fini = 0;
+            } else{
+                fini = $("#cargoItem").find("#volume").val(width * height * length)
+            }
         })
     </g:javascript>
     <g:javascript>
-        $("#cargoItem").find("#noOfPackage,#grossWeight").keyup(function(){
-            var noOfPackage=parseFloat($("#cargoItem").find("#noOfPackage").val())
-            var grossWeight=parseFloat($("#cargoItem").find("#grossWeight").val())
-            $("#cargoItem").find("#totalWeight").val(noOfPackage*grossWeight)
+        $("#cargoItem").find("#noOfPackage,#grossWeight").keyup(function () {
+            var noOfPackage = parseFloat($("#cargoItem").find("#noOfPackage").val())
+            var grossWeight = parseFloat($("#cargoItem").find("#grossWeight").val())
+            var fini = $("#cargoItem").find("#totalWeight").val(noOfPackage * grossWeight)
+            if(width==0||height==0||length==0){
+                fini = 0;
+            } else{
+                fini = $("#cargoItem").find("#totalWeight").val(noOfPackage * grossWeight)
+            }
         })
     </g:javascript>
     <g:javascript>
-        $("#cargoItem").find("#totalWeight,#rateOrCharge").keyup(function(){
-            var totalWeight=parseFloat($("#cargoItem").find("#totalWeight").val())
-            var rateOrCharge=parseFloat($("#cargoItem").find("#rateOrCharge").val())
-            $("#cargoItem").find("#chargeableWeight").val(totalWeight*rateOrCharge)
+        $("#cargoItem").find("#totalWeight,#rateOrCharge").keyup(function () {
+            var totalWeight = parseFloat($("#cargoItem").find("#totalWeight").val())
+            var rateOrCharge = parseFloat($("#cargoItem").find("#rateOrCharge").val())
+            var fini = $("#cargoItem").find("#chargeableWeight").val(totalWeight * rateOrCharge)
+            if(width==0||height==0||length==0){
+                fini = 0;
+            } else{
+                fini = $("#cargoItem").find("#chargeableWeight").val(totalWeight * rateOrCharge)
+            }
         })
     </g:javascript>
     <g:javascript>
-        $("#cargoItem").find("#noOfPackage,#volume").keyup(function(){
-            var noOfPackage=parseFloat($("#cargoItem").find("#noOfPackage").val())
-            var volume=parseFloat($("#cargoItem").find("#volume").val())
-            $("#cargoItem").find("#totalVolume").val(noOfPackage*volume)
+        $("#cargoItem").find("#noOfPackage,#volume").keyup(function () {
+            var noOfPackage = parseFloat($("#cargoItem").find("#noOfPackage").val())
+            var volume = parseFloat($("#cargoItem").find("#volume").val())
+            var fini = $("#cargoItem").find("#totalVolume").val(noOfPackage * volume)
+            if(width==0||height==0||length==0){
+                fini = 0;
+            } else{
+                fini = $("#cargoItem").find("#totalVolume").val(noOfPackage * volume)
+            }
         })
     </g:javascript>
     <g:javascript>
-        $("#cargoItem").find("#totalVolume,#rateOrCharge").keyup(function(){
-            var totalVolume=parseFloat($("#cargoItem").find("#totalVolume").val())
-            var rateOrCharge=parseFloat($("#cargoItem").find("#rateOrCharge").val())
-            $("#cargoItem").find("#chargeableRate").val(totalVolume*rateOrCharge)
+        $("#cargoItem").find("#totalVolume,#rateOrCharge").keyup(function () {
+            var totalVolume = parseFloat($("#cargoItem").find("#totalVolume").val())
+            var rateOrCharge = parseFloat($("#cargoItem").find("#rateOrCharge").val())
+            var fini = $("#cargoItem").find("#chargeableRate").val(totalVolume * rateOrCharge)
+            if(width==0||height==0||length==0){
+                fini = 0;
+            } else{
+                fini = $("#cargoItem").find("#chargeableRate").val(totalVolume * rateOrCharge)
+            }
         })
     </g:javascript>
+
 </div>
 <br>
 
 <div id="list-freight" ng-controller="freightController" class="content scaffold-list" role="main">
     <rg:grid domainClass="${cargo.freight.Freight}" onSelectRow="loadCargoItems"
-             columns="${[[name: "type", expression: "obj.metaClass.theClass.name.replace(\\'cargo.freight.\\', \\'\\')"], [name: "placeOfLoading"],[name: "placeOfDischarge"],[name: "freightAction"]]}">
+             columns="${[[name:"id",formatter:"generateRadio"],[name: "Type", expression: "obj.metaClass.theClass.name.replace(\\'cargo.freight.\\', \\'\\')"], [name: "placeOfLoading"],[name: "placeOfDischarge"],[name: "placeOfDelivery"],[name: "placeOfReceipt"],[name: "freightAction"]]}">
         <rg:criteria>
             <rg:eq name="shipment.id" value="${shipmentInstance.id}"/>
         </rg:criteria>
@@ -92,8 +141,8 @@
             var rowData = freightsGrid.jqGrid('getRowData', rowId);
             var type = rowData.type.replace("Freight", "");
 
-            var criteria = '[{\'op\':\'eq\', \'field\':\'' + type.toLowerCase() + 'Freight.id\', \'val\':\'' + rowId + '\'}]'
-            loadGridWithCriteria(type + "CargoItemGrid", criteria)
+            var criteria = '[{\'op\':\'eq\', \'field\':\'' + type.toLowerCase() + 'Freight.id\', \'val\':\'' + rowId + '\'}]';
+            loadGridWithCriteria(type + "CargoItemGrid", criteria);
 
             showCargoItem(type.toLowerCase());
         }
@@ -110,7 +159,9 @@
         <rg:saveButton domainClass="${cargo.freight.AirFreight}" gridId="freight" conroller="airFreight" action="saveAirFreight"/>
         <rg:cancelButton/>
     </rg:dialog>
+    <sec:ifAnyGranted roles="Admin,Create AirFreight,Edit AirFreight,Delete AirFreight">
     <input type="button" ng-click="openAirFreightCreateDialog()" value="Create Air Freight"/>
+    </sec:ifAnyGranted>
 
     <rg:dialog id="oceanFreight" title="Ocean Freight Dialog">
         <rg:fields bean="${new cargo.freight.OceanFreight()}" angular="false">
@@ -123,7 +174,9 @@
         <rg:saveButton domainClass="${cargo.freight.OceanFreight}" gridId="freight" conroller="oceanFreight" action="saveOceanFreight"/>
         <rg:cancelButton/>
     </rg:dialog>
+    <sec:ifAnyGranted roles="Admin,Create OceanFreight,Edit OceanFreight,Delete OceanFreight">
     <input type="button" ng-click="openOceanFreightCreateDialog()" value="Create Ocean Freight"/>
+    </sec:ifAnyGranted>
 
     <rg:dialog id="railFreight" title="Rail Freight Dialog">
         <rg:fields bean="${new cargo.freight.RailFreight()}" angular="false">
@@ -136,7 +189,9 @@
         <rg:saveButton domainClass="${cargo.freight.RailFreight}" gridId="freight" conroller="railFreight" action="saveRailFreight"/>
         <rg:cancelButton/>
     </rg:dialog>
+    <sec:ifAnyGranted roles="Admin,Create RailFreight,Edit RailFreight,Delete RailFreight">
     <input type="button" ng-click="openRailFreightCreateDialog()" value="Create Rail Freight"/>
+    </sec:ifAnyGranted>
 
     <rg:dialog id="roadFreight" title="Road Freight Dialog">
         <rg:fields bean="${new cargo.freight.RoadFreight()}" angular="false">
@@ -149,8 +204,12 @@
         <rg:saveButton domainClass="${cargo.freight.RoadFreight}" gridId="freight" conroller="roadFreight" action="saveRoadFreight"/>
         <rg:cancelButton/>
     </rg:dialog>
+    <sec:ifAnyGranted roles="Admin,Create RoadFreight,Edit RoadFreight,Delete RoadFreight">
     <input type="button" ng-click="openRoadFreightCreateDialog()" value="Create Road Freight"/>
+    </sec:ifAnyGranted>
     <rg:angularController domainClass="${cargo.freight.Freight}" subClasses="true" self="false"/>
+
+    <input type="button" onclick="showAssignDialog()" value="Assign Cargo to Freight">
 </div>
 
 <br>
@@ -174,7 +233,7 @@
 
             <rg:interceptCreateDialog>
                 $scope.airCargoItemInstance.airFreight = { id: $scope.freightId };
-                $scope.airCargoItemInstance.cargoItem = { id: $scope.cargoItemId };
+                $scope.airCargoItemInstance.cargoItem = { id: $scope.cargoItemId};
             </rg:interceptCreateDialog>
 
         </rg:fields>
@@ -260,7 +319,7 @@
 </div>
 
 <div id="list-roadCargoItem" ng-controller="roadCargoItemController" class="content scaffold-list" role="main">
-    <rg:grid domainClass="${RoadCargoItem}" maxColumns="8" columns="[[name:'cntrNo',formatter:'integer'],[name:'driver'],[name:'truck'],[name:'loadingDate'],[name:'etaDate'],[name:'arrivalDate'],[name:'deliveryOrderDate'],[name:'cargoItem']]">
+    <rg:grid domainClass="${RoadCargoItem}" maxColumns="9" columns="[[name:'truck'],[name:'plaque'],[name:'containerNum',formatter:'integer'],[name:'driver'],[name:'loadingDate'],[name:'etaDate'],[name:'arrivalDate'],[name:'deliveryOrderDate'],[name:'cargoItem']]">
         <rg:criteria>
             <rg:eq name="roadFreight.id" value="${0}"/>
         </rg:criteria>
@@ -355,7 +414,33 @@
             hoverClass: "ui-state-highlight"
         });
     }
+    function showAssignDialog(){
+        var targetId = jQuery("#FreightGrid").find("input[type=radio]").filter(":checked").attr("id").substr("4");
+        var sourceId = jQuery("#CargoItemGrid").find("input[type=checkbox]").filter(":checked").map(function(){return $(this).attr("name").substr(4)}).get().join();
 
+        var rowData = freightsGrid.jqGrid('getRowData', targetId);
+        var type = rowData.type.replace("Freight", "");
+
+        var scp = angular.element(jQuery('#list-' + type.toLowerCase() + 'CargoItem')).scope();
+
+        scp.cargoItemId = sourceId;
+        scp.freightId = targetId;
+
+        showCargoItem(type);
+
+        var fn;
+        if (type == "Air")
+            fn = scp.openAirCargoItemCreateDialog;
+        else if (type == "Ocean")
+            fn = scp.openOceanCargoItemCreateDialog;
+        else if (type == "Rail")
+            fn = scp.openRailCargoItemCreateDialog;
+        else if (type == "Road")
+            fn = scp.openRoadCargoItemCreateDialog;
+
+        fn();
+
+    }
 
     function showCargoItem(prefix) {
         prefix = prefix.toLowerCase();
@@ -396,69 +481,21 @@
         </g:if>
         <rg:grid domainClass="${cargo.insuranceCertificate.OneSheetInsuranceCert}" columns="${[[name: "insuranceNum",formatter:'Integer'],[name: "issueDate"],[name: "transitFrom"],[name: "transitTo"],[name: "totalCost"]]}">
             <rg:criteria>
-
-                <rg:eq name='shipment.id' value='${shipmentid}'/>
-
                 <rg:eq name='shipment.id' value='${shipmentInstance.id}'/>
-
             </rg:criteria>
         </rg:grid>
-        <rg:dialog id="oneSheetInsuranceCert" title="One Sheet Insurance Specification Dialog">
-            <rg:fields bean="${new cargo.insuranceCertificate.OneSheetInsuranceCert()}">
-            </rg:fields>
-            <rg:saveButton domainClass="${cargo.insuranceCertificate.OneSheetInsuranceCert}"/>
-            <rg:cancelButton/>
-        </rg:dialog>
-        <sec:ifAnyGranted roles="Admin,Agent">
-            <input type="button" ng-click="openOneSheetInsuranceCertCreateDialog()" value="Create One Sheet Insurance Specification"/>
-            <input type="button" ng-click="openOneSheetInsuranceCertEditDialog()" value="Edit One Sheet Insurance Specification"/>
-        </sec:ifAnyGranted>
     </div>
 </g:if>
 <g:elseif test="${customsOperation?.multiSheetInsurance}">
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
-
-    <g:else>
-        <div id="list-usedInsuranceCert" ng-controller="usedInsuranceCertController" class="content scaffold-list" role="main">
-        <g:if test="${flash.message}">
-            <div class="message" role="status">${flash.message}</div>
-        </g:if>
-        <rg:grid domainClass="${cargo.insuranceCertificate.UsedInsuranceCert}" columns="${[[name: "agent"],[name: "usedDate"],[name: "transitFrom"],[name: "transitTo"],[name: "serialNumFrom",formatter:'Integer'],[name: "serialNumTo",formatter:'Integer'],[name: "totalCount",formatter:'Integer'],[name: "totalCost"]]}">
-            <rg:criteria>
-                <rg:eq name='shipment.id' value='${shipmentid}'/>
-            </rg:criteria>
-        </rg:grid>
-        <rg:dialog id="usedInsuranceCert" title="Used Insurance Specification Dialog">
-            <rg:fields bean="${new cargo.insuranceCertificate.UsedInsuranceCert()}">
-            </rg:fields>
-            <rg:saveButton domainClass="${cargo.insuranceCertificate.UsedInsuranceCert}" action="saveUsed"/>
-            <rg:cancelButton/>
-        </rg:dialog>
-        <sec:ifAnyGranted roles="Admin,Agent">
-            <input type="button" ng-click="openUsedInsuranceCertCreateDialog()" value="Create Used Insurance Specification"/>
-            <input type="button" ng-click="openUsedInsuranceCertEditDialog()" value="Edit Used Insurance Specification"/>
-        </sec:ifAnyGranted>
-    </g:else>
-
-    <rg:grid domainClass="${cargo.insuranceCertificate.UsedInsuranceCert}" columns="${[[name: "assignedInsuranceCert"],[name: "usedDate"],[name: "transitFrom"],[name: "transitTo"],[name: "serialNumFrom",formatter:'Integer'],[name: "serialNumTo",formatter:'Integer'],[name: "totalCount",formatter:'Integer'],[name: "totalCost"]]}">
+    <rg:grid domainClass="${cargo.insuranceCertificate.UsedInsuranceCert}" columns="${[[name: "assignedInsuranceCert"],[name: "usedDate"],[name: "shipment"],[name: "transitFrom"],[name: "transitTo"],[name: "coupons"],[name: "total",formatter:'Integer'],[name: "totalCost",formatter:'Integer']]}">
         <rg:criteria>
             <rg:eq name='shipment.id' value='${shipmentInstance.id}'/>
         </rg:criteria>
     </rg:grid>
-    <rg:dialog id="usedInsuranceCert" title="Used Insurance Specification Dialog">
-        <rg:fields bean="${new cargo.insuranceCertificate.UsedInsuranceCert()}">
-        </rg:fields>
-        <rg:saveButton domainClass="${cargo.insuranceCertificate.UsedInsuranceCert}" action="saveUsed"/>
-        <rg:cancelButton/>
-    </rg:dialog>
-    <sec:ifAnyGranted roles="Admin,Agent">
-        <input type="button" ng-click="openUsedInsuranceCertCreateDialog()" value="Create Used Insurance Specification"/>
-        <input type="button" ng-click="openUsedInsuranceCertEditDialog()" value="Edit Used Insurance Specification"/>
-    </sec:ifAnyGranted>
 </g:elseif>
-
 <br>
 <div id="list-documentType" ng-controller="documentTypeController" class="content scaffold-list" role="main">
     <rg:grid domainClass="${cargo.DocumentType}" columns="${[[name: "title"], [name: "persianTitle"],[name: "critical"]]}">

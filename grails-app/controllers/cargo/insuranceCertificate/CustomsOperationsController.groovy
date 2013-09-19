@@ -3,7 +3,7 @@ package cargo.insuranceCertificate
 import grails.plugins.springsecurity.Secured
 import org.springframework.dao.DataIntegrityViolationException
 
-@Secured("Admin,Head Shipment Creator,Shipment Creator,Agent")
+@Secured("Admin,Create Shipment,Edit Shipment,Set MultiSheetInsur,Set OneSheetInsur,Set CustomsOperation")
 class CustomsOperationsController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -41,6 +41,11 @@ class CustomsOperationsController {
         }
 
         [customsOperationsInstance: customsOperationsInstance]
+    }
+
+    def receipt(){
+
+        render (view: "receipt")
     }
 
     def edit() {

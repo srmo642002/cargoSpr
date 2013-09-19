@@ -4,8 +4,8 @@ import cargo.Truck
 
 class RoadFreight extends Freight {
 
-    static searchable = true
-    String CMR
+//    static searchable = true
+    String cMR
     Double totalCollect
     Double totalPrepaid
 
@@ -13,7 +13,7 @@ class RoadFreight extends Freight {
     static constraints = {
 
 
-        CMR(nullable: false)
+        cMR(nullable: false)
         totalCollect(nullable: true)
         totalPrepaid(nullable: true)
     }

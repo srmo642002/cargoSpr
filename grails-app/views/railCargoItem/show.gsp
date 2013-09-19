@@ -103,7 +103,17 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${railCargoItemInstance?.user}">
+				<li class="fieldcontain">
+					<span id="user-label" class="property-label"><g:message code="railCargoItem.user.label" default="User" /></span>
+					
+						<span class="property-value" aria-labelledby="user-label"><g:link controller="user" action="show" id="${railCargoItemInstance?.user?.id}">${railCargoItemInstance?.user?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 			</ol>
+            <sec:ifAnyGranted roles="Admin,Create Shipment,Edit Shipment">
 			<g:form>
 				<fieldset class="buttons">
 					<g:hiddenField name="id" value="${railCargoItemInstance?.id}" />
@@ -111,6 +121,7 @@
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
 			</g:form>
+            </sec:ifAnyGranted>
 		</div>
 	</body>
 </html>

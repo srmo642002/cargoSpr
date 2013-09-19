@@ -51,6 +51,7 @@
     width: 120px;
     padding-left: 100px;
 
+
 }
 
 #changePass .inner .cssform label {
@@ -68,7 +69,7 @@
 }
 
 #changePass #submit {
-    margin-left: 170px;
+    margin-left: 185px;
 
 }
 
@@ -112,12 +113,12 @@
         <g:form action="changePassword">
             <br>
             <br>
-            <p>
+            <p style="margin-left: 120px">
                 <label for='password'><g:message code="changePassword.password.label"/>:</label>
                 <input type='password' class='text_' name='formPassword' id='password'/>
             </p>
             <br>
-            <p>
+            <p style="margin-left: 80px">
                 <label for='passwordConfirm'><g:message code="changePassword.passwordConfirm.label"/>:</label>
                 <input type='password' class='text_' name='formPasswordConfirm' id='passwordConfirm'/>
             </p>

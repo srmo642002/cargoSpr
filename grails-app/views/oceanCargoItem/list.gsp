@@ -21,7 +21,11 @@
 <div id="list-oceanCargoItem" ng-controller="oceanCargoItemController" class="content scaffold-list" role="main">
     <rg:grid domainClass="${cargo.cargoItem.OceanCargoItem}" caption="" width="1000px" maxColumns="15">
         <rg:criteria>
-            <rg:eq name='user.id' value='${userid}'/>
+            <rg:nest name="user" >
+                <rg:nest name="groups">
+                    <rg:eq name='id' value='${groupid}' hidden='true' />
+                </rg:nest>
+            </rg:nest>
         </rg:criteria>
     </rg:grid>
     <rg:dialog id="oceanCargoItem" title="OceanCargoItem Dialog">
@@ -35,7 +39,7 @@
         <rg:saveButton domainClass="${cargo.cargoItem.OceanCargoItem}"/>
         <rg:cancelButton/>
     </rg:dialog>
-    <sec:ifAnyGranted roles="Admin,Head Shipment Creator,Shipment Creator">
+    <sec:ifAnyGranted roles="Admin,Create Shipment,Edit Shipment">
         <input type="button" ng-click="openOceanCargoItemCreateDialog()" value="Create OceanCargoItem"/>
         <input type="button" ng-click="openOceanCargoItemEditDialog()" value="Edit OceanCargoItem"/>
     </sec:ifAnyGranted>

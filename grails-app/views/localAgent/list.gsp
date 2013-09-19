@@ -45,7 +45,7 @@
         <rg:saveButton domainClass="${cargo.LocalAgent}"/>
         <rg:cancelButton/>
     </rg:dialog>
-    <sec:ifAnyGranted roles="Admin,Head BasicInfo,BasicInfo Operator">
+    <sec:ifAnyGranted roles="Admin,Create BasicInfo">
         <input type="button" ng-click="openLocalAgentCreateDialog()" value="Create Local Agent"/>
         <input type="button" ng-click="openLocalAgentEditDialog()" value="Edit Local Agent"/>
     </sec:ifAnyGranted>

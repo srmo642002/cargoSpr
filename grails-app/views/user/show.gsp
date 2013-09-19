@@ -30,16 +30,7 @@
 					
 				</li>
 				</g:if>
-			
-				<g:if test="${userInstance?.password}">
-				<li class="fieldcontain">
-					<span id="password-label" class="property-label"><g:message code="user.password.label" default="Password" /></span>
-					
-						<span class="property-value" aria-labelledby="password-label"><g:fieldValue bean="${userInstance}" field="password"/></span>
-					
-				</li>
-				</g:if>
-			
+
 				<g:if test="${userInstance?.level}">
 				<li class="fieldcontain">
 					<span id="level-label" class="property-label"><g:message code="user.level.label" default="Level" /></span>
@@ -111,32 +102,24 @@
 					
 				</li>
 				</g:if>
-			
 			</ol>
             <br>
             <p style="font-family: times;color: #00008b;font-size:large;text-align: left">
                 Please check the proper roles for current user
             </p>
             <br>
-			<g:form style="font-size: 18px;font-family: times;text-align: left" >
-
-                <rg:checkBoxList from="${cargo.Role.findAll()}"/>
+        <sec:ifAnyGranted roles="Admin,Create User,Assign Roles">
+			<g:form style="font-size: 18px;font-family: times;text-align: left;border: #FEFEFE;border-style: inset;background-color: #FEFEFE;display: compact" controller="userRole" action="saveUserRoles" >
+                <g:hiddenField name="user.id" value="${userInstance?.id}"/>
+                <rg:checkBoxList name="rolesId" from="${cargo.Role.findAll()}" optionKey="id" value="${userInstance?.authorities?.collect{it.id}}"/>
                 <br>
-                <div class= button>
-                    <p>
-                        <input type="button" value="Assign Roles" id="assignRoles"/>
+                <div class= button style="margin-left: 540px;margin-bottom: 10px;font-family: times">
+                    <p >
+                        <g:submitButton name="AssignRoles" value="Assign Roles"/>
                     </p>
-
-                    <g:javascript>
-                        for(var i = 1;i<= ${cargo.Role.count};i++)
-                        var x = $("#assignRoles").click(function(){
-                            $("li.checkBoxList").val()
-                            window.location.href = "${createLink(controller: 'UserRole', action:'saveUserRoles')}?x=" + $('#x')
-                            })
-                    </g:javascript>
                 </div>
-
 			</g:form>
+        </sec:ifAnyGranted>
 		</div>
 	</body>
 </html>

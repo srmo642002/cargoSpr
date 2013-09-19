@@ -44,7 +44,7 @@
         <rg:saveButton domainClass="${cargo.Driver}"/>
         <rg:cancelButton/>
     </rg:dialog>
-    <sec:ifAnyGranted roles="Admin,Head BasicInfo,BasicInfo Operator">
+    <sec:ifAnyGranted roles="Admin,Create BasicInfo">
         <input type="button" ng-click="openDriverCreateDialog()" value="Create Driver"/>
         <input type="button" ng-click="openDriverEditDialog()" value="Edit Driver"/>
     </sec:ifAnyGranted>

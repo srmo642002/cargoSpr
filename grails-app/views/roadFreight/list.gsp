@@ -47,7 +47,7 @@
         <rg:saveButton domainClass="${cargo.freight.RoadFreight}" conroller="roadFreight" action="saveRoadFreight"/>
         <rg:cancelButton/>
     </rg:dialog>
-    <sec:ifAnyGranted roles="Admin,Head Shipment Creator,Shipment Creator">
+    <sec:ifAnyGranted roles="Admin,Create Shipment,Edit Shipment,Create RoadFreight,Edit RoadFreight,Delete RoadFreight">
         <input type="button" ng-click="openRoadFreightCreateDialog()" value="Create RoadFreight"/>
         <input type="button" ng-click="openRoadFreightEditDialog()" value="Edit RoadFreight"/>
     </sec:ifAnyGranted>

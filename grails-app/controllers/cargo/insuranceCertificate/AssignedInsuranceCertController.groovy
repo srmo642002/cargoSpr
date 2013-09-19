@@ -2,8 +2,9 @@ package cargo.insuranceCertificate
 
 import grails.plugins.springsecurity.Secured
 import org.springframework.dao.DataIntegrityViolationException
+import rapidgrails.CompositeHelper
 
-@Secured("Admin,Secretary")
+@Secured("Admin,Set PurchasedInsurSheet,Set AssignedInsurSheet")
 class AssignedInsuranceCertController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -25,15 +26,16 @@ class AssignedInsuranceCertController {
         def assignedInsuranceCert
 
             assignedInsuranceCert = new AssignedInsuranceCert(params)
-        if (assignedInsuranceCert.serialNumFrom==assignedInsuranceCert.insuranceCert.serialNumFrom && assignedInsuranceCert.serialNumTo <= assignedInsuranceCert.insuranceCert.serialNumTo){
+        assignedInsuranceCert.remainedCount = assignedInsuranceCert.totalCount
+        if (assignedInsuranceCert.couponNumFrom==assignedInsuranceCert.insuranceCert.couponNumFrom && assignedInsuranceCert.couponNumTo <= assignedInsuranceCert.insuranceCert.couponNumTo){
             if (assignedInsuranceCert.save()) {
             def insuranceCert = assignedInsuranceCert.insuranceCert
-            insuranceCert.serialNumFrom = (assignedInsuranceCert.serialNumTo + 1)
-            insuranceCert.totalCount = (insuranceCert.totalCount - assignedInsuranceCert.totalCount )
+            insuranceCert.remainedCount =  (insuranceCert.totalCount - assignedInsuranceCert.totalCount )
             insuranceCert.save()
         }
         }
-            render(0)
+
+        render(0)
 
     }
 

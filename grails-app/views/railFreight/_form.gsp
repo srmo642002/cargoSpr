@@ -66,20 +66,12 @@
 	<g:datePicker name="dateOfIssue" precision="day"  value="${railFreightInstance?.dateOfIssue}"  />
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: railFreightInstance, field: 'numberOfBills', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: railFreightInstance, field: 'numberOfBills', 'error')} ">
 	<label for="numberOfBills">
 		<g:message code="railFreight.numberOfBills.label" default="Number Of Bills" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field type="number" name="numberOfBills" required="" value="${railFreightInstance.numberOfBills}"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: railFreightInstance, field: 'signature', 'error')} ">
-	<label for="signature">
-		<g:message code="railFreight.signature.label" default="Signature" />
 		
 	</label>
-	<g:textArea name="signature" cols="40" rows="5" maxlength="512" value="${railFreightInstance?.signature}"/>
+	<g:field type="number" name="numberOfBills" value="${railFreightInstance.numberOfBills}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: railFreightInstance, field: 'signedAs', 'error')} ">
@@ -90,6 +82,22 @@
 	<g:select name="signedAs" from="${railFreightInstance.constraints.signedAs.inList}" value="${railFreightInstance?.signedAs}" valueMessagePrefix="railFreight.signedAs" noSelection="['': '']"/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: railFreightInstance, field: 'freightAction', 'error')} ">
+	<label for="freightAction">
+		<g:message code="railFreight.freightAction.label" default="" />
+		
+	</label>
+	<g:select name="freightAction" from="${railFreightInstance.constraints.freightAction.inList}" value="${railFreightInstance?.freightAction}" valueMessagePrefix="railFreight.freightAction" noSelection="['': '']"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: railFreightInstance, field: 'signature', 'error')} ">
+	<label for="signature">
+		<g:message code="railFreight.signature.label" default="Signature" />
+		
+	</label>
+	<g:textArea name="signature" cols="40" rows="5" maxlength="512" value="${railFreightInstance?.signature}"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: railFreightInstance, field: 'railWayCo', 'error')} ">
 	<label for="railWayCo">
 		<g:message code="railFreight.railWayCo.label" default="Rail Way Co" />
@@ -98,12 +106,12 @@
 	<g:textField name="railWayCo" value="${railFreightInstance?.railWayCo}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: railFreightInstance, field: 'SMGSNO', 'error')} required">
-	<label for="SMGSNO">
-		<g:message code="railFreight.SMGSNO.label" default="SMGSNO" />
+<div class="fieldcontain ${hasErrors(bean: railFreightInstance, field: 'sMGSNO', 'error')} required">
+	<label for="sMGSNO">
+		<g:message code="railFreight.sMGSNO.label" default="SMGSNO" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field type="number" name="SMGSNO" step="any" required="" value="${railFreightInstance.SMGSNO}"/>
+	<g:field type="number" name="sMGSNO" step="any" required="" value="${railFreightInstance.sMGSNO}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: railFreightInstance, field: 'stationCode', 'error')} required">
@@ -114,20 +122,27 @@
 	<g:field type="number" name="stationCode" step="any" required="" value="${railFreightInstance.stationCode}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: railFreightInstance, field: 'cargoItem', 'error')} ">
-	<label for="cargoItem">
-		<g:message code="railFreight.cargoItem.label" default="Cargo Item" />
+<div class="fieldcontain ${hasErrors(bean: railFreightInstance, field: 'totalCollect', 'error')} ">
+	<label for="totalCollect">
+		<g:message code="railFreight.totalCollect.label" default="Total Collect" />
 		
 	</label>
-	
-<ul class="one-to-many">
-<g:each in="${railFreightInstance?.cargoItem?}" var="c">
-    <li><g:link controller="railCargoItem" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></li>
-</g:each>
-<li class="add">
-<g:link controller="railCargoItem" action="create" params="['railFreight.id': railFreightInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'railCargoItem.label', default: 'RailCargoItem')])}</g:link>
-</li>
-</ul>
+	<g:field type="number" name="totalCollect" step="any" value="${railFreightInstance.totalCollect}"/>
+</div>
 
+<div class="fieldcontain ${hasErrors(bean: railFreightInstance, field: 'totalPrepaid', 'error')} ">
+	<label for="totalPrepaid">
+		<g:message code="railFreight.totalPrepaid.label" default="Total Prepaid" />
+		
+	</label>
+	<g:field type="number" name="totalPrepaid" step="any" value="${railFreightInstance.totalPrepaid}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: railFreightInstance, field: 'user', 'error')} required">
+	<label for="user">
+		<g:message code="railFreight.user.label" default="User" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="user" name="user.id" from="${cargo.User.list()}" optionKey="id" required="" value="${railFreightInstance?.user?.id}" class="many-to-one"/>
 </div>
 

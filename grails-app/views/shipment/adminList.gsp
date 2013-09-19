@@ -56,7 +56,7 @@
         <rg:cancelButton/>
     </rg:dialog>
     <g:javascript>
-                $("#shipment").find("#originCnt").change(function(){
+                $("#shipment").find("[name='originCnt.id']").change(function(){
                     var cnt = $(this).val()
                     $.ajax({
                         url:'<g:createLink action="getCities"/>',
@@ -64,15 +64,15 @@
                             id:cnt
                         }
                     }).success(function(data){
-                        $("#shipment").find("#originCty").html("")
+                        $("#shipment").find("[name='originCty.id']").html("")
                         $(data).each(function(){
-                            $("#shipment").find("#originCty").append("<option value='" +this.id +"'>"+this.title+"</option>")
+                            $("#shipment").find("[name='originCty.id']").append("<option value='" +this.id +"'>"+this.title+"</option>")
                         })
                     })
                 })
     </g:javascript>
     <g:javascript>
-                $("#shipment").find("#destinationCnt").change(function(){
+                $("#shipment").find("[name='destinationCnt.id']").change(function(){
                     var cnt = $(this).val()
                     $.ajax({
                         url:'<g:createLink action="getCities"/>',
@@ -80,9 +80,9 @@
                             id:cnt
                         }
                     }).success(function(data){
-                        $("#shipment").find("#destinationCty").html("")
+                        $("#shipment").find("[name='destinationCty.id']").html("")
                         $(data).each(function(){
-                            $("#shipment").find("#destinationCty").append("<option value='" +this.id +"'>"+this.title+"</option>")
+                            $("#shipment").find("[name='destinationCty.id']").append("<option value='" +this.id +"'>"+this.title+"</option>")
                         })
                     })
                 })

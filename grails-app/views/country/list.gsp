@@ -51,7 +51,7 @@
         <rg:saveButton domainClass="${cargo.Country}"/>
         <rg:cancelButton/>
     </rg:dialog>
-    <sec:ifAnyGranted roles="Admin,Head BasicInfo,BasicInfo Operator">
+    <sec:ifAnyGranted roles="Admin,Create BasicInfo">
         <input type="button" ng-click="openCountryCreateDialog()" value="Create Country"/>
         <input type="button" ng-click="openCountryEditDialog()" value="Edit Country"/>
     </sec:ifAnyGranted>
@@ -87,7 +87,7 @@
         <rg:saveButton domainClass="${cargo.City}"/>
         <rg:cancelButton/>
     </rg:dialog>
-    <sec:ifAnyGranted roles="Admin,Head BasicInfo,BasicInfo Operator">
+    <sec:ifAnyGranted roles="Admin,Create BasicInfo">
         <input type="button" ng-click="openCityCreateDialog()" value="Create City"/>
         <input type="button" ng-click="openCityEditDialog()" value="Edit City"/>
     </sec:ifAnyGranted>
@@ -113,7 +113,7 @@
         <rg:saveButton domainClass="${cargo.Airport}"/>
         <rg:cancelButton/>
     </rg:dialog>
-    <sec:ifAnyGranted roles="Admin,Head BasicInfo,BasicInfo Operator">
+    <sec:ifAnyGranted roles="Admin,Create BasicInfo">
         <input type="button" ng-click="openAirportCreateDialog()" value="Create Airport"/>
         <input type="button" ng-click="openAirportEditDialog()" value="Edit Airport"/>
     </sec:ifAnyGranted>

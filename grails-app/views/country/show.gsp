@@ -61,15 +61,11 @@
         </g:if>
 
     </ol>
-    <sec:ifAnyGranted roles="Admin,BasicInfo Head,BasicInfo Operator">
+    <sec:ifAnyGranted roles="Admin,Create BasicInfo">
         <g:form>
             <fieldset class="buttons">
                 <g:hiddenField name="id" value="${countryInstance?.id}"/>
-                <g:link class="edit" action="edit" id="${countryInstance?.id}"><g:message
-                        code="default.button.edit.label"
-                        default="Edit"/></g:link>
-                <g:actionSubmit class="delete" action="delete"
-                                value="${message(code: 'default.button.delete.label', default: 'Delete')}"
+                <g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}"
                                 onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');"/>
             </fieldset>
         </g:form>

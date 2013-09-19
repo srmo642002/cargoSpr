@@ -3,7 +3,7 @@ package cargo
 import grails.plugins.springsecurity.Secured
 import org.springframework.dao.DataIntegrityViolationException
 
-@Secured("admin")
+@Secured("Admin,Create User,Assign Roles")
 class UserController {
     def principalService
 

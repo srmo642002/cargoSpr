@@ -4,7 +4,7 @@ import cargo.User
 import cargo.freight.OceanFreight
 
 class OceanCargoItem {
-    static searchable = true
+//    static searchable = true
 
     CargoItem cargoItem
     OceanFreight oceanFreight

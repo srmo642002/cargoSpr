@@ -6,9 +6,9 @@ import cargo.cargoItem.RailCargoItem
 
 class RailFreight extends Freight {
 
-    static searchable = true
+//    static searchable = true
     String railWayCo
-    Double SMGSNO
+    Double sMGSNO
     Double stationCode
 
     Double totalCollect
@@ -21,7 +21,7 @@ class RailFreight extends Freight {
     static constraints = {
 
         railWayCo(nullable: false)
-        SMGSNO(nullable: false)
+        sMGSNO(nullable: false)
         stationCode(nullable: false)
         totalCollect(nullable: true)
         totalPrepaid(nullable: true)

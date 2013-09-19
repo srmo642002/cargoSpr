@@ -4,7 +4,7 @@ import cargo.User
 
 class OceanFreight extends Freight {
 
-    static searchable = true
+//    static searchable = true
     String shippingCo
     String MBL
     String vesselName

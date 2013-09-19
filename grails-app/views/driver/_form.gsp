@@ -84,7 +84,7 @@
 
 <div class="fieldcontain ${hasErrors(bean: driverInstance, field: 'passportDateOfIssure', 'error')} required">
 	<label for="passportDateOfIssure">
-		<g:message code="driver.passportDateOfIssure.label" default="Passport Date Of Issure" />
+		<g:message code="driver.passportDateOfIssue.label" default="Passport Date Of Issue" />
 		<span class="required-indicator">*</span>
 	</label>
 	<g:datePicker name="passportDateOfIssure" precision="day"  value="${driverInstance?.passportDateOfIssure}"  />

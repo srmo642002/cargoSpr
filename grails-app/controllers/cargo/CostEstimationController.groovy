@@ -1,9 +1,10 @@
 package cargo
 
+import grails.converters.deep.JSON
 import grails.plugins.springsecurity.Secured
 import org.springframework.dao.DataIntegrityViolationException
 
-@Secured("Admin,Agent")
+@Secured("Admin,Create Shipment,Edit Shipment,Set CostEst")
 class CostEstimationController {
 
 //    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
@@ -26,7 +27,11 @@ class CostEstimationController {
         render(view: "result",params: params.search)
     }
 
-
+    def getCities() {
+        def country = Country.get(params.id)
+        def cities = City.findAllByCountry(country)
+        render cities as JSON
+    }
 
     def create() {
         [costEstimationInstance: new CostEstimation(params)]
@@ -36,7 +41,7 @@ class CostEstimationController {
 
         def costEstimation = new CostEstimation(params)
         costEstimation.deprecated = false
-        def oldCostEstimation = CostEstimation.findByDesCityAndDeprecated( costEstimation.desCity,false)
+        def oldCostEstimation = CostEstimation.findByDestinationCtyAndDeprecated(costEstimation.destinationCty,false)
         if (oldCostEstimation) {
 
                 oldCostEstimation.deprecated = true
@@ -47,8 +52,6 @@ class CostEstimationController {
         costEstimation.save()
         render 0;
     }
-
-
 
 
     def save() {

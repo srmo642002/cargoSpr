@@ -20,15 +20,17 @@ class UserRoleController {
     }
 
     def saveUserRoles(){
-        def usr
-        if (params.id) {
-            usr = UserRole.get(params)
-            usr.properties = params
+        def usr=User.get(params.user.id)
+        def oldRoles=UserRole.findAllByUser(usr)
+        oldRoles.each {it.delete()}
+        if (params.rolesId) {
+            params.rolesId.each{
+                UserRole.create(usr,Role.get(it))
+            }
+
         } else {
-            usr = new UserRole(params)
         }
-        usr.save()
-        render (view: "setUserRoles",params: params.x)
+        render (view: "setUserRoles")
     }
 
     def save() {

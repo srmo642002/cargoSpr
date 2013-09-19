@@ -22,20 +22,11 @@
 			</g:if>
 			<ol class="property-list cargoItem">
 			
-				<g:if test="${cargoItemInstance?.serialNumber}">
+				<g:if test="${cargoItemInstance?.item}">
 				<li class="fieldcontain">
-					<span id="serialNumber-label" class="property-label"><g:message code="cargoItem.serialNumber.label" default="Serial Number" /></span>
+					<span id="item-label" class="property-label"><g:message code="cargoItem.item.label" default="Item" /></span>
 					
-						<span class="property-value" aria-labelledby="serialNumber-label"><g:fieldValue bean="${cargoItemInstance}" field="serialNumber"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${cargoItemInstance?.kindOfPackage}">
-				<li class="fieldcontain">
-					<span id="kindOfPackage-label" class="property-label"><g:message code="cargoItem.kindOfPackage.label" default="Kind Of Package" /></span>
-					
-						<span class="property-value" aria-labelledby="kindOfPackage-label"><g:fieldValue bean="${cargoItemInstance}" field="kindOfPackage"/></span>
+						<span class="property-value" aria-labelledby="item-label"><g:fieldValue bean="${cargoItemInstance}" field="item"/></span>
 					
 				</li>
 				</g:if>
@@ -49,11 +40,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${cargoItemInstance?.unitOfMeasure}">
+				<g:if test="${cargoItemInstance?.typeOfPackage}">
 				<li class="fieldcontain">
-					<span id="unitOfMeasure-label" class="property-label"><g:message code="cargoItem.unitOfMeasure.label" default="Unit Of Measure" /></span>
+					<span id="typeOfPackage-label" class="property-label"><g:message code="cargoItem.typeOfPackage.label" default="Type Of Package" /></span>
 					
-						<span class="property-value" aria-labelledby="unitOfMeasure-label"><g:fieldValue bean="${cargoItemInstance}" field="unitOfMeasure"/></span>
+						<span class="property-value" aria-labelledby="typeOfPackage-label"><g:fieldValue bean="${cargoItemInstance}" field="typeOfPackage"/></span>
 					
 				</li>
 				</g:if>
@@ -63,6 +54,24 @@
 					<span id="noOfPackage-label" class="property-label"><g:message code="cargoItem.noOfPackage.label" default="No Of Package" /></span>
 					
 						<span class="property-value" aria-labelledby="noOfPackage-label"><g:fieldValue bean="${cargoItemInstance}" field="noOfPackage"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${cargoItemInstance?.unitOfMeasure}">
+				<li class="fieldcontain">
+					<span id="unitOfMeasure-label" class="property-label"><g:message code="cargoItem.unitOfMeasure.label" default="Unit Of Measure" /></span>
+					
+						<span class="property-value" aria-labelledby="unitOfMeasure-label"><g:fieldValue bean="${cargoItemInstance}" field="unitOfMeasure"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${cargoItemInstance?.grade}">
+				<li class="fieldcontain">
+					<span id="grade-label" class="property-label"><g:message code="cargoItem.grade.label" default="Grade" /></span>
+					
+						<span class="property-value" aria-labelledby="grade-label"><g:fieldValue bean="${cargoItemInstance}" field="grade"/></span>
 					
 				</li>
 				</g:if>
@@ -176,13 +185,14 @@
 				</g:if>
 			
 			</ol>
+            <sec:ifAnyGranted roles="Admin,Create Shipment,Edit Shipment">
 			<g:form>
 				<fieldset class="buttons">
 					<g:hiddenField name="id" value="${cargoItemInstance?.id}" />
-					<g:link class="edit" action="edit" id="${cargoItemInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
 			</g:form>
-		</div>
+            </sec:ifAnyGranted>
+        </div>
 	</body>
 </html>

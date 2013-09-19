@@ -82,6 +82,14 @@
 	<g:select name="signedAs" from="${roadFreightInstance.constraints.signedAs.inList}" value="${roadFreightInstance?.signedAs}" valueMessagePrefix="roadFreight.signedAs" noSelection="['': '']"/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: roadFreightInstance, field: 'freightAction', 'error')} ">
+	<label for="freightAction">
+		<g:message code="roadFreight.freightAction.label" default="" />
+		
+	</label>
+	<g:select name="freightAction" from="${roadFreightInstance.constraints.freightAction.inList}" value="${roadFreightInstance?.freightAction}" valueMessagePrefix="roadFreight.freightAction" noSelection="['': '']"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: roadFreightInstance, field: 'signature', 'error')} ">
 	<label for="signature">
 		<g:message code="roadFreight.signature.label" default="Signature" />
@@ -90,12 +98,12 @@
 	<g:textArea name="signature" cols="40" rows="5" maxlength="512" value="${roadFreightInstance?.signature}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: roadFreightInstance, field: 'CMR', 'error')} ">
-	<label for="CMR">
-		<g:message code="roadFreight.CMR.label" default="CMR" />
+<div class="fieldcontain ${hasErrors(bean: roadFreightInstance, field: 'cMR', 'error')} ">
+	<label for="cMR">
+		<g:message code="roadFreight.cMR.label" default="CMR" />
 		
 	</label>
-	<g:textField name="CMR" value="${roadFreightInstance?.CMR}"/>
+	<g:textField name="cMR" value="${roadFreightInstance?.cMR}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: roadFreightInstance, field: 'totalCollect', 'error')} ">
@@ -112,5 +120,13 @@
 		
 	</label>
 	<g:field type="number" name="totalPrepaid" step="any" value="${roadFreightInstance.totalPrepaid}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: roadFreightInstance, field: 'user', 'error')} required">
+	<label for="user">
+		<g:message code="roadFreight.user.label" default="User" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="user" name="user.id" from="${cargo.User.list()}" optionKey="id" required="" value="${roadFreightInstance?.user?.id}" class="many-to-one"/>
 </div>
 

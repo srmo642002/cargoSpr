@@ -1,5 +1,4 @@
-
-<%@ page import="cargo.freight.AirFreight,cargo.insuranceCertificate.CustomsOperations" %>
+<%@ page import="cargo.freight.AirFreight" %>
 <!doctype html>
 <html>
 <head>
@@ -19,7 +18,11 @@
 
 <div id="list-airFreight" ng-controller="airFreightController" class="content scaffold-list" role="main">
 <rg:criteria inline="true" id="AirFreightCriteria">
-    <rg:eq name='user.id' value='${userid}' hidden='true'/>
+    <rg:nest name="user" >
+        <rg:nest name="groups">
+            <rg:eq name='id' value='${groupid}' />
+        </rg:nest>
+    </rg:nest>
     <rg:nest name='airportDeparture'>
         <rg:like name="title" label="airportDeparture"/>
     </rg:nest>
@@ -38,7 +41,11 @@
 <br>
     <rg:grid domainClass="${cargo.freight.AirFreight}" caption="" width="800px" maxColumns="15">
         <rg:criteria>
-            <rg:eq name='user.id' value='${userid}'/>
+            <rg:nest name="user" >
+                <rg:nest name="groups">
+                    <rg:eq name='id' value='${groupid}' />
+                </rg:nest>
+            </rg:nest>
         </rg:criteria>
     </rg:grid>
     <rg:dialog id="airFreight" title="AirFreight Dialog">
@@ -52,7 +59,7 @@
         <rg:saveButton domainClass="${cargo.freight.AirFreight}" conroller="airFreight" action="saveAirFreight"/>
         <rg:cancelButton/>
     </rg:dialog>
-    <sec:ifAnyGranted roles="Admin,Head Shipment Creator,Shipment Creator">
+    <sec:ifAnyGranted roles="Admin,Create Shipment,Edit Shipment,Create AirFreight,Edit AirFreight,Delete AirFreight">
     <input type="button" ng-click="openAirFreightCreateDialog()" value="Create AirFreight"/>
     <input type="button" ng-click="openAirFreightEditDialog()" value="Edit AirFreight"/>
     </sec:ifAnyGranted>

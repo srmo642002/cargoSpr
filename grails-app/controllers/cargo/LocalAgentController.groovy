@@ -3,7 +3,7 @@ package cargo
 import grails.plugins.springsecurity.Secured
 import org.springframework.dao.DataIntegrityViolationException
 
-@Secured("Admin,BasicInfo Operator")
+@Secured("Admin,Create BasicInfo")
 class LocalAgentController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]

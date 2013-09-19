@@ -18,7 +18,7 @@
 </div>
 
 <div id="list-userRole" ng-controller="userRoleController" class="content scaffold-list" role="main">
-    <rg:grid domainClass="${cargo.UserRole}" caption="" width="1000px" maxColumns="8"></rg:grid>
+    <rg:grid domainClass="${cargo.User}" columns="${[[name:"username"],[name:"authorities"]]}" caption="" width="1000px" maxColumns="8"></rg:grid>
 
 </div>
 </body>

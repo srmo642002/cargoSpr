@@ -6,7 +6,7 @@ import cargo.User
 
 class AirFreight extends Freight {
 
-    static searchable = true
+//    static searchable = true
     Airport airportDeparture
     Airport airportDestination
 

@@ -1,8 +1,10 @@
 package cargo.freight
 
 import cargo.Role
+import grails.plugins.springsecurity.Secured
 import org.springframework.dao.DataIntegrityViolationException
 
+@Secured("Admin,Create Shipment,Edit Shipment,Create OceanFreight,Edit OceanFreight,Delete OceanFreight")
 class OceanFreightController {
     def principalService
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]

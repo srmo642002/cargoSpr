@@ -18,6 +18,30 @@
 	<g:datePicker name="sendingDate" precision="day"  value="${assignedInsuranceCertInstance?.sendingDate}"  />
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: assignedInsuranceCertInstance, field: 'insuranceCert', 'error')} required">
+	<label for="insuranceCert">
+		<g:message code="assignedInsuranceCert.insuranceCert.label" default="Insurance Cert" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="insuranceCert" name="insuranceCert.id" from="${cargo.insuranceCertificate.InsuranceCert.list()}" optionKey="id" required="" value="${assignedInsuranceCertInstance?.insuranceCert?.id}" class="many-to-one"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: assignedInsuranceCertInstance, field: 'couponNumFrom', 'error')} required">
+	<label for="couponNumFrom">
+		<g:message code="assignedInsuranceCert.couponNumFrom.label" default="Coupon Num From" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:field type="number" name="couponNumFrom" required="" value="${assignedInsuranceCertInstance.couponNumFrom}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: assignedInsuranceCertInstance, field: 'couponNumTo', 'error')} required">
+	<label for="couponNumTo">
+		<g:message code="assignedInsuranceCert.couponNumTo.label" default="Coupon Num To" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:field type="number" name="couponNumTo" required="" value="${assignedInsuranceCertInstance.couponNumTo}"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: assignedInsuranceCertInstance, field: 'serialNumFrom', 'error')} required">
 	<label for="serialNumFrom">
 		<g:message code="assignedInsuranceCert.serialNumFrom.label" default="Serial Num From" />
@@ -42,11 +66,12 @@
 	<g:field type="number" name="totalCount" required="" value="${assignedInsuranceCertInstance.totalCount}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: assignedInsuranceCertInstance, field: 'insuranceCert', 'error')} required">
-	<label for="insuranceCert">
-		<g:message code="assignedInsuranceCert.insuranceCert.label" default="Insurance Cert" />
-		<span class="required-indicator">*</span>
+<div class="fieldcontain ${hasErrors(bean: assignedInsuranceCertInstance, field: 'status', 'error')} ">
+	<label for="status">
+		<g:message code="assignedInsuranceCert.status.label" default="Status" />
+		
 	</label>
-	<g:select id="insuranceCert" name="insuranceCert.id" from="${cargo.insuranceCertificate.InsuranceCert.list()}" optionKey="id" required="" value="${assignedInsuranceCertInstance?.insuranceCert?.id}" class="many-to-one"/>
+	<g:select name="status" from="${assignedInsuranceCertInstance.constraints.status.inList}" value="${assignedInsuranceCertInstance?.status}" valueMessagePrefix="assignedInsuranceCert.status" noSelection="['': '']"/>
 </div>
+
 

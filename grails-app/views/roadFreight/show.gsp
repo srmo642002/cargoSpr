@@ -121,11 +121,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${roadFreightInstance?.CMR}">
+				<g:if test="${roadFreightInstance?.cMR}">
 				<li class="fieldcontain">
-					<span id="CMR-label" class="property-label"><g:message code="roadFreight.CMR.label" default="CMR" /></span>
+					<span id="cMR-label" class="property-label"><g:message code="roadFreight.cMR.label" default="cMR" /></span>
 					
-						<span class="property-value" aria-labelledby="CMR-label"><g:fieldValue bean="${roadFreightInstance}" field="CMR"/></span>
+						<span class="property-value" aria-labelledby="cMR-label"><g:fieldValue bean="${roadFreightInstance}" field="cMR"/></span>
 					
 				</li>
 				</g:if>
@@ -158,6 +158,7 @@
 				</g:if>
 			
 			</ol>
+            <sec:ifAnyGranted roles="Admin,Create Shipment,Edit Shipment,Create RoadFreight,Edit RoadFreight,Delete RoadFreight">
 			<g:form>
 				<fieldset class="buttons">
 					<g:hiddenField name="id" value="${roadFreightInstance?.id}" />
@@ -165,6 +166,7 @@
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
 			</g:form>
+            </sec:ifAnyGranted>
 		</div>
 	</body>
 </html>

@@ -23,18 +23,47 @@
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
-    <rg:grid domainClass="${cargo.insuranceCertificate.InsuranceCert}" columns="${[[name: "insuranceCo"],[name: "purchaseDate"],[name: "serialNumFrom",formatter:'Integer'],[name: "serialNumTo",formatter:'Integer'],[name: "totalCount",formatter:'Integer']]}">
-
+<g:each in="${exps}" var="exp">
+    <div class="message" role="status" style="font-family: times;font-size: medium;text-decoration-color: #b22222">${exp.code}</div>
+</g:each>
+    <rg:grid domainClass="${cargo.insuranceCertificate.InsuranceCert}" columns="${[[name: "code"],[name: "expireDate"],[name: "couponNumFrom",formatter:'Integer'],[name: "couponNumTo",formatter:'Integer'],[name: "totalCount",formatter:'Integer'],[name: "serialNumFrom",formatter:'Integer'],[name: "serialNumTo",formatter:'Integer'],[name: "remainedCount",formatter:'Integer']]}">
     </rg:grid>
     <rg:dialog id="insuranceCert" title="Insurance Specification Dialog">
-        <rg:fields bean="${new cargo.insuranceCertificate.InsuranceCert()}"></rg:fields>
-        <rg:saveButton domainClass="${cargo.insuranceCertificate.InsuranceCert}"/>
+        <rg:fields bean="${new cargo.insuranceCertificate.InsuranceCert()}">
+            <rg:modify>
+                <rg:ignoreField field="status"/>
+                <rg:ignoreField field="remainedCount"/>
+                <rg:ignoreField field="code"/>
+                <rg:ignoreField field="expireDate"/>
+                <rg:ignoreField field="assignedInsuranceCert"/>
+                <rg:ignoreField field="usedInsuranceCert"/>
+            </rg:modify>
+            <input type="hidden" name="status" id="status" value="inactive">
+            <input type="hidden" name="remainedCount">
+            <input type="hidden" name="code">
+            <input type="hidden" name="expireDate">
+        </rg:fields>
+        <rg:saveButton conroller="insuranceCert" action="save" domainClass="${cargo.insuranceCertificate.InsuranceCert}"/>
         <rg:cancelButton/>
     </rg:dialog>
-    <sec:ifAnyGranted roles="Admin,Secretary">
+    <sec:ifAnyGranted roles="Admin,Set PurchasedInsurSheet,Set AssignedInsurSheet">
         <input type="button" ng-click="openInsuranceCertCreateDialog()" value="Create Insurance Specification"/>
         <input type="button" ng-click="openInsuranceCertEditDialog()" value="Edit Insurance Specification"/>
     </sec:ifAnyGranted>
+
+    <g:javascript>
+        $("#insuranceCert").find("#couponNumFrom,#couponNumTo").keyup(function () {
+            var couponNumTo = parseInt($("#insuranceCert").find("#couponNumTo").val())
+            var couponNumFrom = parseInt($("#insuranceCert").find("#couponNumFrom").val())
+            var tc = $("#insuranceCert").find("#totalCount").val(couponNumTo-couponNumFrom+1)
+        })
+        var exps='';
+    <g:each in="${exps}" var="exp">
+        exps+='${exp.code} ';
+    </g:each>
+        alert('Expiration Date Alarm for Purchase Code: '+exps)
+
+    </g:javascript>
 </div>
 
 </body>

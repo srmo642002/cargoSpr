@@ -5,7 +5,7 @@ import cargo.cargoItem.CargoItem
 
 class Shipment {
 
-    static searchable = true
+//    static searchable = true
     String referenceCode
     String dateIndex
     String title
@@ -45,7 +45,7 @@ class Shipment {
 
         freightCharge(blank: true, inList: ["Prepaid","Collect"])
         charge(nullable: true)
-        currency(nullable: true, inList: ["USD","CAD","EUR","IRR","TRY"])
+        currency(nullable: true, inList: ["USD","CAD","EUR","Rial","Lira","AED"])
         shipper(nullable: true)
         consignee(nullable: true)
         notifyParty(nullable: true)

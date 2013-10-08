@@ -105,6 +105,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${usedInsuranceCertInstance?.customsOperations}">
+				<li class="fieldcontain">
+					<span id="customsOperations-label" class="property-label"><g:message code="usedInsuranceCert.customsOperations.label" default="Customs Operations" /></span>
+					
+						<span class="property-value" aria-labelledby="customsOperations-label"><g:link controller="customsOperations" action="show" id="${usedInsuranceCertInstance?.customsOperations?.id}">${usedInsuranceCertInstance?.customsOperations?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 			</ol>
 			<g:form>
 				<fieldset class="buttons">

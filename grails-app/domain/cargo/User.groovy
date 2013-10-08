@@ -1,7 +1,5 @@
 package cargo
 
-
-
 class User {
 
     transient springSecurityService
@@ -25,6 +23,7 @@ class User {
         password blank: false
         level(blank: false,inList: ["head","staff"])
         groups(nullable: true)
+
 
 
 

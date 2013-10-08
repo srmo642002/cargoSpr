@@ -8,7 +8,7 @@ class Shipment {
 //    static searchable = true
     String referenceCode
     String dateIndex
-    String title
+    String client
     String blWb
     String description
     Country originCnt
@@ -34,7 +34,7 @@ class Shipment {
 
         referenceCode(blank: false)
         dateIndex (nullable: false)
-        title(blank: false)
+        client(blank: false)
         blWb(nullable: true)
 
         description(maxSize: 1024)
@@ -52,7 +52,7 @@ class Shipment {
         agent(nullable: true)
     }
 
-    String toString(){"$title,$referenceCode"}
+    String toString(){"$client,$referenceCode"}
 
 
     static mapping = {

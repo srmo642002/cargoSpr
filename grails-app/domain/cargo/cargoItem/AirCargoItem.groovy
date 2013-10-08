@@ -16,7 +16,7 @@ class AirCargoItem {
     Date loadingDate
     Date etaDate // Estimated Time Arrival
     Date arrivalDate
-    Date deliveryOrderDate
+    Date deliveryDate
 
     User user
 
@@ -29,7 +29,7 @@ class AirCargoItem {
         loadingDate(nullable: false)
         etaDate(nullable: false)
         arrivalDate(nullable: false)
-        deliveryOrderDate(nullable: false)
+        deliveryDate(nullable: false)
 
 
     }

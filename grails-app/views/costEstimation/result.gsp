@@ -24,7 +24,7 @@
     </g:if>
     <br>
     <br>
-    <rg:grid domainClass="${cargo.CostEstimation}" maxColumns="11">
+    <rg:grid domainClass="${CostEstimation}" columns="[[name:'rateDate'],[name:'originCnt'],[name:'originCty'],[name:'destinationCnt'],[name:'destinationCty'],[name:'truck'],[name:'containerType'],[name:'ftl',formatter: 'checkbox'],[name:'ltl',formatter: 'checkbox'],[name:'weight'],[name:'overWeight'],[name:'route'],[name:'day'],[name:'hour'],[name:'remark'],[name:'observation'],[name:'rate'],[name:'currency']]">
         <rg:criteria>
             <rg:nest name='destinationCty'>
                 <rg:like name="title"  value="${params.search}"/>

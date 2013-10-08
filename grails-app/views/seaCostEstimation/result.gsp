@@ -25,9 +25,9 @@
     </g:if>
     <br>
     <br>
-    <rg:grid domainClass="${cargo.SeaCostEstimation}" maxColumns="11">
+    <rg:grid domainClass="${cargo.SeaCostEstimation}" columns="[[name:'rateDate'],[name:'portOfLoading'],[name:'portOfDischarge'],[name:'container',formatter: 'checkbox'],[name:'containers'],[name:'bulk',formatter: 'checkbox'],[name:'weight'],[name:'measurment'],[name:'freightTon'],[name:'day'],[name:'route'],[name:'remark'],[name:'additionals'],[name:'totalRate'],[name:'currency']]">
         <rg:criteria>
-            <rg:nest name='portOfLoading'>
+            <rg:nest name='portOfDischarge'>
                 <rg:like name="title"  value="${params.search}"/>
             </rg:nest>
             <rg:eq name='deprecated' value='${'false'}'/>

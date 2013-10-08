@@ -10,6 +10,46 @@
 	<g:textField name="item" value="${cargoItemInstance?.item}"/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: cargoItemInstance, field: 'nonContainerized', 'error')} ">
+	<label for="nonContainerized">
+		<g:message code="cargoItem.nonContainerized.label" default="Non Containerized" />
+		
+	</label>
+	<g:checkBox name="nonContainerized" value="${cargoItemInstance?.nonContainerized}" />
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: cargoItemInstance, field: 'containerized', 'error')} ">
+	<label for="containerized">
+		<g:message code="cargoItem.containerized.label" default="Containerized" />
+		
+	</label>
+	<g:checkBox name="containerized" value="${cargoItemInstance?.containerized}" />
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: cargoItemInstance, field: 'containerNo', 'error')} ">
+	<label for="containerNo">
+		<g:message code="cargoItem.containerNo.label" default="Container No" />
+		
+	</label>
+	<g:textField name="containerNo" value="${cargoItemInstance?.containerNo}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: cargoItemInstance, field: 'size', 'error')} ">
+	<label for="size">
+		<g:message code="cargoItem.size.label" default="Size" />
+		
+	</label>
+	<g:select name="size" from="${cargoItemInstance.constraints.size.inList}" value="${cargoItemInstance?.size}" valueMessagePrefix="cargoItem.size" noSelection="['': '']"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: cargoItemInstance, field: 'type', 'error')} ">
+	<label for="type">
+		<g:message code="cargoItem.type.label" default="Type" />
+		
+	</label>
+	<g:select name="type" from="${cargoItemInstance.constraints.type.inList}" value="${cargoItemInstance?.type}" valueMessagePrefix="cargoItem.type" noSelection="['': '']"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: cargoItemInstance, field: 'commodity', 'error')} ">
 	<label for="commodity">
 		<g:message code="cargoItem.commodity.label" default="Commodity" />
@@ -32,14 +72,6 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<g:field type="number" name="noOfPackage" required="" value="${cargoItemInstance.noOfPackage}"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: cargoItemInstance, field: 'unitOfMeasure', 'error')} ">
-	<label for="unitOfMeasure">
-		<g:message code="cargoItem.unitOfMeasure.label" default="Unit Of Measure" />
-		
-	</label>
-	<g:select name="unitOfMeasure" from="${cargoItemInstance.constraints.unitOfMeasure.inList}" value="${cargoItemInstance?.unitOfMeasure}" valueMessagePrefix="cargoItem.unitOfMeasure" noSelection="['': '']"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: cargoItemInstance, field: 'grade', 'error')} ">
@@ -66,46 +98,6 @@
 	<g:field type="number" name="totalWeight" step="any" required="" value="${cargoItemInstance.totalWeight}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: cargoItemInstance, field: 'rateOrCharge', 'error')} required">
-	<label for="rateOrCharge">
-		<g:message code="cargoItem.rateOrCharge.label" default="Rate Or Charge" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field type="number" name="rateOrCharge" step="any" required="" value="${cargoItemInstance.rateOrCharge}"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: cargoItemInstance, field: 'chargeableWeight', 'error')} required">
-	<label for="chargeableWeight">
-		<g:message code="cargoItem.chargeableWeight.label" default="Chargeable Weight" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:field type="number" name="chargeableWeight" step="any" required="" value="${cargoItemInstance.chargeableWeight}"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: cargoItemInstance, field: 'width', 'error')} ">
-	<label for="width">
-		<g:message code="cargoItem.width.label" default="Width" />
-		
-	</label>
-	<g:field type="number" name="width" step="any" value="${cargoItemInstance.width}"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: cargoItemInstance, field: 'length', 'error')} ">
-	<label for="length">
-		<g:message code="cargoItem.length.label" default="Length" />
-		
-	</label>
-	<g:field type="number" name="length" step="any" value="${cargoItemInstance.length}"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: cargoItemInstance, field: 'height', 'error')} ">
-	<label for="height">
-		<g:message code="cargoItem.height.label" default="Height" />
-		
-	</label>
-	<g:field type="number" name="height" step="any" value="${cargoItemInstance.height}"/>
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: cargoItemInstance, field: 'volume', 'error')} ">
 	<label for="volume">
 		<g:message code="cargoItem.volume.label" default="Volume" />
@@ -114,20 +106,12 @@
 	<g:field type="number" name="volume" step="any" value="${cargoItemInstance.volume}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: cargoItemInstance, field: 'totalVolume', 'error')} ">
-	<label for="totalVolume">
-		<g:message code="cargoItem.totalVolume.label" default="Total Volume" />
+<div class="fieldcontain ${hasErrors(bean: cargoItemInstance, field: 'dg', 'error')} ">
+	<label for="dg">
+		<g:message code="cargoItem.dg.label" default="Dg" />
 		
 	</label>
-	<g:field type="number" name="totalVolume" step="any" value="${cargoItemInstance.totalVolume}"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: cargoItemInstance, field: 'chargeableRate', 'error')} ">
-	<label for="chargeableRate">
-		<g:message code="cargoItem.chargeableRate.label" default="Chargeable Rate" />
-		
-	</label>
-	<g:field type="number" name="chargeableRate" step="any" value="${cargoItemInstance.chargeableRate}"/>
+	<g:checkBox name="dg" value="${cargoItemInstance?.dg}" />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: cargoItemInstance, field: 'shipment', 'error')} required">

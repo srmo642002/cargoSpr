@@ -123,7 +123,7 @@ class BootStrap {
 
             def forwardingRef = ForwardingReference.findByTitle("Test Forwarding Ref")?:new ForwardingReference(address: "1", asACarrier: true, asAConsignee: true, asAnAgent: true, asANotifyParty: true, asAShipper: true, contactPerson: "Ali", fax: "123", telephone: "345", title: "Test Forwarding Ref", webSite: "www.test.com").save()
 
-            def shipment = Shipment.findByTitle("Test Shipment")?:new Shipment(title: "Test Shipment", description: "Test").save()
+            def shipment = Shipment.findByClient("Test Shipment")?:new Shipment(client: "Test Shipment", description: "Test").save()
 
             def driver1 = Driver.findByIdNumber("23445")?:new Driver(name: "driver1", family: "family1", fatherName: "dfff", idNumber: "23445", birthDate: "1920/03/23", placeOfBirth: "dffgg", mobile: "65454323", homeTel: "776655", address: "hjggyugyug",passportNumber: "775443",passportDateOfIssure: "2012/04/30",passportValidity:"2013/09/23", exitPermissionNumber: "223312", exitPermissionDateOfIssue: "2012/12/12",exitPermissionValidity: "2013/01/24").save()
 

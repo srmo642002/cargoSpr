@@ -49,11 +49,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${oceanCargoItemInstance?.deliveryOrderDate}">
+				<g:if test="${oceanCargoItemInstance?.deliveryDate}">
 				<li class="fieldcontain">
-					<span id="deliveryOrderDate-label" class="property-label"><g:message code="oceanCargoItem.deliveryOrderDate.label" default="Delivery Order Date" /></span>
+					<span id="deliveryDate-label" class="property-label"><g:message code="oceanCargoItem.deliveryDate.label" default="Delivery Date" /></span>
 					
-						<span class="property-value" aria-labelledby="deliveryOrderDate-label"><g:formatDate date="${oceanCargoItemInstance?.deliveryOrderDate}" /></span>
+						<span class="property-value" aria-labelledby="deliveryDate-label"><g:formatDate date="${oceanCargoItemInstance?.deliveryDate}" /></span>
 					
 				</li>
 				</g:if>

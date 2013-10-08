@@ -22,7 +22,7 @@ class OneSheetInsuranceCert {
 
         shipment(nullable: false)
         insuranceNum(nullable: false)
-        issueDate(nullable: false)
+        issueDate(nullable: false,persian:true)
         transitFrom(nullable: false)
         transitTo(nullable: false)
         totalCost(nullable: false)

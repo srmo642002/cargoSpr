@@ -13,7 +13,7 @@ class OceanCargoItem {
     Date loadingDate
     Date etaDate // Estimated Time Arrival
     Date arrivalDate
-    Date deliveryOrderDate
+    Date deliveryDate
 
     User user
 
@@ -24,7 +24,7 @@ class OceanCargoItem {
         loadingDate(nullable: false)
         etaDate(nullable: false)
         arrivalDate(nullable: false)
-        deliveryOrderDate(nullable: false)
+        deliveryDate(nullable: false)
 
     }
 }

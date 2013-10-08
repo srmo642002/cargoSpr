@@ -20,14 +20,14 @@ class InsuranceCert {
     String status
 
 
-    static hasMany = [assignedInsuranceCert: AssignedInsuranceCert,usedInsuranceCert: UsedInsuranceCert,customsOperations: CustomsOperations]
+    static hasMany = [assignedInsuranceCert: AssignedInsuranceCert,usedInsuranceCert: UsedInsuranceCert]
 
 
     static constraints = {
 
         insuranceCo(nullable: false)
-        purchaseDate(nullable: false)
-        expireDate(nullable: false)
+        purchaseDate(nullable: false,persian:true)
+        expireDate(nullable: false,persian:true)
         code(nullable: false)
 
         couponNumFrom(nullable: false)

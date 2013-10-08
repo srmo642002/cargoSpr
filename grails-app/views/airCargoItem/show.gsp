@@ -1,4 +1,3 @@
-
 <%@ page import="cargo.cargoItem.AirCargoItem" %>
 <!doctype html>
 <html>
@@ -67,11 +66,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${airCargoItemInstance?.deliveryOrderDate}">
+				<g:if test="${airCargoItemInstance?.deliveryDate}">
 				<li class="fieldcontain">
-					<span id="deliveryOrderDate-label" class="property-label"><g:message code="airCargoItem.deliveryOrderDate.label" default="Delivery Order Date" /></span>
+					<span id="deliveryDate-label" class="property-label"><g:message code="airCargoItem.deliveryDate.label" default="Delivery Date" /></span>
 					
-						<span class="property-value" aria-labelledby="deliveryOrderDate-label"><g:formatDate date="${airCargoItemInstance?.deliveryOrderDate}" /></span>
+						<span class="property-value" aria-labelledby="deliveryDate-label"><g:formatDate date="${airCargoItemInstance?.deliveryDate}" /></span>
 					
 				</li>
 				</g:if>

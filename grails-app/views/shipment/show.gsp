@@ -30,7 +30,7 @@
 
 <body>
 <div id="list-cargoItem" ng-controller="cargoItemController" class="content scaffold-list" role="main" style="padding-top: 15px">
-    <rg:grid domainClass="${CargoItem}" columns="[[name:'id',formatter:'generateCheckbox'],[name:'item'],[name:'commodity'],[name:'typeOfPackage'],[name:'noOfPackage'],[name:'unitOfMeasure'],[name:'grossWeight'],[name:'totalWeight'],[name:'rateOrCharge'],[name:'chargeableWeight']]">
+    <rg:grid domainClass="${CargoItem}" columns="[[name:'id',formatter:'generateCheckbox'],[name:'item'],[name:'nonContainerized'],[name:'containerized'],[name:'containerNo'],[name:'size'],[name:'type'],[name:'commodity'],[name:'typeOfPackage'],[name:'noOfPackage'],[name:'grade'],[name:'grossWeight'],[name:'totalWeight'],[name:'volume'],[name:'dg'],[name:'incoClass'],[name:'unNo',formatter: 'integer']]">
         <rg:criteria>
             <rg:eq name="shipment.id" value="${shipmentInstance.id}" />
         </rg:criteria>
@@ -64,19 +64,7 @@
     <input type="button" value="UnCheck All" id="btn-rchk" style="width: 78px;background-color: #dfdfe3"/>
     </g:form>
 
-    <g:javascript>
-        $("#cargoItem").find("#width,#height,#length").keyup(function () {
-            var width = parseFloat($("#cargoItem").find("#width").val())
-            var height = parseFloat($("#cargoItem").find("#height").val())
-            var length = parseFloat($("#cargoItem").find("#length").val())
-            var fini = $("#cargoItem").find("#volume").val(width * height * length)
-            if(width==0||height==0||length==0){
-                fini = 0;
-            } else{
-                fini = $("#cargoItem").find("#volume").val(width * height * length)
-            }
-        })
-    </g:javascript>
+
     <g:javascript>
         $("#cargoItem").find("#noOfPackage,#grossWeight").keyup(function () {
             var noOfPackage = parseFloat($("#cargoItem").find("#noOfPackage").val())
@@ -90,48 +78,43 @@
         })
     </g:javascript>
     <g:javascript>
-        $("#cargoItem").find("#totalWeight,#rateOrCharge").keyup(function () {
-            var totalWeight = parseFloat($("#cargoItem").find("#totalWeight").val())
-            var rateOrCharge = parseFloat($("#cargoItem").find("#rateOrCharge").val())
-            var fini = $("#cargoItem").find("#chargeableWeight").val(totalWeight * rateOrCharge)
-            if(width==0||height==0||length==0){
-                fini = 0;
-            } else{
-                fini = $("#cargoItem").find("#chargeableWeight").val(totalWeight * rateOrCharge)
+        $("[name$=containerized]").change(function(){
+            if ($("[name$=containerized]").is(":checked")){
+                $("[name$=containerNo]").parent().show();
+                $("[name$=size]").parent().show();
+                $("[name$=type]").parent().show();
             }
-        })
+            else{
+                $("[name$=containerNo]").parent().hide();
+                $("[name$=size]").parent().hide();
+                $("[name$=type]").parent().hide();
+            }
+        });
+        $("[name$=containerized]").change();
     </g:javascript>
     <g:javascript>
-        $("#cargoItem").find("#noOfPackage,#volume").keyup(function () {
-            var noOfPackage = parseFloat($("#cargoItem").find("#noOfPackage").val())
-            var volume = parseFloat($("#cargoItem").find("#volume").val())
-            var fini = $("#cargoItem").find("#totalVolume").val(noOfPackage * volume)
-            if(width==0||height==0||length==0){
-                fini = 0;
-            } else{
-                fini = $("#cargoItem").find("#totalVolume").val(noOfPackage * volume)
+        $("[name$=dg]").change(function(){
+            if ($("[name$=dg]").is(":checked")){
+                $("[name$=incoClass]").parent().show();
+                $("[name$=unNo]").parent().show();
             }
-        })
-    </g:javascript>
-    <g:javascript>
-        $("#cargoItem").find("#totalVolume,#rateOrCharge").keyup(function () {
-            var totalVolume = parseFloat($("#cargoItem").find("#totalVolume").val())
-            var rateOrCharge = parseFloat($("#cargoItem").find("#rateOrCharge").val())
-            var fini = $("#cargoItem").find("#chargeableRate").val(totalVolume * rateOrCharge)
-            if(width==0||height==0||length==0){
-                fini = 0;
-            } else{
-                fini = $("#cargoItem").find("#chargeableRate").val(totalVolume * rateOrCharge)
+            else{
+                $("[name$=incoClass]").parent().hide();
+                $("[name$=unNo]").parent().hide();
+
             }
-        })
+        });
+        $("[name$=dg]").change();
     </g:javascript>
+
+
 
 </div>
 <br>
 
 <div id="list-freight" ng-controller="freightController" class="content scaffold-list" role="main">
     <rg:grid domainClass="${cargo.freight.Freight}" onSelectRow="loadCargoItems"
-             columns="${[[name:"id",formatter:"generateRadio"],[name: "Type", expression: "obj.metaClass.theClass.name.replace(\\'cargo.freight.\\', \\'\\')"], [name: "placeOfLoading"],[name: "placeOfDischarge"],[name: "placeOfDelivery"],[name: "placeOfReceipt"],[name: "freightAction"]]}">
+             columns="${[[name:"id",formatter:"generateRadio"],[name: "type", expression: "obj.metaClass.theClass.name.replace(\\'cargo.freight.\\', \\'\\')"], [name: "placeOfLoading"],[name: "placeOfDischarge"],[name: "placeOfDelivery"],[name: "placeOfReceipt"],[name: "freightAction"]]}">
         <rg:criteria>
             <rg:eq name="shipment.id" value="${shipmentInstance.id}"/>
         </rg:criteria>
@@ -214,7 +197,7 @@
 
 <br>
 <div id="list-airCargoItem" ng-controller="airCargoItemController" class="content scaffold-list" role="main">
-    <rg:grid domainClass="${AirCargoItem}" columns="${[[name: "aircraft"], [name: "flightNum",formatter:'Integer'],[name: "loadingDate"],[name: "etaDate"],[name: "arrivalDate"],[name: "deliveryOrderDate"],[name: "cargoItem"]]}">
+    <rg:grid domainClass="${AirCargoItem}" columns="${[[name: "aircraft"], [name: "flightNum",formatter:'Integer'],[name: "loadingDate"],[name: "etaDate"],[name: "arrivalDate"],[name: "deliveryDate"],[name: "cargoItem"]]}">
         <rg:criteria>
             <rg:eq name="airFreight.id" value="${0}"/>
         </rg:criteria>
@@ -249,7 +232,7 @@
 </div>
 
 <div id="list-oceanCargoItem" ng-controller="oceanCargoItemController" class="content scaffold-list" role="main">
-    <rg:grid domainClass="${OceanCargoItem}" columns="[[name:'loadingDate'],[name:'etaDate'],[name: 'arrivalDate'],[name: 'deliveryOrderDate'],[name: 'cargoItem']]">
+    <rg:grid domainClass="${OceanCargoItem}" columns="[[name:'loadingDate'],[name:'etaDate'],[name: 'arrivalDate'],[name: 'deliveryDate'],[name: 'cargoItem']]">
         <rg:criteria>
             <rg:eq name="oceanFreight.id" value="${0}"/>
         </rg:criteria>
@@ -284,7 +267,7 @@
 </div>
 
 <div id="list-railCargoItem" ng-controller="railCargoItemController" class="content scaffold-list" role="main">
-    <rg:grid domainClass="${RailCargoItem}" maxColumns="8" columns="[[name:'wagonType'],[name:'wagonNum',formatter:'Integer'],[name:'wagonStatus'],[name:'loadingDate'],[name: 'etaDate'],[name:'arrivalDate'],[name: 'deliveryOrderDate'],[name: 'cargoItem']]">
+    <rg:grid domainClass="${RailCargoItem}" maxColumns="8" columns="[[name:'wagonType'],[name:'wagonNum',formatter:'Integer'],[name:'wagonStatus'],[name:'loadingDate'],[name: 'etaDate'],[name:'arrivalDate'],[name: 'deliveryDate'],[name: 'cargoItem']]">
         <rg:criteria>
             <rg:eq name="railFreight.id" value="${0}"/>
         </rg:criteria>
@@ -319,7 +302,7 @@
 </div>
 
 <div id="list-roadCargoItem" ng-controller="roadCargoItemController" class="content scaffold-list" role="main">
-    <rg:grid domainClass="${RoadCargoItem}" maxColumns="9" columns="[[name:'truck'],[name:'plaque'],[name:'containerNum',formatter:'integer'],[name:'driver'],[name:'loadingDate'],[name:'etaDate'],[name:'arrivalDate'],[name:'deliveryOrderDate'],[name:'cargoItem']]">
+    <rg:grid domainClass="${RoadCargoItem}" maxColumns="9" columns="[[name:'truck'],[name:'plateNo'],[name:'containerNum',formatter:'integer'],[name:'containerType'],[name:'ftl',formatter: 'checkbox'],[name:'ltl',formatter: 'checkbox'],[name:'driver'],[name:'border'],[name:'loadingDate'],[name:'etaDate'],[name:'borderPass'],[name:'arrivalDate'],[name:'deliveryDate'],[name:'cargoItem']]">
         <rg:criteria>
             <rg:eq name="roadFreight.id" value="${0}"/>
         </rg:criteria>
@@ -498,7 +481,7 @@
 </g:elseif>
 <br>
 <div id="list-documentType" ng-controller="documentTypeController" class="content scaffold-list" role="main">
-    <rg:grid domainClass="${cargo.DocumentType}" columns="${[[name: "title"], [name: "persianTitle"],[name: "critical"]]}">
+    <rg:grid domainClass="${cargo.DocumentType}" columns="${[[name: "title"], [name: "persianTitle"],[name: "critical",formatter:'generateCheckbox']]}">
         <rg:criteria>
             <rg:eq name="shipment.id" value="${shipmentInstance.id}" />
         </rg:criteria>

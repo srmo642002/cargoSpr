@@ -13,18 +13,20 @@ class RoadCargoItem {
     RoadFreight roadFreight
 
 
-    String plaque
+    String plateNo
     String truck
     String containerType
     Integer containerNum
     Boolean ftl
     Boolean ltl
+    String border
     String driver
 
     Date loadingDate
     Date etaDate // Estimated Time Arrival
+    Date borderPass
     Date arrivalDate
-    Date deliveryOrderDate
+    Date deliveryDate
 
     User user
 
@@ -32,17 +34,19 @@ class RoadCargoItem {
     static constraints = {
 
         truck(nullable: true,inList: ["Flat","Tilt","RF","Special"])
-        plaque(nullable: false)
+        plateNo(nullable: false)
         containerType(nullable: true, inList:["20'","40'","RF","other"])
         containerNum(nullable: true)
         ftl(nullable: true)
         ltl(nullable: true)
+        border(nullable: true)
         driver(nullable: true)
 
         loadingDate(nullable: false)
         etaDate(nullable: false)
-        arrivalDate(nullable: false)
-        deliveryOrderDate(nullable: false)
+        borderPass(nullable: true)
+        arrivalDate(nullable: true)
+        deliveryDate(nullable: true)
 
 
 

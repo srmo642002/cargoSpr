@@ -50,12 +50,12 @@
 	<g:datePicker name="arrivalDate" precision="day"  value="${railCargoItemInstance?.arrivalDate}"  />
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: railCargoItemInstance, field: 'deliveryOrderDate', 'error')} required">
-	<label for="deliveryOrderDate">
-		<g:message code="railCargoItem.deliveryOrderDate.label" default="Delivery Order Date" />
+<div class="fieldcontain ${hasErrors(bean: railCargoItemInstance, field: 'deliveryDate', 'error')} required">
+	<label for="deliveryDate">
+		<g:message code="railCargoItem.deliveryDate.label" default="Delivery Date" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="deliveryOrderDate" precision="day"  value="${railCargoItemInstance?.deliveryOrderDate}"  />
+	<g:datePicker name="deliveryDate" precision="day"  value="${railCargoItemInstance?.deliveryDate}"  />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: railCargoItemInstance, field: 'cargoItem', 'error')} required">

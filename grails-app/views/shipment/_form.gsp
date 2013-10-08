@@ -18,12 +18,12 @@
 	<g:textField name="dateIndex" value="${shipmentInstance?.dateIndex}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: shipmentInstance, field: 'title', 'error')} required">
-	<label for="title">
-		<g:message code="shipment.title.label" default="Title" />
+<div class="fieldcontain ${hasErrors(bean: shipmentInstance, field: 'client', 'error')} required">
+	<label for="client">
+		<g:message code="shipment.client.label" default="Client" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField name="title" required="" value="${shipmentInstance?.title}"/>
+	<g:textField name="client" required="" value="${shipmentInstance?.client}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: shipmentInstance, field: 'blWb', 'error')} ">

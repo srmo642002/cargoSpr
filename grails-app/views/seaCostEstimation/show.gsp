@@ -150,11 +150,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${seaCostEstimationInstance?.observation}">
+				<g:if test="${seaCostEstimationInstance?.additionals}">
 				<li class="fieldcontain">
-					<span id="observation-label" class="property-label"><g:message code="seaCostEstimation.observation.label" default="Observation" /></span>
+					<span id="additionals-label" class="property-label"><g:message code="seaCostEstimation.additionals.label" default="additionals" /></span>
 					
-						<span class="property-value" aria-labelledby="observation-label"><g:fieldValue bean="${seaCostEstimationInstance}" field="observation"/></span>
+						<span class="property-value" aria-labelledby="additionals-label"><g:fieldValue bean="${seaCostEstimationInstance}" field="additionals"/></span>
 					
 				</li>
 				</g:if>

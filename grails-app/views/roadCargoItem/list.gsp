@@ -38,7 +38,7 @@
         </g:javascript>
     </rg:criteria>
     <br>
-    <rg:grid domainClass="${cargo.cargoItem.RoadCargoItem}" caption="" width="1000px" maxColumns="15">
+    <rg:grid domainClass="${cargo.cargoItem.RoadCargoItem}" caption="" width="1000px" columns="[[name:'truck'],[name:'plateNo'],[name:'containerNum',formatter:'integer'],[name:'containerType'],[name:'ftl'],[name:'ltl'],[name:'driver'],[name:'border'],[name:'loadingDate'],[name:'etaDate'],[name:'borderPass'],[name:'arrivalDate'],[name:'deliveryDate'],[name:'cargoItem']]">
         <rg:criteria>
             <rg:nest name="user" >
                 <rg:nest name="groups">

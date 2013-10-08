@@ -32,13 +32,13 @@
             </li>
         </g:if>
 
-        <g:if test="${shipmentInstance?.title}">
+        <g:if test="${shipmentInstance?.client}">
             <li class="fieldcontain">
-                <span id="title-label" class="property-label"><g:message code="shipment.title.label"
-                                                                         default="Title"/></span>
+                <span id="client-label" class="property-label"><g:message code="shipment.client.label"
+                                                                         default="Client"/></span>
 
-                <span class="property-value" aria-labelledby="title-label"><g:fieldValue bean="${shipmentInstance}"
-                                                                                         field="title"/></span>
+                <span class="property-value" aria-labelledby="client-label"><g:fieldValue bean="${shipmentInstance}"
+                                                                                         field="client"/></span>
 
             </li>
         </g:if>

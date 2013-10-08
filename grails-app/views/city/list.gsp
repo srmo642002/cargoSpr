@@ -22,7 +22,8 @@
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
-    <rg:grid domainClass="${City}"/>
+    <rg:grid domainClass="${City}" columns="[[name:'country'],[name:'title'],[name:'persianTitle'],[name:'port',formatter:'checkbox'],[name:'abbreviation']]">
+    </rg:grid>
     <rg:dialog id="city" title="City Dialog">
         <rg:fields bean="${new cargo.City()}">
             <rg:modify>

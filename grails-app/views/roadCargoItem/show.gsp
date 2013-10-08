@@ -31,11 +31,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${roadCargoItemInstance?.plaque}">
+				<g:if test="${roadCargoItemInstance?.plateNo}">
 				<li class="fieldcontain">
-					<span id="plaque-label" class="property-label"><g:message code="roadCargoItem.plaque.label" default="Plaque" /></span>
+					<span id="plateNo-label" class="property-label"><g:message code="roadCargoItem.plateNo.label" default="Plate No" /></span>
 					
-						<span class="property-value" aria-labelledby="plaque-label"><g:fieldValue bean="${roadCargoItemInstance}" field="plaque"/></span>
+						<span class="property-value" aria-labelledby="plateNo-label"><g:fieldValue bean="${roadCargoItemInstance}" field="plateNo"/></span>
 					
 				</li>
 				</g:if>
@@ -76,6 +76,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${roadCargoItemInstance?.border}">
+				<li class="fieldcontain">
+					<span id="border-label" class="property-label"><g:message code="roadCargoItem.border.label" default="Border" /></span>
+					
+						<span class="property-value" aria-labelledby="border-label"><g:fieldValue bean="${roadCargoItemInstance}" field="border"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${roadCargoItemInstance?.driver}">
 				<li class="fieldcontain">
 					<span id="driver-label" class="property-label"><g:message code="roadCargoItem.driver.label" default="Driver" /></span>
@@ -103,6 +112,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${roadCargoItemInstance?.borderPass}">
+				<li class="fieldcontain">
+					<span id="borderPass-label" class="property-label"><g:message code="roadCargoItem.borderPass.label" default="Border Pass" /></span>
+					
+						<span class="property-value" aria-labelledby="borderPass-label"><g:formatDate date="${roadCargoItemInstance?.borderPass}" /></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${roadCargoItemInstance?.arrivalDate}">
 				<li class="fieldcontain">
 					<span id="arrivalDate-label" class="property-label"><g:message code="roadCargoItem.arrivalDate.label" default="Arrival Date" /></span>
@@ -112,11 +130,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${roadCargoItemInstance?.deliveryOrderDate}">
+				<g:if test="${roadCargoItemInstance?.deliveryDate}">
 				<li class="fieldcontain">
-					<span id="deliveryOrderDate-label" class="property-label"><g:message code="roadCargoItem.deliveryOrderDate.label" default="Delivery Order Date" /></span>
+					<span id="deliveryDate-label" class="property-label"><g:message code="roadCargoItem.deliveryDate.label" default="Delivery Date" /></span>
 					
-						<span class="property-value" aria-labelledby="deliveryOrderDate-label"><g:formatDate date="${roadCargoItemInstance?.deliveryOrderDate}" /></span>
+						<span class="property-value" aria-labelledby="deliveryDate-label"><g:formatDate date="${roadCargoItemInstance?.deliveryDate}" /></span>
 					
 				</li>
 				</g:if>

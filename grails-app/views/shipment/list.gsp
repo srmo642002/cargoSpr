@@ -26,7 +26,7 @@
                 <rg:eq name='id' value='${groupid}' hidden='true' />
             </rg:nest>
         </rg:nest>
-        <rg:like name='title'/>
+        <rg:like name='client'/>
         <rg:nest name='shipper'>
             <rg:like name="title" label="shipper"/>
         </rg:nest>

@@ -37,7 +37,7 @@
         </g:javascript>
     </rg:criteria>
     <br>
-    <rg:grid domainClass="${cargo.cargoItem.RoadCargoItem}" caption="" width="1000px" maxColumns="15">
+    <rg:grid domainClass="${cargo.cargoItem.RoadCargoItem}" caption="" width="1000px" columns="[[name:'truck'],[name:'plateNo'],[name:'containerNum',formatter:'integer'],[name:'containerType'],[name:'ftl',formatter:'checkbox'],[name:'ltl',formatter:'checkbox'],[name:'driver'],[name:'border'],[name:'loadingDate'],[name:'etaDate'],[name:'borderPass'],[name:'arrivalDate'],[name:'deliveryDate'],[name:'cargoItem']]">
     </rg:grid>
     <rg:dialog id="roadCargoItem" title="RoadCargoItem Dialog">
         <rg:fields bean="${new cargo.cargoItem.RoadCargoItem()}">

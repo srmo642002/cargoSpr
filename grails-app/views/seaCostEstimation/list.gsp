@@ -35,10 +35,14 @@
         </g:javascript>
     </rg:criteria>
     <br>
-    <rg:grid domainClass="${cargo.SeaCostEstimation}" maxColumns="13">
+    <rg:grid domainClass="${cargo.SeaCostEstimation}" columns="[[name:'rateDate'],[name:'portOfLoading'],[name:'portOfDischarge'],[name:'container',formatter: 'checkbox'],[name:'containers'],[name:'bulk',formatter: 'checkbox'],[name:'weight'],[name:'measurment'],[name:'freightTon'],[name:'day'],[name:'route'],[name:'remark'],[name:'additionals'],[name:'totalRate'],[name:'currency']]">
     </rg:grid>
     <rg:dialog id="seaCostEstimation" title="Sea Cost Estimation Dialog" >
         <rg:fields bean="${new cargo.SeaCostEstimation()}">
+            <rg:modify>
+                <rg:ignoreField field="deprecated"/>
+            </rg:modify>
+            <input type="hidden" name="deprecated">
         </rg:fields>
         <rg:saveButton domainClass="${cargo.SeaCostEstimation}" conroller="seaCostEstimation" action="saveCost"  params="${[method:'post']}"/>
         <rg:cancelButton/>
@@ -47,7 +51,48 @@
         <input type="button" ng-click="openSeaCostEstimationCreateDialog()" value="Create Sea Cost Estimation"/>
         <input type="button" ng-click="openSeaCostEstimationEditDialog()" value="Edit Sea Cost Estimation"/>
     </sec:ifAnyGranted>
-</div>
+
+    <g:javascript>
+        function refreshTotalCalc(){
+            $("[name$=noOfContainer],[name$=rate]").keyup(function () {
+                var parent=$(this).parent();
+                var noOfContainer = parseFloat(parent.find("[name$=noOfContainer]").val())
+                var rate = parseFloat(parent.find("[name$=rate]").val())
+
+                var x = parent.find("[name$=total]")
+
+                var tc = x.val(noOfContainer*rate)
+                var total=0;
+                $("[name$=total]").each(function(){
+                    total+=parseFloat(this.value);
+                })
+                $("#seaCostEstimation").find("#totalRate").val(total)
+            });
+        }
+        $(function(){
+            $("#addCompositecontainers").click(function(){
+                refreshTotalCalc();
+            })
+        });
+        refreshTotalCalc();
+
+        $("[name$=bulk]").change(function(){
+            if ($("[name$=bulk]").is(":checked")){
+                $("[name$=weight]").parent().show();
+                $("[name$=measurment]").parent().show();
+                $("[name$=freightTon]").parent().show();
+            }
+            else{
+                $("[name$=weight]").parent().hide();
+                $("[name$=measurment]").parent().hide();
+                $("[name$=freightTon]").parent().hide();
+            }
+        });
+        $("[name$=bulk]").change();
+
+    </g:javascript>
+
+    </div>
 
 </body>
 </html>

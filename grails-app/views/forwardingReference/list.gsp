@@ -38,7 +38,9 @@
         </g:javascript>
     </rg:criteria>
     <br>
-    <rg:grid domainClass="${cargo.ForwardingReference}" maxColumns="11"></rg:grid>
+    <rg:grid domainClass="${cargo.ForwardingReference}" columns="[[name:'title'],[name:'address'],[name:'telephone'],[name:'fax'],[name:'webSite'],[name:'contactPerson'],[name:'asAShipper',formatter:'checkbox'],[name:'asAConsignee',formatter:'checkbox'],[name:'asANotifyParty',formatter:'checkbox'],[name:'asAnAgent',formatter:'checkbox'],[name:'asACarrier',formatter:'checkbox']]">
+
+    </rg:grid>
     <rg:dialog id="forwardingReference" title="ForwardingReference Dialog">
         <rg:fields bean="${new cargo.ForwardingReference()}"></rg:fields>
         <rg:saveButton domainClass="${cargo.ForwardingReference}"/>

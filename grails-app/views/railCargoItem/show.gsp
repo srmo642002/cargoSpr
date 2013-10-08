@@ -76,11 +76,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${railCargoItemInstance?.deliveryOrderDate}">
+				<g:if test="${railCargoItemInstance?.deliveryDate}">
 				<li class="fieldcontain">
-					<span id="deliveryOrderDate-label" class="property-label"><g:message code="railCargoItem.deliveryOrderDate.label" default="Delivery Order Date" /></span>
+					<span id="deliveryDate-label" class="property-label"><g:message code="railCargoItem.deliveryDate.label" default="Delivery Date" /></span>
 					
-						<span class="property-value" aria-labelledby="deliveryOrderDate-label"><g:formatDate date="${railCargoItemInstance?.deliveryOrderDate}" /></span>
+						<span class="property-value" aria-labelledby="deliveryDate-label"><g:formatDate date="${railCargoItemInstance?.deliveryDate}" /></span>
 					
 				</li>
 				</g:if>

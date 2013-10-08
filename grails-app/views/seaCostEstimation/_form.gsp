@@ -1,7 +1,5 @@
 <%@ page import="cargo.SeaCostEstimation" %>
 
-
-
 <div class="fieldcontain ${hasErrors(bean: seaCostEstimationInstance, field: 'rateDate', 'error')} required">
 	<label for="rateDate">
 		<g:message code="seaCostEstimation.rateDate.label" default="Rate Date" />
@@ -95,11 +93,11 @@
 		<g:message code="seaCostEstimation.day.label" default="Day" />
 		
 	</label>
-	<g:field type="number" name="day" value="${seaCostEstimationInstance.day}"/>
+	<g:field type="number" name="day"  value="${seaCostEstimationInstance.day}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: seaCostEstimationInstance, field: 'route', 'error')} ">
-	<label for="route">
+<div class="fieldcontain ${hasErrors(bean: seaCostEstimationInstance, field: 'route', 'error')}">
+	<label for="route" id="route">
 		<g:message code="seaCostEstimation.route.label" default="Route" />
 		
 	</label>
@@ -114,12 +112,12 @@
 	<g:textArea name="remark" cols="40" rows="5" maxlength="5000" value="${seaCostEstimationInstance?.remark}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: seaCostEstimationInstance, field: 'observation', 'error')} ">
-	<label for="observation">
-		<g:message code="seaCostEstimation.observation.label" default="Observation" />
+<div class="fieldcontain ${hasErrors(bean: seaCostEstimationInstance, field: 'additionals', 'error')} ">
+	<label for="additionals">
+		<g:message code="seaCostEstimation.additionals.label" default="additionals" />
 		
 	</label>
-	<g:textField name="observation" value="${seaCostEstimationInstance?.observation}"/>
+	<g:textField name="additionals" value="${seaCostEstimationInstance?.additionals}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: seaCostEstimationInstance, field: 'deprecated', 'error')} ">

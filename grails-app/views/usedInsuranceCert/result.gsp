@@ -6,17 +6,17 @@
     <g:set var="entityName" value="${message(code: 'insuranceCert.report.label', default: 'Transit Rate')}"/>
     <title><g:message code="insuranceCert.report.label" args="[entityName]"/></title>
     <style>
-        #tb
+    #tb
         table,th,td
-        {
-            border: 1px solid #0d3d62;
-            table-layout: fixed;
-            overflow: hidden;
-            background-color: #fff9c2;
-            font-size: inherit;
-            text-align: center;
-            font-weight: bolder;
-        }
+    {
+        border: 1px solid #0d3d62;
+        table-layout: fixed;
+        overflow: hidden;
+        background-color: #fff9c2;
+        font-size: inherit;
+        text-align: center;
+        font-weight: bolder;
+    }
     </style>
 </head>
 
@@ -51,8 +51,8 @@
     </div>
 
     <br>
-<div>
-    <g:link action="report" style="font-family: times;color: #00008b;font-size: 18px;">New Report</g:link>
-</div>
+    <div>
+        <g:link action="report" style="font-family: times;color: #00008b;font-size: 18px;">New Report</g:link>
+    </div>
 </body>
 </html>

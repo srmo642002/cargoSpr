@@ -17,6 +17,7 @@ class UsedInsuranceCert  {
 
     InsuranceCert insuranceCert
     AssignedInsuranceCert assignedInsuranceCert
+    CustomsOperations customsOperations
 
 
 
@@ -31,7 +32,7 @@ class UsedInsuranceCert  {
 
         assignedInsuranceCert(nullable: false)
         insuranceCert(nullable: false)
-        usedDate(nullable: false)
+        usedDate(nullable: false,persian:true)
         shipment(nullable: false)
 
         transitFrom(nullable: false)

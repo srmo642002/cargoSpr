@@ -1079,6 +1079,32 @@ a.skip {
     background-color: #aaaeb6;
 }
 
+#AirCargoItemGridContainer .ui-jqgrid-titlebar{
+
+    background: none;
+    background-color: #d0e9c6;
+}
+
+#OceanCargoItemGridContainer .ui-jqgrid-titlebar{
+
+    background: none;
+    background-color: #d0e9c6;
+}
+
+#RailCargoItemGridContainer .ui-jqgrid-titlebar{
+
+    background: none;
+    background-color: #d0e9c6;
+}
+
+
+
+#RoadCargoItemGridContainer .ui-jqgrid-titlebar{
+
+    background: none;
+    background-color: #d0e9c6;
+}
+
 
 
 

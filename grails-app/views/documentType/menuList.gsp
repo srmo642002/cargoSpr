@@ -41,7 +41,7 @@
         </g:javascript>
     </rg:criteria>
     <br>
-    <rg:grid domainClass="${cargo.DocumentType}" columns="${[[name: "title"], [name: "persianTitle"],[name: "critical"],[name: "shipment"],[name: "user"]]}">
+    <rg:grid domainClass="${cargo.DocumentType}" columns="${[[name: "title"], [name: "persianTitle"],[name: "critical",formatter:'checkbox'],[name: "shipment"],[name: "user"]]}">
         <rg:criteria>
             <rg:eq name='user.id' value='${userid}'/>
         </rg:criteria>

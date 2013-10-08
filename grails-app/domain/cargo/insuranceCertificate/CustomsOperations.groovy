@@ -30,10 +30,11 @@ class CustomsOperations {
     InsuranceCert insuranceCert
 
 
+
     static constraints = {
 
         transitType(nullable: false, inList:["Internal Transit","External Transit"])
-        customsDate()
+        customsDate(persian:true)
         shipment(nullable: false)
         transitMode(nullable: false, inList: ["Road","Rail","Air","Marine"])
 
@@ -53,9 +54,9 @@ class CustomsOperations {
         insuranceCert(nullable: true)
 
         receipt(nullable: true)
-        receiptDate(nullable: true)
+        receiptDate(nullable: true,persian:true)
         receiptNum(nullable: true)
-
-
     }
+
+    String toString(){"$permitsNum"}
 }

@@ -1,8 +1,5 @@
 package cargo
 
-
-
-import org.junit.*
 import grails.test.mixin.*
 
 @TestFor(CostEstimationController)

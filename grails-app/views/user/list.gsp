@@ -18,7 +18,9 @@
 </div>
 
 <div id="list-user" ng-controller="userController" class="content scaffold-list" role="main">
-    <rg:grid domainClass="${cargo.User}" caption="" width="1000px" maxColumns="10"></rg:grid>
+    <rg:grid domainClass="${cargo.User}" columns="[[name:'username'],[name:'level'],[name:'groups'],[name:'email'],[name:'mobile'],[name:'enabled',formatter:'checkbox'],[name:'accountExpired',formatter:'checkbox'],[name:'accountLocked',formatter:'checkbox'],[name:'passwordExpired',formatter:'checkbox']]" caption="" width="1000px">
+
+    </rg:grid>
     <rg:dialog id="user" title="User Dialog">
         <rg:fields bean="${new cargo.User()}"></rg:fields>
         <rg:saveButton domainClass="${cargo.User}"/>

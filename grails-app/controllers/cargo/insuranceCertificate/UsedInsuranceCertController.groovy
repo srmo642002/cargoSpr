@@ -87,6 +87,49 @@ class UsedInsuranceCertController {
         redirect(action: "show", id: usedInsuranceCertInstance.id)
     }
 
+    def reportRes() {
+        def couponFrom = params.couponNumFrom
+        def couponTo = params.couponNumTo
+        def usedInsuranceCert = UsedInsuranceCert.getTypeParameters()
+        def reportRes = []
+        println usedInsuranceCert
+        render(view: "result", params: params, model: [reportRes: reportRes])
+        for (def i = couponFrom; i <= couponTo; i++) {
+            def assignedInsuranceCert = AssignedInsuranceCert.findByCouponNumFromLessThanEqualsAndCouponNumToGreaterThanEquals(i, i)
+            def selUsedInsurance = UsedInsuranceCert.createCriteria().get {
+                coupons {
+                    le('couponNumFrom', i)
+                    ge('couponNumTo', i)
+                }
+                //eq("insuranceCert", insuranceCert)
+            }
+
+            def customsOperation
+            selUsedInsurance?.customsOperations?.each {
+                if (it.shipment == selUsedInsurance.shipment)
+                    customsOperation = it
+            }
+
+            def insuranceCert
+            reportRes << [CouponNO: i,
+                    purchaseDate: rg.formatJalaliDate(date: insuranceCert?.purchaseDate),
+                    expireDate: rg.formatJalaliDate(date: insuranceCert?.expireDate),
+                    sendingDate: rg.formatJalaliDate(date: assignedInsuranceCert?.sendingDate),
+                    agent: assignedInsuranceCert?.agent,
+                    shipment: selUsedInsurance?.shipment,
+                    transitFrom: customsOperation?.origin,
+                    transitTo: customsOperation?.destination,
+                    permitsNum: customsOperation?.permitsNum,
+                    commodity: customsOperation?.commodity,
+                    weight: customsOperation?.weight,
+                    tariff: customsOperation?.tariff,
+                    rowNum: customsOperation?.rowNum,
+                    kutazhNum: customsOperation?.kutazhNum,
+                    receiptDate: rg.formatJalaliDate(date: customsOperation?.receiptDate),
+                    receiptNum: customsOperation?.receiptNum]
+        }
+    }
+
     def show() {
         def usedInsuranceCertInstance = UsedInsuranceCert.get(params.id)
         if (!usedInsuranceCertInstance) {

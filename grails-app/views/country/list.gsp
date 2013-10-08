@@ -71,7 +71,7 @@
         </g:javascript>
     </rg:criteria>
     <br>
-    <rg:grid domainClass="${cargo.City}" onSelectRow="loadAirports"></rg:grid>
+    <rg:grid domainClass="${cargo.City}" columns="[[name:'country'],[name:'title'],[name:'persianTitle'],[name:'port',formatter:'checkbox'],[name:'abbreviation']]" onSelectRow="loadAirports"></rg:grid>
     <g:javascript>
         var loadAirports = function (rowId) {
             var criteria = '[{\'op\':\'eq\', \'field\':\'city.id\', \'val\':\'' + rowId + '\'}]'

@@ -74,3 +74,11 @@
 	<g:field type="number" name="totalCost" step="any" value="${usedInsuranceCertInstance.totalCost}"/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: usedInsuranceCertInstance, field: 'customsOperations', 'error')} required">
+	<label for="customsOperations">
+		<g:message code="usedInsuranceCert.customsOperations.label" default="Customs Operations" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="customsOperations" name="customsOperations.id" from="${cargo.insuranceCertificate.CustomsOperations.list()}" optionKey="id" required="" value="${usedInsuranceCertInstance?.customsOperations?.id}" class="many-to-one"/>
+</div>
+

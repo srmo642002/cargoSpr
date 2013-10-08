@@ -26,12 +26,12 @@
 	<g:datePicker name="arrivalDate" precision="day"  value="${oceanCargoItemInstance?.arrivalDate}"  />
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: oceanCargoItemInstance, field: 'deliveryOrderDate', 'error')} required">
-	<label for="deliveryOrderDate">
-		<g:message code="oceanCargoItem.deliveryOrderDate.label" default="Delivery Order Date" />
+<div class="fieldcontain ${hasErrors(bean: oceanCargoItemInstance, field: 'deliveryDate', 'error')} required">
+	<label for="deliveryDate">
+		<g:message code="oceanCargoItem.deliveryDate.label" default="Delivery Date" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="deliveryOrderDate" precision="day"  value="${oceanCargoItemInstance?.deliveryOrderDate}"  />
+	<g:datePicker name="deliveryDate" precision="day"  value="${oceanCargoItemInstance?.deliveryDate}"  />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: oceanCargoItemInstance, field: 'cargoItem', 'error')} required">

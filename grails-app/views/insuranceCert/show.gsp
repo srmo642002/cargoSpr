@@ -122,7 +122,7 @@
 					
 				</li>
 				</g:if>
-
+			
 				<g:if test="${insuranceCertInstance?.status}">
 				<li class="fieldcontain">
 					<span id="status-label" class="property-label"><g:message code="insuranceCert.status.label" default="Status" /></span>

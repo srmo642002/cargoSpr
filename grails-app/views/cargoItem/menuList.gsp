@@ -34,7 +34,7 @@
         </g:javascript>
     </rg:criteria>
     <br>
-    <rg:grid domainClass="${cargo.cargoItem.CargoItem}" caption="" width="1000px" maxColumns="17">
+    <rg:grid domainClass="${CargoItem}" columns="[[name:'id',formatter:'generateCheckbox'],[name:'item'],[name:'nonContainerized',formatter: 'checkbox'],[name:'containerized',formatter: 'checkbox'],[name:'containerNo'],[name:'size'],[name:'type'],[name:'commodity'],[name:'typeOfPackage'],[name:'noOfPackage'],[name:'grade'],[name:'grossWeight'],[name:'totalWeight'],[name:'volume'],[name:'dg',formatter: 'checkbox'],[name:'incoClass'],[name:'unNo',formatter: 'integer'],[name:'shipment'],[name:'user']]">
         <rg:criteria>
             <rg:nest name="user" >
                 <rg:nest name="groups">
@@ -65,19 +65,7 @@
         <input type="button" ng-click="openCargoItemEditDialog()" value="Edit CargoItem"/>
     </sec:ifAnyGranted>
 
-    <g:javascript>
-        $("#cargoItem").find("#width,#height,#length").keyup(function () {
-            var width = parseFloat($("#cargoItem").find("#width").val())
-            var height = parseFloat($("#cargoItem").find("#height").val())
-            var length = parseFloat($("#cargoItem").find("#length").val())
-            var fini = $("#cargoItem").find("#volume").val(width * height * length)
-            if(width==0||height==0||length==0){
-                fini = 0;
-            } else{
-                fini = $("#cargoItem").find("#volume").val(width * height * length)
-            }
-        })
-    </g:javascript>
+
     <g:javascript>
         $("#cargoItem").find("#noOfPackage,#grossWeight").keyup(function () {
             var noOfPackage = parseFloat($("#cargoItem").find("#noOfPackage").val())
@@ -86,46 +74,42 @@
             if(width==0||height==0||length==0){
                 fini = 0;
             } else{
-                fini = $("#cargoItem").find("#volume").val(width * height * length)
+                fini = $("#cargoItem").find("#totalWeight").val(noOfPackage * grossWeight)
             }
         })
     </g:javascript>
     <g:javascript>
-        $("#cargoItem").find("#totalWeight,#rateOrCharge").keyup(function () {
-            var totalWeight = parseFloat($("#cargoItem").find("#totalWeight").val())
-            var rateOrCharge = parseFloat($("#cargoItem").find("#rateOrCharge").val())
-            var fini = $("#cargoItem").find("#chargeableWeight").val(totalWeight * rateOrCharge)
-            if(width==0||height==0||length==0){
-                fini = 0;
-            } else{
-                fini = $("#cargoItem").find("#volume").val(width * height * length)
+        $("[name$=containerized]").change(function(){
+            if ($("[name$=containerized]").is(":checked")){
+                $("[name$=containerNo]").parent().show();
+                $("[name$=size]").parent().show();
+                $("[name$=type]").parent().show();
             }
-        })
+            else{
+                $("[name$=containerNo]").parent().hide();
+                $("[name$=size]").parent().hide();
+                $("[name$=type]").parent().hide();
+            }
+        });
+        $("[name$=containerized]").change();
     </g:javascript>
     <g:javascript>
-        $("#cargoItem").find("#noOfPackage,#volume").keyup(function () {
-            var noOfPackage = parseFloat($("#cargoItem").find("#noOfPackage").val())
-            var volume = parseFloat($("#cargoItem").find("#volume").val())
-            var fini = $("#cargoItem").find("#totalVolume").val(noOfPackage * volume)
-            if(width==0||height==0||length==0){
-                fini = 0;
-            } else{
-                fini = $("#cargoItem").find("#volume").val(width * height * length)
+        $("[name$=dg]").change(function(){
+            if ($("[name$=dg]").is(":checked")){
+                $("[name$=incoClass]").parent().show();
+                $("[name$=unNo]").parent().show();
             }
-        })
-    </g:javascript>
-    <g:javascript>
-        $("#cargoItem").find("#totalVolume,#rateOrCharge").keyup(function () {
-            var totalVolume = parseFloat($("#cargoItem").find("#totalVolume").val())
-            var rateOrCharge = parseFloat($("#cargoItem").find("#rateOrCharge").val())
-            var fini = $("#cargoItem").find("#chargeableRate").val(totalVolume * rateOrCharge)
-            if(width==0||height==0||length==0){
-                fini = 0;
-            } else{
-                fini = $("#cargoItem").find("#volume").val(width * height * length)
+            else{
+                $("[name$=incoClass]").parent().hide();
+                $("[name$=unNo]").parent().hide();
+
             }
-        })
+        });
+        $("[name$=dg]").change();
     </g:javascript>
+
+
+
 </div>
 
 </body>

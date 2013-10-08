@@ -1,4 +1,4 @@
-<%@ page import="cargo.CostEstimation" %>
+<%@ page import="cargo.CostEstimation; cargo.RoadCostEstimation; cargo.CostEstimation" %>
 <!doctype html>
 <html>
 <head>
@@ -8,7 +8,7 @@
 </head>
 
 <body>
-<h2><g:message code="default.list.label" args="[entityName]"/></h2>
+<h2>Road Cost Estimation</h2>
 <a href="#list-costEstimation" class="skip" tabindex="-1"><g:message code="default.link.skip.label"
                                                                             default="Skip to content&hellip;"/></a>
 
@@ -34,12 +34,16 @@
         </g:javascript>
     </rg:criteria>
     <br>
-    <rg:grid domainClass="${cargo.CostEstimation}" maxColumns="9">
+    <rg:grid domainClass="${CostEstimation}" columns="[[name:'rateDate'],[name:'originCnt'],[name:'originCty'],[name:'destinationCnt'],[name:'destinationCty'],[name:'truck'],[name:'containerType'],[name:'ftl',formatter: 'checkbox'],[name:'ltl',formatter: 'checkbox'],[name:'weight'],[name:'overWeight'],[name:'route'],[name:'day'],[name:'hour'],[name:'remark'],[name:'observation'],[name:'rate'],[name:'currency']]">
     </rg:grid>
-    <rg:dialog id="costEstimation" title="Cost Estimation Dialog" >
-        <rg:fields bean="${new cargo.CostEstimation()}">
+    <rg:dialog id="costEstimation" title="Road Cost Estimation Dialog" >
+        <rg:fields bean="${new CostEstimation()}">
+            <rg:modify>
+                <rg:ignoreField field="deprecated"/>
+            </rg:modify>
+            <input type="hidden" name="deprecated">
         </rg:fields>
-        <rg:saveButton domainClass="${cargo.CostEstimation}" conroller="costEstimation" action="saveCost"  params="${[method:'post']}"/>
+        <rg:saveButton domainClass="${CostEstimation}" conroller="costEstimation" action="saveCost"  params="${[method:'post']}"/>
         <rg:cancelButton/>
     </rg:dialog>
     <g:javascript>
@@ -75,8 +79,8 @@
                 })
     </g:javascript>
     <sec:ifAnyGranted roles="Admin,Create Shipment,Edit Shipment,Set CostEst">
-        <input type="button" ng-click="openCostEstimationCreateDialog()" value="Create Cost Estimation"/>
-        <input type="button" ng-click="openCostEstimationEditDialog()" value="Edit Cost Estimation"/>
+        <input type="button" ng-click="openCostEstimationCreateDialog()" value="Create Road Cost Estimation"/>
+        <input type="button" ng-click="openCostEstimationEditDialog()" value="Edit Road Cost Estimation"/>
     </sec:ifAnyGranted>
 </div>
 

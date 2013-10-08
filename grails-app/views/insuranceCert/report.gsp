@@ -10,13 +10,15 @@
     margin: 50px 0px;
     padding: 20px;
     text-align: center;
+
 }
 
 #costEstimSrch .inner {
     width: 450px;
+    height: 250px;
     padding-bottom: 6px;
     margin-top: 20px;
-    margin-left: 340px;
+    margin-left: 350px;
     margin-right: 340;
     margin-bottom: 20;
     text-align: left;
@@ -53,6 +55,7 @@
 #costEstimSrch .inner .cssform input[type='text'] {
     width: 120px;
     padding-left: 100px;
+    margin-left: 33px;
 
 }
 
@@ -75,8 +78,6 @@
 
 
 }
-
-
 
 #costEstimSrch .inner .text_ {
     width: 120px;
@@ -113,15 +114,14 @@
         <g:form>
             <br>
             <br>
-            <p style="padding-left: 110px">
+            <p style="padding-left: 110px;margin-left: -40px;margin-top: 20px">
                 <label for='Code'><g:message code="reportInsuranceCode.label"/>:</label>
-                <!--<input type='text' class='text_' name='formDesCity' id='desCity'/>  -->
                 <g:select name="code" from="${cargo.insuranceCertificate.InsuranceCert.list()}" />
             </p>
             <br>
             <div class= button>
                 <p>
-                    <input type="button" value="Submit" onclick="autoSent()" />
+                    <input type="button" value="Submit" onclick="autoSent()" style="margin-top: 25px;margin-left: 15px"/>
                 </p>
                 <g:javascript>
                 function autoSent(){
@@ -131,11 +131,10 @@
             </div>
         </g:form>
     </div>
-</div>
-<g:javascript>
-    $(function(){
-        $("select").quickselect()
-    })
-</g:javascript>
+    <g:javascript>
+        $(function(){
+            $("select").quickselect()
+        })
+    </g:javascript>
 </body>
 </html>

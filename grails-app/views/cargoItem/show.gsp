@@ -31,6 +31,51 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${cargoItemInstance?.nonContainerized}">
+				<li class="fieldcontain">
+					<span id="nonContainerized-label" class="property-label"><g:message code="cargoItem.nonContainerized.label" default="Non Containerized" /></span>
+					
+						<span class="property-value" aria-labelledby="nonContainerized-label"><g:formatBoolean boolean="${cargoItemInstance?.nonContainerized}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${cargoItemInstance?.containerized}">
+				<li class="fieldcontain">
+					<span id="containerized-label" class="property-label"><g:message code="cargoItem.containerized.label" default="Containerized" /></span>
+					
+						<span class="property-value" aria-labelledby="containerized-label"><g:formatBoolean boolean="${cargoItemInstance?.containerized}" /></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${cargoItemInstance?.containerNo}">
+				<li class="fieldcontain">
+					<span id="containerNo-label" class="property-label"><g:message code="cargoItem.containerNo.label" default="Container No" /></span>
+					
+						<span class="property-value" aria-labelledby="containerNo-label"><g:fieldValue bean="${cargoItemInstance}" field="containerNo"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${cargoItemInstance?.size}">
+				<li class="fieldcontain">
+					<span id="size-label" class="property-label"><g:message code="cargoItem.size.label" default="Size" /></span>
+					
+						<span class="property-value" aria-labelledby="size-label"><g:fieldValue bean="${cargoItemInstance}" field="size"/></span>
+					
+				</li>
+				</g:if>
+			
+				<g:if test="${cargoItemInstance?.type}">
+				<li class="fieldcontain">
+					<span id="type-label" class="property-label"><g:message code="cargoItem.type.label" default="Type" /></span>
+					
+						<span class="property-value" aria-labelledby="type-label"><g:fieldValue bean="${cargoItemInstance}" field="type"/></span>
+					
+				</li>
+				</g:if>
+			
 				<g:if test="${cargoItemInstance?.commodity}">
 				<li class="fieldcontain">
 					<span id="commodity-label" class="property-label"><g:message code="cargoItem.commodity.label" default="Commodity" /></span>
@@ -54,15 +99,6 @@
 					<span id="noOfPackage-label" class="property-label"><g:message code="cargoItem.noOfPackage.label" default="No Of Package" /></span>
 					
 						<span class="property-value" aria-labelledby="noOfPackage-label"><g:fieldValue bean="${cargoItemInstance}" field="noOfPackage"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${cargoItemInstance?.unitOfMeasure}">
-				<li class="fieldcontain">
-					<span id="unitOfMeasure-label" class="property-label"><g:message code="cargoItem.unitOfMeasure.label" default="Unit Of Measure" /></span>
-					
-						<span class="property-value" aria-labelledby="unitOfMeasure-label"><g:fieldValue bean="${cargoItemInstance}" field="unitOfMeasure"/></span>
 					
 				</li>
 				</g:if>
@@ -94,51 +130,6 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${cargoItemInstance?.rateOrCharge}">
-				<li class="fieldcontain">
-					<span id="rateOrCharge-label" class="property-label"><g:message code="cargoItem.rateOrCharge.label" default="Rate Or Charge" /></span>
-					
-						<span class="property-value" aria-labelledby="rateOrCharge-label"><g:fieldValue bean="${cargoItemInstance}" field="rateOrCharge"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${cargoItemInstance?.chargeableWeight}">
-				<li class="fieldcontain">
-					<span id="chargeableWeight-label" class="property-label"><g:message code="cargoItem.chargeableWeight.label" default="Chargeable Weight" /></span>
-					
-						<span class="property-value" aria-labelledby="chargeableWeight-label"><g:fieldValue bean="${cargoItemInstance}" field="chargeableWeight"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${cargoItemInstance?.width}">
-				<li class="fieldcontain">
-					<span id="width-label" class="property-label"><g:message code="cargoItem.width.label" default="Width" /></span>
-					
-						<span class="property-value" aria-labelledby="width-label"><g:fieldValue bean="${cargoItemInstance}" field="width"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${cargoItemInstance?.length}">
-				<li class="fieldcontain">
-					<span id="length-label" class="property-label"><g:message code="cargoItem.length.label" default="Length" /></span>
-					
-						<span class="property-value" aria-labelledby="length-label"><g:fieldValue bean="${cargoItemInstance}" field="length"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${cargoItemInstance?.height}">
-				<li class="fieldcontain">
-					<span id="height-label" class="property-label"><g:message code="cargoItem.height.label" default="Height" /></span>
-					
-						<span class="property-value" aria-labelledby="height-label"><g:fieldValue bean="${cargoItemInstance}" field="height"/></span>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${cargoItemInstance?.volume}">
 				<li class="fieldcontain">
 					<span id="volume-label" class="property-label"><g:message code="cargoItem.volume.label" default="Volume" /></span>
@@ -148,20 +139,11 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${cargoItemInstance?.totalVolume}">
+				<g:if test="${cargoItemInstance?.dg}">
 				<li class="fieldcontain">
-					<span id="totalVolume-label" class="property-label"><g:message code="cargoItem.totalVolume.label" default="Total Volume" /></span>
+					<span id="dg-label" class="property-label"><g:message code="cargoItem.dg.label" default="Dg" /></span>
 					
-						<span class="property-value" aria-labelledby="totalVolume-label"><g:fieldValue bean="${cargoItemInstance}" field="totalVolume"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${cargoItemInstance?.chargeableRate}">
-				<li class="fieldcontain">
-					<span id="chargeableRate-label" class="property-label"><g:message code="cargoItem.chargeableRate.label" default="Chargeable Rate" /></span>
-					
-						<span class="property-value" aria-labelledby="chargeableRate-label"><g:fieldValue bean="${cargoItemInstance}" field="chargeableRate"/></span>
+						<span class="property-value" aria-labelledby="dg-label"><g:formatBoolean boolean="${cargoItemInstance?.dg}" /></span>
 					
 				</li>
 				</g:if>
@@ -185,14 +167,12 @@
 				</g:if>
 			
 			</ol>
-            <sec:ifAnyGranted roles="Admin,Create Shipment,Edit Shipment">
 			<g:form>
 				<fieldset class="buttons">
 					<g:hiddenField name="id" value="${cargoItemInstance?.id}" />
 					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
 				</fieldset>
 			</g:form>
-            </sec:ifAnyGranted>
-        </div>
+		</div>
 	</body>
 </html>

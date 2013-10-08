@@ -21,7 +21,7 @@
 
 <div id="list-shipment" ng-controller="shipmentController" class="content scaffold-list" role="main">
     <rg:criteria inline="true">
-        <rg:like name='title'/>
+        <rg:like name='client'/>
         <rg:nest name='shipper'>
             <rg:like name="title" label="shipper"/>
         </rg:nest>

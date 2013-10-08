@@ -29,6 +29,7 @@
     <rg:grid domainClass="${cargo.insuranceCertificate.InsuranceCert}" columns="${[[name: "code"],[name: "expireDate"],[name: "couponNumFrom",formatter:'Integer'],[name: "couponNumTo",formatter:'Integer'],[name: "totalCount",formatter:'Integer'],[name: "serialNumFrom",formatter:'Integer'],[name: "serialNumTo",formatter:'Integer'],[name: "remainedCount",formatter:'Integer']]}">
     </rg:grid>
     <rg:dialog id="insuranceCert" title="Insurance Specification Dialog">
+        %{--<div dir="rtl">--}%
         <rg:fields bean="${new cargo.insuranceCertificate.InsuranceCert()}">
             <rg:modify>
                 <rg:ignoreField field="status"/>
@@ -45,6 +46,7 @@
         </rg:fields>
         <rg:saveButton conroller="insuranceCert" action="save" domainClass="${cargo.insuranceCertificate.InsuranceCert}"/>
         <rg:cancelButton/>
+        %{--</div>--}%
     </rg:dialog>
     <sec:ifAnyGranted roles="Admin,Set PurchasedInsurSheet,Set AssignedInsurSheet">
         <input type="button" ng-click="openInsuranceCertCreateDialog()" value="Create Insurance Specification"/>
@@ -57,14 +59,19 @@
             var couponNumFrom = parseInt($("#insuranceCert").find("#couponNumFrom").val())
             var tc = $("#insuranceCert").find("#totalCount").val(couponNumTo-couponNumFrom+1)
         })
-        var exps='';
-    <g:each in="${exps}" var="exp">
-        exps+='${exp.code} ';
-    </g:each>
-        alert('Expiration Date Alarm for Purchase Code: '+exps)
-
     </g:javascript>
+
+    <g:if test="${cargo.insuranceCertificate.InsuranceCert?.count>=1}">
+        <g:javascript>
+               var exps='';
+            <g:each in="${exps}" var="exp">
+            exps+='${exp.code} ';
+            </g:each>
+            alert('Expiration Date Alarm for Purchase Code: '+exps)
+        </g:javascript>
+    </g:if>
 </div>
+
 
 </body>
 </html>

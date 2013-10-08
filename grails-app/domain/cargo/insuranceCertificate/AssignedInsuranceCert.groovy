@@ -25,7 +25,7 @@ class AssignedInsuranceCert    {
     static constraints = {
 
         agent(nullable: false)
-        sendingDate(nullable: false)
+        sendingDate(nullable: false,persian:true)
         insuranceCert(nullable: false)
         couponNumFrom(nullable: false)
         couponNumTo(nullable: false)

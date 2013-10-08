@@ -35,7 +35,7 @@
         </g:javascript>
     </rg:criteria>
     <br>
-    <rg:grid domainClass="${cargo.insuranceCertificate.CustomsOperations}"  columns="${[[name: "shipment"],[name: "transitType"],[name: "customsDate"],[name: "commodity"],[name: "transitMode"],[name: "permitsNum",formatter:'Integer'],[name: "kutazhNum",formatter:'Integer'],[name: "rowNum",formatter:'Integer'],[name: "origin"],[name: "destination"],[name: "oneSheetInsurance"],[name: "multiSheetInsurance"],[name: "receipt"]]}">
+    <rg:grid domainClass="${cargo.insuranceCertificate.CustomsOperations}"  columns="${[[name: "shipment"],[name: "transitType"],[name: "customsDate"],[name: "commodity"],[name: "transitMode"],[name: "permitsNum",formatter:'Integer'],[name: "kutazhNum",formatter:'Integer'],[name: "rowNum",formatter:'Integer'],[name: "origin"],[name: "destination"],[name: "oneSheetInsurance",formatter: 'checkbox'],[name: "multiSheetInsurance",formatter: 'checkbox'],[name: "receipt",formatter: 'checkbox']]}">
         <rg:criteria>
             <rg:eq name='shipment.id' value='${shipmentid}'/>
         </rg:criteria>
@@ -50,6 +50,20 @@
         <input type="button" ng-click="openCustomsOperationsCreateDialog()" value="Create Customs Operations"/>
         <input type="button" ng-click="openCustomsOperationsEditDialog()" value="Edit Customs Operations"/>
     </sec:ifAnyGranted>
+
+    <g:javascript>
+        $("[name$=receipt]").change(function(){
+            if ($("[name$=receipt]").is(":checked")){
+                $("[name$=receiptDate]").parent().show();
+                $("[name$=receiptNum]").parent().show();
+            }
+            else{
+                $("[name$=receiptDate]").parent().hide();
+                $("[name$=receiptNum]").parent().hide();
+            }
+        });
+        $("[name$=receipt]").change();
+    </g:javascript>
 </div>
 
 </body>

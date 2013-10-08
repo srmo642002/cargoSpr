@@ -42,12 +42,12 @@
 	<g:datePicker name="arrivalDate" precision="day"  value="${airCargoItemInstance?.arrivalDate}"  />
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: airCargoItemInstance, field: 'deliveryOrderDate', 'error')} required">
-	<label for="deliveryOrderDate">
-		<g:message code="airCargoItem.deliveryOrderDate.label" default="Delivery Order Date" />
+<div class="fieldcontain ${hasErrors(bean: airCargoItemInstance, field: 'deliveryDate', 'error')} required">
+	<label for="deliveryDate">
+		<g:message code="airCargoItem.deliveryDate.label" default="Delivery Date" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="deliveryOrderDate" precision="day"  value="${airCargoItemInstance?.deliveryOrderDate}"  />
+	<g:datePicker name="deliveryDate" precision="day"  value="${airCargoItemInstance?.deliveryDate}"  />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: airCargoItemInstance, field: 'airFreight', 'error')} required">

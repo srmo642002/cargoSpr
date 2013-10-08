@@ -36,16 +36,16 @@ class CostEstimation {
         containerType(nullable: true, inList:["20'","40'","RF","other"])
         ftl(nullable: true)
         ltl(nullable: true)
-        rate(nullable : false)
-        currency(nullable: false,inList:["USD","CAD","EUR","Rial","Lira","AED"])
-        remark(nullable: true, maxSize : 5000)
-        deprecated(nullable: true)
         weight(nullable : false)
         overWeight(nullable: true)
         route(nullable : false)
         day(nullable: true)
         hour(nullable: true)
+        remark(nullable: true, maxSize : 5000)
         observation(nullable: true, maxSize : 5000)
+        rate(nullable : false)
+        currency(nullable: false,inList:["USD","CAD","EUR","Rial","Lira","AED"])
+        deprecated(nullable: true)
 
 
 

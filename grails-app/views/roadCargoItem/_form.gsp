@@ -10,12 +10,12 @@
 	<g:select name="truck" from="${roadCargoItemInstance.constraints.truck.inList}" value="${roadCargoItemInstance?.truck}" valueMessagePrefix="roadCargoItem.truck" noSelection="['': '']"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: roadCargoItemInstance, field: 'plaque', 'error')} ">
-	<label for="plaque">
-		<g:message code="roadCargoItem.plaque.label" default="Plaque" />
+<div class="fieldcontain ${hasErrors(bean: roadCargoItemInstance, field: 'plateNo', 'error')} ">
+	<label for="plateNo">
+		<g:message code="roadCargoItem.plateNo.label" default="Plate No" />
 		
 	</label>
-	<g:textField name="plaque" value="${roadCargoItemInstance?.plaque}"/>
+	<g:textField name="plateNo" value="${roadCargoItemInstance?.plateNo}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: roadCargoItemInstance, field: 'containerType', 'error')} ">
@@ -50,6 +50,14 @@
 	<g:checkBox name="ltl" value="${roadCargoItemInstance?.ltl}" />
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: roadCargoItemInstance, field: 'border', 'error')} ">
+	<label for="border">
+		<g:message code="roadCargoItem.border.label" default="Border" />
+		
+	</label>
+	<g:textField name="border" value="${roadCargoItemInstance?.border}"/>
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: roadCargoItemInstance, field: 'driver', 'error')} ">
 	<label for="driver">
 		<g:message code="roadCargoItem.driver.label" default="Driver" />
@@ -74,20 +82,28 @@
 	<g:datePicker name="etaDate" precision="day"  value="${roadCargoItemInstance?.etaDate}"  />
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: roadCargoItemInstance, field: 'arrivalDate', 'error')} required">
-	<label for="arrivalDate">
-		<g:message code="roadCargoItem.arrivalDate.label" default="Arrival Date" />
-		<span class="required-indicator">*</span>
+<div class="fieldcontain ${hasErrors(bean: roadCargoItemInstance, field: 'borderPass', 'error')} ">
+	<label for="borderPass">
+		<g:message code="roadCargoItem.borderPass.label" default="Border Pass" />
+		
 	</label>
-	<g:datePicker name="arrivalDate" precision="day"  value="${roadCargoItemInstance?.arrivalDate}"  />
+	<g:datePicker name="borderPass" precision="day"  value="${roadCargoItemInstance?.borderPass}" default="none" noSelection="['': '']" />
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: roadCargoItemInstance, field: 'deliveryOrderDate', 'error')} required">
-	<label for="deliveryOrderDate">
-		<g:message code="roadCargoItem.deliveryOrderDate.label" default="Delivery Order Date" />
-		<span class="required-indicator">*</span>
+<div class="fieldcontain ${hasErrors(bean: roadCargoItemInstance, field: 'arrivalDate', 'error')} ">
+	<label for="arrivalDate">
+		<g:message code="roadCargoItem.arrivalDate.label" default="Arrival Date" />
+		
 	</label>
-	<g:datePicker name="deliveryOrderDate" precision="day"  value="${roadCargoItemInstance?.deliveryOrderDate}"  />
+	<g:datePicker name="arrivalDate" precision="day"  value="${roadCargoItemInstance?.arrivalDate}" default="none" noSelection="['': '']" />
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: roadCargoItemInstance, field: 'deliveryDate', 'error')} ">
+	<label for="deliveryDate">
+		<g:message code="roadCargoItem.deliveryDate.label" default="Delivery Date" />
+		
+	</label>
+	<g:datePicker name="deliveryDate" precision="day"  value="${roadCargoItemInstance?.deliveryDate}" default="none" noSelection="['': '']" />
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: roadCargoItemInstance, field: 'cargoItem', 'error')} required">

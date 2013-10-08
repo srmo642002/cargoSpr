@@ -146,7 +146,7 @@ class ShipmentController {
                 params['cargoItem.id'] = it as Long
                 def airCargoItem = new AirCargoItem(params)
                 airCargoItem.user = principalService.getUser()
-                def oldAirCargoItem = AirCargoItem.findByAircraftAndFlightNumAndLoadingDateAndEtaDateAndArrivalDateAndDeliveryOrderDateAndCargoItemAndAirFreight(airCargoItem.aircraft, airCargoItem.flightNum, airCargoItem.loadingDate, airCargoItem.etaDate, airCargoItem.arrivalDate, airCargoItem.deliveryOrderDate, airCargoItem.cargoItem, airCargoItem.airFreight)
+                def oldAirCargoItem = AirCargoItem.findByAircraftAndFlightNumAndLoadingDateAndEtaDateAndArrivalDateAndDeliveryDateAndCargoItemAndAirFreight(airCargoItem.aircraft, airCargoItem.flightNum, airCargoItem.loadingDate, airCargoItem.etaDate, airCargoItem.arrivalDate, airCargoItem.deliveryDate, airCargoItem.cargoItem, airCargoItem.airFreight)
                 if (oldAirCargoItem) {
                     render "error"
                 } else {
@@ -163,7 +163,7 @@ class ShipmentController {
             } else
                 airCargoItem = new AirCargoItem(params)
             airCargoItem.user = principalService.getUser()
-            def oldAirCargoItem = AirCargoItem.findByAircraftAndFlightNumAndLoadingDateAndEtaDateAndArrivalDateAndDeliveryOrderDateAndCargoItemAndAirFreight(airCargoItem.aircraft, airCargoItem.flightNum, airCargoItem.loadingDate, airCargoItem.etaDate, airCargoItem.arrivalDate, airCargoItem.deliveryOrderDate, airCargoItem.cargoItem, airCargoItem.airFreight)
+            def oldAirCargoItem = AirCargoItem.findByAircraftAndFlightNumAndLoadingDateAndEtaDateAndArrivalDateAndDeliveryDateAndCargoItemAndAirFreight(airCargoItem.aircraft, airCargoItem.flightNum, airCargoItem.loadingDate, airCargoItem.etaDate, airCargoItem.arrivalDate, airCargoItem.deliveryDate, airCargoItem.cargoItem, airCargoItem.airFreight)
             if (oldAirCargoItem) {
                 render "error"
             } else {
@@ -184,7 +184,7 @@ class ShipmentController {
                 params['cargoItem.id'] = it as Long
                 def oceanCargoItem = new OceanCargoItem(params)
                 oceanCargoItem.user = principalService.getUser()
-                def oldOceanCargoItem = OceanCargoItem.findByLoadingDateAndEtaDateAndArrivalDateAndDeliveryOrderDateAndCargoItemAndOceanFreight(oceanCargoItem.loadingDate, oceanCargoItem.etaDate, oceanCargoItem.arrivalDate, oceanCargoItem.deliveryOrderDate, oceanCargoItem.cargoItem, oceanCargoItem.oceanFreight)
+                def oldOceanCargoItem = OceanCargoItem.findByLoadingDateAndEtaDateAndArrivalDateAndDeliveryDateAndCargoItemAndOceanFreight(oceanCargoItem.loadingDate, oceanCargoItem.etaDate, oceanCargoItem.arrivalDate, oceanCargoItem.deliveryDate, oceanCargoItem.cargoItem, oceanCargoItem.oceanFreight)
                 if (oldOceanCargoItem) {
                     render "error"
                 } else {
@@ -200,7 +200,7 @@ class ShipmentController {
             } else
                 oceanCargoItem = new OceanCargoItem(params)
             oceanCargoItem.user = principalService.getUser()
-            def oldOceanCargoItem = OceanCargoItem.findByLoadingDateAndEtaDateAndArrivalDateAndDeliveryOrderDateAndCargoItemAndOceanFreight(oceanCargoItem.loadingDate, oceanCargoItem.etaDate, oceanCargoItem.arrivalDate, oceanCargoItem.deliveryOrderDate, oceanCargoItem.cargoItem, oceanCargoItem.oceanFreight)
+            def oldOceanCargoItem = OceanCargoItem.findByLoadingDateAndEtaDateAndArrivalDateAndDeliveryDateAndCargoItemAndOceanFreight(oceanCargoItem.loadingDate, oceanCargoItem.etaDate, oceanCargoItem.arrivalDate, oceanCargoItem.deliveryDate, oceanCargoItem.cargoItem, oceanCargoItem.oceanFreight)
             if (oldOceanCargoItem) {
                 render "error"
             } else {
@@ -216,7 +216,7 @@ class ShipmentController {
                 params['cargoItem.id']= it as Long
                 def railCargoItem = new RailCargoItem(params)
                 railCargoItem.user = principalService.getUser()
-                def oldRailCargoItem = RailCargoItem.findByWagonTypeAndWagonStatusAndWagonNumAndLoadingDateAndEtaDateAndArrivalDateAndDeliveryOrderDateAndCargoItemAndRailFreight(railCargoItem.wagonType, railCargoItem.wagonStatus, railCargoItem.wagonNum, railCargoItem.loadingDate, railCargoItem.etaDate, railCargoItem.arrivalDate, railCargoItem.deliveryOrderDate, railCargoItem.cargoItem, railCargoItem.railFreight)
+                def oldRailCargoItem = RailCargoItem.findByWagonTypeAndWagonStatusAndWagonNumAndLoadingDateAndEtaDateAndArrivalDateAndDeliveryDateAndCargoItemAndRailFreight(railCargoItem.wagonType, railCargoItem.wagonStatus, railCargoItem.wagonNum, railCargoItem.loadingDate, railCargoItem.etaDate, railCargoItem.arrivalDate, railCargoItem.deliveryDate, railCargoItem.cargoItem, railCargoItem.railFreight)
                 if (oldRailCargoItem) {
                     render "error"
                 } else {
@@ -233,7 +233,7 @@ class ShipmentController {
             } else
                 railCargoItem = new RailCargoItem(params)
             railCargoItem.user = principalService.getUser()
-            def oldRailCargoItem = RailCargoItem.findByWagonTypeAndWagonStatusAndWagonNumAndLoadingDateAndEtaDateAndArrivalDateAndDeliveryOrderDateAndCargoItemAndRailFreight(railCargoItem.wagonType, railCargoItem.wagonStatus, railCargoItem.wagonNum, railCargoItem.loadingDate, railCargoItem.etaDate, railCargoItem.arrivalDate, railCargoItem.deliveryOrderDate, railCargoItem.cargoItem, railCargoItem.railFreight)
+            def oldRailCargoItem = RailCargoItem.findByWagonTypeAndWagonStatusAndWagonNumAndLoadingDateAndEtaDateAndArrivalDateAndDeliveryDateAndCargoItemAndRailFreight(railCargoItem.wagonType, railCargoItem.wagonStatus, railCargoItem.wagonNum, railCargoItem.loadingDate, railCargoItem.etaDate, railCargoItem.arrivalDate, railCargoItem.deliveryDate, railCargoItem.cargoItem, railCargoItem.railFreight)
             if (oldRailCargoItem) {
                 render "error"
             } else {
@@ -250,7 +250,7 @@ class ShipmentController {
                 def roadCargoItem = new RoadCargoItem(params)
 
                 roadCargoItem.user = principalService.getUser()
-                def oldRoadCargoItem = RoadCargoItem.findByTruckAndPlaqueAndContainerTypeAndContainerNumAndFtlAndLtlAndDriverAndLoadingDateAndEtaDateAndArrivalDateAndDeliveryOrderDateAndCargoItemAndRoadFreight(roadCargoItem.truck,roadCargoItem.plaque,roadCargoItem.containerType,roadCargoItem.containerNum,roadCargoItem.ftl,roadCargoItem.ltl,roadCargoItem.driver,roadCargoItem.loadingDate,roadCargoItem.etaDate,roadCargoItem.arrivalDate,roadCargoItem.deliveryOrderDate,roadCargoItem.cargoItem,roadCargoItem.roadFreight)
+                def oldRoadCargoItem = RoadCargoItem.findByTruckAndPlateNoAndContainerTypeAndContainerNumAndFtlAndLtlAndBorderAndDriverAndLoadingDateAndEtaDateAndBorderPassAndArrivalDateAndDeliveryDateAndCargoItemAndRoadFreight(roadCargoItem.truck,roadCargoItem.plateNo,roadCargoItem.containerType,roadCargoItem.containerNum,roadCargoItem.ftl,roadCargoItem.ltl,roadCargoItem.border,roadCargoItem.driver,roadCargoItem.loadingDate,roadCargoItem.etaDate,roadCargoItem.borderPass,roadCargoItem.arrivalDate,roadCargoItem.deliveryDate,roadCargoItem.cargoItem,roadCargoItem.roadFreight)
                 if (oldRoadCargoItem) {
                     render "error"
                 } else {
@@ -266,7 +266,7 @@ class ShipmentController {
             } else
                 roadCargoItem = new RoadCargoItem(params)
             roadCargoItem.user = principalService.getUser()
-            def oldRoadCargoItem = RoadCargoItem.findByTruckAndDriverAndcontainerNumAndLoadingDateAndEtaDateAndArrivalDateAndDeliveryOrderDateAndCargoItemAndRoadFreight(roadCargoItem.truck, roadCargoItem.driver, roadCargoItem.containerNum, roadCargoItem.loadingDate, roadCargoItem.etaDate, roadCargoItem.arrivalDate, roadCargoItem.deliveryOrderDate, roadCargoItem.cargoItem, roadCargoItem.roadFreight)
+            def oldRoadCargoItem = RoadCargoItem.findByTruckAndDriverAndcontainerNumAndLoadingDateAndEtaDateAndArrivalDateAndDeliveryDateAndCargoItemAndRoadFreight(roadCargoItem.truck, roadCargoItem.driver, roadCargoItem.containerNum, roadCargoItem.loadingDate, roadCargoItem.etaDate,roadCargoItem.arrivalDate, roadCargoItem.deliveryDate, roadCargoItem.cargoItem, roadCargoItem.roadFreight)
             if (oldRoadCargoItem) {
                 render "error"
             } else {
